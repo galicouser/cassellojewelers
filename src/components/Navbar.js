@@ -201,8 +201,8 @@ const NavContainer = styled.nav`
   z-index: 1;
   width: 100%;
   background-color: ${({ navbar }) => (navbar ? '#323133' : 'transparent')};
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  /* border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px; */
   transition: background-color 0.3s ease-in-out; /* Adding transition effect */
   
   
@@ -333,6 +333,7 @@ const NavContainer = styled.nav`
   
   
   @media (max-width: 992px) {
+    height: 80px;
     .dekstop{
       display: none;
     }

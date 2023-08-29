@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import { motion } from 'framer-motion';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 
 import heroBcg3 from "../assets/hero-bcg-3.jpg";
 import heroBcgt from "../assets/hero-bcg-2.jpg";
@@ -23,8 +25,19 @@ import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
 import { AllInbox } from "@mui/icons-material";
+import DekstopImages from "./DekstopImages";
 
 const Hero = () => {
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
+
+
   const carouselTexts = [
     {
       title: "Tailoring Elegance, Just for You",
@@ -92,6 +105,9 @@ const Hero = () => {
 
   return (
     <Wrapper>
+
+      <div className="overlay-text">Welcome to Cassello Jewellers</div>
+
       <div className="swiper-container">
         <Swiper
           slidesPerView={3}
@@ -112,19 +128,27 @@ const Hero = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        <p className="overlay-text">Welcome to Cassello Jewellers</p>
-        <Button variant="outlined" className="MoreTitle2">
-          Shop Now
-        </Button>
-
-        <Link to="AuctionPage">
-          <Button variant="outlined" className="MoreTitle">
-            Auction Products
-          </Button>
-
-        </Link>
       </div>
+
+
+
+
+      <ButtonsHolder2>
+        <Link to="products" className="link-holder">
+          <Button variant="outlined" className="b1">
+            Shop Now
+          </Button>
+        </Link>
+      </ButtonsHolder2>
+
+
+      <ButtonsHolder>
+        <Link to="AuctionPage" className="link-holder">
+          <Button variant="outlined" className="b1">
+            Check Auction Listings
+          </Button>
+        </Link>
+      </ButtonsHolder>
 
       <div className="desktop-version">
         <p className="desktopTitle">Welcome to Cassello Jewellers</p>
@@ -143,46 +167,104 @@ const Hero = () => {
 
           </Link>
         </div>
-        {allLoaded &&
+        {/* {allLoaded &&
           <div className="ProgressHolder">
             <CircularProgress
               style={{ height: 200, width: 200, color: "grey" }}
             />
           </div>
-        }
-
-        <motion.img
-          className="Image1"
-          src={heroBcg3}
-          onLoad={handleLoad}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: loading ? 0 : 1 }}
-          transition={{ duration: 1 }}
-        />
-        <motion.img className="Image2"
-          src={heroBcgt} onLoad={handleLoad2}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: loading ? 0 : 1 }}
-          transition={{ duration: 1 }}
-        />
-        <motion.img className="Image3"
-          style={{ opacity: allLoaded ? 0 : 1 }}
-          src={heroBcg5} onLoad={handleLoad3}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: loading ? 0 : 1 }}
-          transition={{ duration: 1 }} />
-        <motion.img className="Image4"
-          style={{ opacity: allLoaded ? 0 : 1 }}
-          src={heroBcg4} onLoad={handleLoad4}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: loading ? 0 : 1 }}
-          transition={{ duration: 1 }} />
-
-
+        } */}
+        {/* <motion.img
+            className="Image1"
+            src={heroBcg3}
+            onLoad={handleLoad}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: loading ? 0 : 1 }}
+            transition={{ duration: 1 }}
+          />
+          <motion.img
+            className="Image2"
+            src={heroBcgt}
+            onLoad={handleLoad2}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: loading ? 0 : 1 }}
+            transition={{ duration: 1 }}
+          />
+          <motion.img
+            className="Image3"
+            style={{ opacity: allLoaded ? 0 : 1 }}
+            src={heroBcg5}
+            onLoad={handleLoad3}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: loading ? 0 : 1 }}
+            transition={{ duration: 1 }}
+          />
+          <motion.img
+            className="Image4"
+            style={{ opacity: allLoaded ? 0 : 1 }}
+            src={heroBcg4}
+            onLoad={handleLoad4}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: loading ? 0 : 1 }}
+            transition={{ duration: 1 }}
+          /> */}
+          <DekstopImages/>
       </div>
     </Wrapper>
   );
 };
+
+
+const ButtonsHolder = styled.div`
+display: none;
+@media (max-width: 767px) {
+  display: grid;
+  height: 100px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 1rem;
+
+  .link-holder{
+    width: 100%;
+    height: 100%;
+  }
+
+  .b1{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 13px;
+    color: black;
+    border: 4px solid rgb(0, 0, 0, 1);
+  }
+}
+`;
+
+const ButtonsHolder2 = styled.div`
+display: none;
+@media (max-width: 767px) {
+  display: grid;
+  height: 100px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 1rem;
+
+
+  .link-holder{
+    width: 100%;
+    height: 100%;
+  }
+
+  .b1{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 13px;
+    color: black;
+    border: 4px solid rgb(0, 0, 0, 1);
+  }
+}
+`;
 
 const Wrapper = styled.section`
   width: 100%;
@@ -193,6 +275,7 @@ const Wrapper = styled.section`
     display:flex;
     justify-content:space-between;
     width:22%;
+    z-index: 10;
    }
 
   .desktop-version {
@@ -212,10 +295,23 @@ const Wrapper = styled.section`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+
+  .image-container {
+    display: grid;
+    background-color: black;
+    grid-template-rows: 100% auto;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+      "big-image image2"
+      "image3 image4";
+  }
+
   .Image1 {
+    grid-area: big-image;
     background: none;
     height: 550px;
-    width: 350px;
+    width: 300px;
     position: absolute;
     left: 3%;
     top: 10%;
@@ -226,6 +322,7 @@ const Wrapper = styled.section`
   }
 
   .Image2 {
+    grid-area: image2;
     background: none;
     height: 250px;
     width: 300px;
@@ -238,6 +335,7 @@ const Wrapper = styled.section`
     transition: opacity 2s ease-in-out;
   }
   .Image3 {
+    grid-area: image3;
     background: none;
     height: 400px;
     width: 350px;
@@ -251,6 +349,7 @@ const Wrapper = styled.section`
     transition: opacity 2s ease-in-out;
   }
   .Image4 {
+    grid-area: image4;
     background: none;
     height: 400px;
     width: 300px;
@@ -268,14 +367,17 @@ const Wrapper = styled.section`
     font-size: 13px;
     height: 60px;
     width: 180px;
-    color: #222831;
-    border: 4px solid rgb(0, 0, 0, 0.2);
+    color: white;
+    
+    background-color: black;
+    margin-left: 10px;
   }
 
   .MoreTitle:hover {
     background-color: black;
     border: none;
-    color: white;
+    color: #A6705D;
+    opacity: 1;
   }
   .MoreTitle2 {
     text-align: center;
@@ -284,17 +386,24 @@ const Wrapper = styled.section`
     width: 180px;
     color: white;
     border: 4px solid rgb(0, 0, 0, 1);
-    position: absolute;
-    top: 50%;
+    position: relative;
+    z-index: 10;
+    background-color: brown;
+  }
+  .MoreTitle3 {
+    text-align: center;
+    font-size: 13px;
+    height: 60px;
+    width: 180px;
+    color: white;
+    border: 4px solid rgb(0, 0, 0, 1);
+    position: relative;
+    top: 60%;
     right: 25%;
     z-index: 10;
   }
 
-  .MoreTitle2:hover {
-    background-color: black;
-    border: none;
-    color: white;
-  }
+  
 
   .desktopTitle {
     font-size: 60px;
@@ -302,10 +411,10 @@ const Wrapper = styled.section`
     margin-top: 15%;
     width: 50%;
     text-align: center;
-    color: black;
-
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with 50% opacity */
     z-index: 10;
-  }
+}
   .desktopSubTitle {
     font-size: 30px;
     font-weight: 400;
@@ -343,15 +452,14 @@ const Wrapper = styled.section`
 
   .overlay-text {
     position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-size: 50px;
     color: #222831;
     background-color: rgba(238, 238, 238, 0.5);
-    padding: 10px;
     border-radius: 5px;
     z-index: 10;
     font-weight: 1000;
+    width: 100%;
+    display: none;
   }
   .overlay-text2 {
     position: absolute;
@@ -387,13 +495,21 @@ const Wrapper = styled.section`
       top: 60%;
       height: 65%;
       font-weight: 700;
+      
     }
     .overlay-text {
       font-weight: 1000;
-      font-size: 150%;
-      width: 95%;
-      top: 15%;
+      font-size: 2rem;
+      width: 100%;
+      height: 100px;
+      top: 40%;
       text-align: center;
+      position: absolute;
+      left: 0;
+      transform: translate(0%, 0%);
+      padding: 0px;
+      vertical-align: middle;
+      display: unset;
     }
   }
   @media (min-width: 800px) and (max-width: 950px) {
@@ -417,9 +533,7 @@ const Wrapper = styled.section`
       top: 15%;
       text-align: center;
     }
-    .MoreTitle2 {
-      right: 40%;
-    }
+    
   }
 `;
 

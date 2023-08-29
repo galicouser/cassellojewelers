@@ -49,6 +49,7 @@ height:100vh;
 background-color:#eeeeee;
 padding-top:40px;
 
+font-family: "Century Gothic", sans-serif;
 .ImageHolder{
   width:100%;
   height:40vh;
@@ -75,12 +76,13 @@ padding-top:40px;
   position:absolute;
   top:-90px;
   left:2.5%;
-  background: url("https://cdn.pixabay.com/photo/2017/02/10/03/12/winter-2054297_1280.jpg");
-  background-size: cover;
-  background-position: center;
-  background-clip: text;
-  -webkit-background-clip: text; /* Corrected prefix */
-  color: transparent;
+  color:black;
+  // background: url("https://cdn.pixabay.com/photo/2017/02/10/03/12/winter-2054297_1280.jpg");
+  // background-size: cover;
+  // background-position: center;
+  // background-clip: text;
+  // -webkit-background-clip: text; /* Corrected prefix */
+  // color: transparent;
 }
 .Image{
   width:100%;

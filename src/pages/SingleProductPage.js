@@ -152,7 +152,7 @@ const Wrapper = styled.main`
   }
   @media (max-width: 767px) {
     margin-top:50px;
-
+    
     .product-center {
       display:flex;
       flex-direction:column;

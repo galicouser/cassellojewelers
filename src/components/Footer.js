@@ -158,7 +158,9 @@ const Container = styled.footer`
     border: none;
     outline: none;
   }
-  .letteremailinput: focus {
+
+
+  .letteremailinput:focus {
     outline: none;
   }
 

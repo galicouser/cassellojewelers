@@ -10,6 +10,8 @@ import "../Scrollbar.css";
 import Reviews from "../components/Review";
 import CaselloImg from "../assets/Cassello.jpeg";
 import { AnimatePresence } from "framer-motion";
+import Button from "@mui/material/Button";
+import Sale from '../assets/sale.png';
 import {
   RecoilRoot,
   atom,
@@ -19,6 +21,7 @@ import {
 } from "recoil";
 import { motion } from "framer-motion";
 import { getProducts } from "../utils/API";
+import Ticker from "../components/Ticker";
 
 const StyledButton = styled.div`
   color: black;
@@ -128,6 +131,26 @@ const HomePage = () => {
     setLoader(true);
   };
 
+
+  const cityNames = [
+    "New York",
+    "Los Angeles",
+    "Chicago",
+    "Houston",
+    "Miami",
+    "Toronto",
+    "Vancouver",
+    "Montreal",
+    "Calgary",
+    "Edmonton",
+    "Seattle",
+    "San Francisco",
+    "Boston",
+    "Atlanta",
+    "Dallas"
+    // Add more city names as needed
+  ];
+
   if (showSplash && loader == false) {
     return (
       <SplashScreen>
@@ -181,17 +204,30 @@ const HomePage = () => {
       <main style={{ backgroundColor: "#eeeeee" }}>
         <Navbar />
         <Hero />
+        <div style={{ width: '100%', height: '100px', backgroundColor: '#272626', marginTop: '10%', display: 'grid', justifyContent: 'center', verticalAlign: 'center', placeContent: 'center', textAlign: 'center' }}>
+          <motion.h1
+            style={{ color: 'white' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 2 }}
+          >
+            Clearence Sale Upto 20% OFF!
+          </motion.h1>
+        </div>
         <Services />
         <FeaturedProducts />
-       <ServicesReverse />
-        <Reviews/> 
-          
+        <ServicesReverse />
+        <Reviews />
+
+        <Ticker content={cityNames} />
+
       </main>
     );
   }
 };
 
 export default HomePage;
+
 
 const Wrapper = styled.div`
   font-family: cursive;
