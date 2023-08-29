@@ -24,17 +24,17 @@ const AboutPage = () => {
         <Grid item lg={6.5}>
           <div className='AboutUsTextHolder'>
           <p className='AboutUsText'>
-           Welcome to [Your Store Name], nestled in the heart of Philadelphia. We pride ourselves on being more than just a diamond company. Our expertise lies in crafting bespoke diamond jewelry, uniquely tailored to resonate with your personal story. Whether it's an engagement ring, a timeless necklace, or a pair of stunning earrings, we bring your vision to life with unmatched precision and artistry.
-          Why Choose [Your Store Name]
-                Custom Creations: Our skilled artisans understand the sentiment behind every piece. With a keen eye for detail, we transform raw designs into tangible masterpieces.
-                Affordable Luxury: While diamonds represent luxury, we believe they shouldn't be unattainable. At [Your Store Name], elegance meets affordability. Experience the joy of donning exquisite jewelry without stretching your budget.
+   Welcome to Cassello Jewellers, where exquisite craftsmanship meets timeless elegance in the heart of a vibrant city. Our passion for creating unique handcrafted jewelry is reflected in every masterpiece we offer.
 
-Watch & Jewelry Repairs: Time takes its toll on even the finest of jewelry and watches. Our repair services ensure your cherished pieces stand the test of time, looking as pristine as the day you first wore them.
+Nestled in the enchanting backdrop of a city with a rich history of artistry, Cassello Jewellers draws inspiration from its surroundings. Our artisans, with their skilled hands and creative souls, pour their expertise into every piece of jewelry they craft. From delicate necklaces that grace your collarbone to intricate bracelets that wrap around your wrist, we celebrate the diversity of jewelry styles that cater to all tastes and occasions.
 
-Local Roots, Global Standards: As a Philadelphia-based company, we blend the warmth of local craftsmanship with international quality standards. Every diamond that graces our store has been ethically sourced and meticulously inspected for perfection.
+What sets us apart is our unwavering commitment to quality. Each gemstone is carefully selected, each metal is meticulously shaped, and each design is thoughtfully brought to life. Our jewelry is not just an accessory; it's an expression of emotions, a symbol of moments, and a reflection of your unique story.
 
-Client-Centric Approach: Your satisfaction fuels our passion. From the moment you step into our boutique to the day you flaunt your custom piece, we're with you at every step, ensuring a seamless and memorable experience.
-          </p>
+Whether you're seeking a stunning engagement ring that speaks of eternal love, a pair of earrings that add a touch of glamour to your ensemble, or a custom-made piece that embodies your personal journey, Cassello Jewellers has something special for everyone. Our collection features an array of designs, from classic and understated to bold and avant-garde, ensuring that you'll find the perfect piece that resonates with your style.
+
+Step into our world and witness the artistry of jewelry creation unfolding. Join us in celebrating the beauty of handcrafted adornments that transcend trends and become cherished heirlooms. Discover the magic of Cassello Jewellers, where every piece tells a story, and every gem holds a memory, right in the heart of Philadelphia.
+
+              </p>
           </div>
         </Grid>
 
