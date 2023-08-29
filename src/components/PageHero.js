@@ -80,7 +80,7 @@ const PageHero = ({ title, product }) => {
               <CircularProgress />
               </div>
             ) : (
-           
+
             <Video
               key={0}
               ref={(el) => (videoRefs.current[0] = el)}
@@ -132,7 +132,7 @@ const Wrapper = styled.section`
     }
   }
   @media (max-width: 767px) {
-    
+
     .section-center {
       padding-top: 10%;
     }
@@ -148,7 +148,7 @@ const VideosContainer = styled.div`
   overflow: hidden;
   border: none;
   border-radius: 8px;
-  
+
   @media (max-width: 767px) {
     width: 100%;
     height:20vh;

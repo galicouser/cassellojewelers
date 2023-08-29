@@ -64,7 +64,7 @@ const Filters = () => {
           </div>
           {/* end of category */}
           {/* company */}
-          <div className='form-control'>
+          {/* <div className='form-control'>
             <h5>company</h5>
             <select
               name='company'
@@ -80,10 +80,10 @@ const Filters = () => {
                 )
               })}
             </select>
-          </div>
+          </div> */}
           {/* end of company */}
           {/* colors */}
-          <div className='form-control'>
+          {/* <div className='form-control'>
             <h5>colors</h5>
             <div className='colors'>
               {colors.map((c, index) => {
@@ -116,7 +116,7 @@ const Filters = () => {
                 )
               })}
             </div>
-          </div>
+          </div> */}
           {/* end of colors */}
           {/* price */}
           <div className='form-control'>
@@ -154,6 +154,8 @@ const Filters = () => {
 
 const Wrapper = styled.section`
   font-family: 'Century Gothic', sans-serif;
+
+
   .form-control {
     margin-bottom: 1.25rem;
     h5 {
@@ -235,7 +237,7 @@ const Wrapper = styled.section`
   .price {
     margin-bottom: 0.25rem;
   }
-  
+
   .shipping {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -285,8 +287,9 @@ const Wrapper = styled.section`
   color: var(--clr-grey-5);
   font-size: 0.8rem;
 }
-  
+
   @media (min-width: 768px) {
+
     .content {
       position: sticky;
       top: 1rem;

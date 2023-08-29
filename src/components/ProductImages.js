@@ -12,100 +12,39 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 const ProductImages = ({ images = [[]] }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
-    <Wrapper>
-       <div className='container'>
-      <Swiper
-        
-        loop={true}
-        spaceBetween={10}
-        navigation={true}
-        thumbs={{ swiper: thumbsSwiper }}
-        navigation={{
-          nextEl: '.custom-swiper-button-next', // Custom class for "Next" button
-          prevEl: '.custom-swiper-button-prev', // Custom class for "Previous" button
-        }}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
-      >
-        
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-        </SwiperSlide>
-        
-      <div className="custom-swiper-button-prev">Previous</div>
-<div className="custom-swiper-button-next">Next</div>
-      </Swiper>
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        loop={true}
-        spaceBetween={10}
-        slidesPerView={4}
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-        
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-        </SwiperSlide>
-      </Swiper>
+  <Wrapper>
+    <div className='container'>
+        <Swiper
+            loop={true}
+            spaceBetween={10}
+            thumbs={{ swiper: thumbsSwiper }}
+            navigation={{
+                nextEl: '.custom-swiper-button-next',
+                prevEl: '.custom-swiper-button-prev',
+            }}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className="mySwiper2"
+        >
+            {/* Your Swiper slides here ... */}
+        </Swiper>
+
+        <div className="custom-swiper-button-prev">Previous</div>
+        <div className="custom-swiper-button-next">Next</div>
+
+        <Swiper
+            onSwiper={setThumbsSwiper}
+            loop={true}
+            spaceBetween={10}
+            slidesPerView={4}
+            freeMode={true}
+            watchSlidesProgress={true}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className="mySwiper"
+        >
+            {/* Your thumbs Swiper slides here ... */}
+        </Swiper>
     </div>
-    </Wrapper>
+</Wrapper>
   )
 }
 
@@ -118,12 +57,12 @@ width:600px;
   .mySwiper{
     margin-top:1%;
   }
- 
+
   /* Style for Custom Navigation Buttons */
- 
+
   .mySwiper2 .custom-swiper-button-next {
     color: black;
-    
+
     font-size: 18px;
     font-weight:100;
     padding: 10px;
@@ -131,7 +70,7 @@ width:600px;
     border-radius: 15px 0px 0px 5px;
     cursor: pointer;
   }
-  
+
   /* Position the "Previous" button to the left */
   .mySwiper2 .custom-swiper-button-prev {
     position: absolute;
@@ -151,7 +90,7 @@ width:600px;
     border-radius: 0px 15px 5px 0px;
     cursor: pointer;
   }
-  
+
   /* Position the "Next" button to the right */
   .mySwiper2 .custom-swiper-button-next {
     position: absolute;
@@ -159,19 +98,19 @@ width:600px;
     top: 95%;
     z-index:10;
     transform: translateY(-50%);
-    
+
     width:100px;
     display:flex;
     flex-direction:column;
     align-items:center;
   }
- 
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
   @media (max-width: 576px) {
     width:250px;
     height:100px;
@@ -198,7 +137,7 @@ width:600px;
     }
 
   }
- 
+
 
 
   @media (min-width: 992px) {

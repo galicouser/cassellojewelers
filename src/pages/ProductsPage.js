@@ -11,10 +11,10 @@ const ProductsPage = () => {
       <Navbar />
 
       <Wrapper className="page">
-        <PageHero title='products' />
+        {/* <PageHero title='products' /> */}
         <div className="section-center products">
           <Filters />
-          
+
           <div>
             <Sort />
             <ProductList />
@@ -28,9 +28,9 @@ const ProductsPage = () => {
       <div className="NewVersion">
       <Navbar />
       <Grid container gap={1} className="CenteringDiv">
-      
+
         <Grid item xs={2}>
-         
+
           <Filters />
         </Grid>
         <Grid item xs={7}>
@@ -48,11 +48,11 @@ const ProductsPage = () => {
           </Grid>
         </Grid>
         <Grid item xs={2}>
-          
-          <PageHero title='products' />
+
+          {/* <PageHero title='products' /> */}
         </Grid>
-        
-      
+
+
       </Grid>
       </div>
     </Wrapper>
@@ -63,14 +63,14 @@ const ProductsPage = () => {
 const Wrapper = styled.div`
   background: "#eeeeee";
   overflow:hidden;
- 
+
   .CenteringDiv {
     margin-top:5%;
     margin-bottom:5%;
     display:flex;
     justify-content: center;
   }
-  
+
   .OlderVersion{
     display:none;
   }
