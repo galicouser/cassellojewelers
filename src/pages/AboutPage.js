@@ -10,9 +10,9 @@ const AboutPage = () => {
   return (
     <main>
       <Navbar/>
-     
+
       <Wrapper>
-        
+
  <Grid container gap={2}>
         <Grid item lg={12}>
           <div className='ImageHolder'>
@@ -24,20 +24,20 @@ const AboutPage = () => {
         <Grid item lg={6.5}>
           <div className='AboutUsTextHolder'>
           <p className='AboutUsText'>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-            accusantium sapiente tempora sed dolore esse deserunt eaque
-            excepturi, delectus error accusamus vel eligendi, omnis beatae.
-            Quisquam, dicta. Eos quod quisquam esse recusandae vitae neque
-            dolore, obcaecati incidunt sequi blanditiis est exercitationem
-            molestiae delectus saepe odio eligendi modi porro eaque in libero
-            minus unde sapiente consectetur architecto. Ullam rerum, nemo iste
-            ex, eaque perspiciatis nisi, eum totam velit saepe sed quos
-            similique amet. Ex, voluptate accusamus nesciunt totam vitae esse
-            iste.
+           Welcome to [Your Store Name], nestled in the heart of Philadelphia. We pride ourselves on being more than just a diamond company. Our expertise lies in crafting bespoke diamond jewelry, uniquely tailored to resonate with your personal story. Whether it's an engagement ring, a timeless necklace, or a pair of stunning earrings, we bring your vision to life with unmatched precision and artistry.
+          Why Choose [Your Store Name]
+                Custom Creations: Our skilled artisans understand the sentiment behind every piece. With a keen eye for detail, we transform raw designs into tangible masterpieces.
+                Affordable Luxury: While diamonds represent luxury, we believe they shouldn't be unattainable. At [Your Store Name], elegance meets affordability. Experience the joy of donning exquisite jewelry without stretching your budget.
+
+Watch & Jewelry Repairs: Time takes its toll on even the finest of jewelry and watches. Our repair services ensure your cherished pieces stand the test of time, looking as pristine as the day you first wore them.
+
+Local Roots, Global Standards: As a Philadelphia-based company, we blend the warmth of local craftsmanship with international quality standards. Every diamond that graces our store has been ethically sourced and meticulously inspected for perfection.
+
+Client-Centric Approach: Your satisfaction fuels our passion. From the moment you step into our boutique to the day you flaunt your custom piece, we're with you at every step, ensuring a seamless and memorable experience.
           </p>
           </div>
         </Grid>
-       
+
       </Grid>
 
       </Wrapper>
@@ -90,7 +90,7 @@ font-family: "Century Gothic", sans-serif;
   object-fit:cover;
 }
 @media (max-width: 767px) {
-  
+
 padding-top:80px;
   .TitleText{
     font-size:60px;
@@ -103,7 +103,7 @@ padding-top:80px;
   }
   .AboutUsText{
     font-size:15px;
-    
+
   }
   .ImageHolder{
     height:40vh;
@@ -132,6 +132,6 @@ padding-top:80px;
     padding-top:50px;
   }
 }
-  
+
 `
 export default AboutPage
