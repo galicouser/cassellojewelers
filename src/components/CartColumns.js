@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   display: none;
   @media (min-width: 776px) {
     display: block;
+    /* background-color: #272626; */
     .content {
       display: grid;
       grid-template-columns: 316px 1fr 1fr 1fr auto;

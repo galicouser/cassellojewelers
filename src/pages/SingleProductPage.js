@@ -161,6 +161,9 @@ const Wrapper = styled.main`
     .NameTag{
       margin-top:45%;
     }
+    .content{
+      margin-top:10%;
+    }
 
   }
   @media (min-width: 800px) and (max-width: 950px) {

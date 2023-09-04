@@ -512,7 +512,7 @@ const Wrapper = styled.section`
       display: unset;
     }
   }
-  @media (min-width: 800px) and (max-width: 950px) {
+  @media (min-width: 767x) and (max-width: 950px) {
     .swiper-container {
       display: unset;
     }

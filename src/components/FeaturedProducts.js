@@ -62,34 +62,30 @@ const FeaturedProducts = () => {
         
         </Grid>
       </div> */}
- <Swiper
-        slidesPerView={2}
-        spaceBetween={30}
+      <Swiper
+        slidesPerView={2} // Adjust the number of items displayed per view
+        spaceBetween={30} // Adjust the space between items
         freeMode={true}
         pagination={{
           clickable: true,
         }}
-      
-        modules={[Autoplay,FreeMode, Pagination]}
-        autoplay={{ delay:  3000}}
+        modules={[Autoplay, FreeMode, Pagination]}
+        autoplay={{ delay: 3000 }}
         className="mySwiper"
-        
         breakpoints={{
-          767: {
-            slidesPerView: 5,
+          1200: {
+            slidesPerView: 5, // Adjust the number of items displayed per view for larger screens
+            spaceBetween: 20, // Adjust the space between items for larger screens
           },
-          
         }}
       >
-        
-
-    {featured.map((text, index) => (
-     <SwiperSlide key={index} className="CustomSlide">
-       <Product key={text.id} {...text} />
-     </SwiperSlide>
-          ))}
-        
+        {featured.map((text, index) => (
+          <SwiperSlide key={index} className="CustomSlide">
+            <Product key={text.id} {...text} />
+          </SwiperSlide>
+        ))}
       </Swiper>
+
 
 
       <Link to="/products">
