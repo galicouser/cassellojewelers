@@ -90,6 +90,7 @@ background-color:black;
     display: grid;
     justify-content: center;
     padding: 0.2rem;
+    text-align: center;
   }
 
   .price-holder{
