@@ -70,8 +70,8 @@ const SingleProductPage = () => {
           <ProductImages images={images} />
           <section className="content">
             <p className="NameTag">{name}</p>
-            <Stars stars={stars} reviews={reviews} />
-            <h5 className="price">{formatPrice(price)}</h5>
+            {/* <Stars stars={stars} reviews={reviews} /> */}
+            <h5 className="price">{formatPrice(85000)}</h5>
             <p className="desc">{description}</p>
             <p className="info">
               <span>Available : </span>
@@ -81,10 +81,10 @@ const SingleProductPage = () => {
               <span>SKU :</span>
               {sku}
             </p>
-            <p className="info">
+            {/* <p className="info">
               <span>Brand :</span>
               {company}
-            </p>
+            </p> */}
             <hr />
             {stock > 0 && <AddToCart product={product} />}
           </section>
