@@ -168,18 +168,18 @@ const AuctionPage = () => {
             pagination={{
               clickable: true,
             }}
+            slidesPerView={1}
             modules={[Pagination]}
             className="mySwiper"
             breakpoints={{
               767: {
-                slidesPerView: 3, // 1 slide per view on screens up to 767px
+                slidesPerView: 2,
               },
-              1200: {
-                slidesPerView: 3, // 2 slides per view on screens up to 1024px
+              1024: {
+                slidesPerView: 3, // Breakpoint for tablet-sized screens (1024px wide)
               },
-              2000: {
-                slidesPerView: 3, // 2 slides per view on screens up to 1024px
-              },
+              
+              
             }}
           >
             {UpComingAuction.map((item, index) => (
@@ -191,10 +191,12 @@ const AuctionPage = () => {
                   <p className="SlideTitle">{item.title}</p>
                   <p className="SlideSubTitle">{item.description}</p>
                 </div>
+                <div className="BottomDivision">
                 <div className="CenteringDiv">
                   <hr className="Divider" />
                 </div>
 
+                  
                 <p className="StartingTitle">Starting On</p>
                 <div className="StartingHolder">
                   <div className="TimeHolder">
@@ -205,6 +207,7 @@ const AuctionPage = () => {
                   <div className="TimeHolder">
                     <AccessTimeIcon className="Icon" />
                     <p className="DateTimeText">{item.startingTime}</p>
+                  </div>
                   </div>
                 </div>
               </SwiperSlide>
@@ -304,10 +307,18 @@ const Wrapper = styled.section`
     width: 80%;
   }
   .MySlide {
-    height: 350px;
+    height: 550px;
     background-color: black;
     border-radius: 10px;
-    height: 100%;
+    position:relative;
+  }
+  .BottomDivision{
+    position:absolute;
+    bottom:2px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    width:100%;
   }
   .StartingTitle {
     font-size: 20px;
@@ -364,9 +375,22 @@ const Wrapper = styled.section`
     border-radius: 10px 10px 0px 0px;
     object-fit: cover;
   }
+  @media (min-width: 800px) and (max-width: 950px) {
+
+    
+    .informationHolderDesktop{
+        margin-top:80px;
+     }
+  }
   @media (max-width: 767px) {
+    .BottomDivision{
+      width:100%;
+    }
     .MySlide{
         height:600px;
+    }
+    .MySwiper{
+      width:50px;
     }
    
     .informationHolderMobile{

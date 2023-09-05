@@ -54,9 +54,11 @@ const AuctionProductList = ({ image, name, price, id }) => {
                 <p className="TimeLeft">{formatTime(remainingTime)}</p>
               </div>
               <div>
+                <Link to="/SingleAuctionProductPage">
                 <Button variant="outlined" className="BitButton">
                   Place a bid
                 </Button>
+                </Link>
               </div>
             </div>
           </div>

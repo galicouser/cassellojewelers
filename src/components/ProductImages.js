@@ -1,22 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Swiper, SwiperSlide } from "swiper/react";
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { IconButton } from '@mui/material';
+
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-
-
-const imageLinks = [
-  'https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325645/cassello%20jewelers/Cassello%20Jeweler/DD936C8A-14E8-4AD4-B248-CE4D57F49A66_yrqwu0.jpg',
-  'https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325644/cassello%20jewelers/Cassello%20Jeweler/ADC00B5E-D80E-443A-90A9-DB1ECD757928_daabpc.jpg',
-  'https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325644/cassello%20jewelers/Cassello%20Jeweler/85921E0E-0DBA-4B23-B479-92CF18BA5E2D_a3zkgq.jpg',
-  'https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325644/cassello%20jewelers/Cassello%20Jeweler/5E1C32A8-E954-44C9-8102-21324AF0BD3B_rflv9n.jpg',
-];
-
 const ProductImages = ({ images = [[]] }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
@@ -34,16 +26,23 @@ const ProductImages = ({ images = [[]] }) => {
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper2"
         >
+          <SwiperSlide>
+            <img src="https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325644/cassello%20jewelers/Cassello%20Jeweler/5E1C32A8-E954-44C9-8102-21324AF0BD3B_rflv9n.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325645/cassello%20jewelers/Cassello%20Jeweler/DD936C8A-14E8-4AD4-B248-CE4D57F49A66_yrqwu0.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325644/cassello%20jewelers/Cassello%20Jeweler/ADC00B5E-D80E-443A-90A9-DB1ECD757928_daabpc.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325644/cassello%20jewelers/Cassello%20Jeweler/85921E0E-0DBA-4B23-B479-92CF18BA5E2D_a3zkgq.jpg" />
+          </SwiperSlide>
 
-         {imageLinks.map((imageLink, index) => (
-           <SwiperSlide key={index}>
-             <img src={imageLink} alt={`Nature ${index + 1}`} />
-           </SwiperSlide>
-        ))}
 
 
-          <IconButton className="custom-swiper-button-prev">Previous</IconButton>
-          <IconButton className="custom-swiper-button-next">Next</IconButton>
+          <div className="custom-swiper-button-prev">Previous</div>
+          <div className="custom-swiper-button-next">Next</div>
         </Swiper>
 
       </div>
@@ -59,12 +58,6 @@ width:500px;
   }
   .mySwiper{
     margin-top:1%;
-  }
-
-  .image-swiper{
-    -webkit-box-shadow: 10px 10px 23px -5px rgba(0,0,0,0.65);
-    -moz-box-shadow: 10px 10px 23px -5px rgba(0,0,0,0.65);
-    box-shadow: 10px 10px 23px -5px rgba(0,0,0,0.65);
   }
  
   /* Style for Custom Navigation Buttons */
