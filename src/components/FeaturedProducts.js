@@ -113,6 +113,7 @@ const Wrapper = styled.section`
 
   .mySwiper{
     width:100%;
+    height: 550px;
   }
   .swiper-pagination-bullet {
     background-color: #eeeeee; 

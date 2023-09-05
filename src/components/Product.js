@@ -24,7 +24,7 @@ const Product = ({ image, name, price, id }) => {
   )
 }
 const Wrapper = styled.article`
-height: 450px;
+height: 550px;
 background-color:black;
 
   &:hover{
@@ -89,6 +89,7 @@ background-color:black;
     height: 30%;
     display: grid;
     justify-content: center;
+    padding: 0.2rem;
   }
 
   .price-holder{
@@ -112,7 +113,7 @@ background-color:black;
     letter-spacing: var(--spacing);
   }
   @media (max-width: 767px) {
-   height:500px;
+   height:550px;
   }
 
 
