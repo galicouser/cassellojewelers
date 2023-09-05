@@ -270,10 +270,11 @@ font-family: "Century Gothic", sans-serif;
      }
   }
   
-  @media (min-width: 800px) and (max-width: 950px) {
+  @media (min-width: 767px) and (max-width: 1300px) {
     .products {
       display: flex;
       flex-direction:column;
+      margin-bottom: 100px;
     }
     .NewVersion{
       display:none;

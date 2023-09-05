@@ -140,6 +140,45 @@ margin-bottom: 500px; */
   }
 }
 
+@media (min-width: 430px) and (max-width: 525px) {
+  height: 1500px;
+/* padding-top:80px;
+margin-bottom: 500px; */
+  .TitleText{
+    font-size:60px;
+    font-weight:1000;
+    color:white;
+    top:15%;
+  }
+  .SmallImage{
+    display:none;
+  }
+  .AboutUsText{
+    font-size:18px;
+    font-weight:100;
+    background-color: white;
+    padding: 2%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 1100px;
+  }
+  .ImageHolder{
+    height:40vh;
+    width:100%;
+  }
+  .AboutUsTextHolder{
+    position: relative;
+    padding-left:0%;
+    padding-right:0%;
+    height: 1100px;
+    text-align:center;
+  }
+
+}
+
+
 @media (min-width: 525px) and (max-width: 600px) {
   height: 1300px;
 /* padding-top:80px;
@@ -217,8 +256,30 @@ margin-bottom: 500px; */
 }
 
 
-@media (min-width: 767px) and (max-width: 950px) {
+@media (min-width: 767px) and (max-width: 900px) {
   height: 1500px;
+   .ImageHolder{
+    height:50vh;
+    width:100%;
+  }
+  .SmallImage{
+    width:350px;
+    height:350px;
+    right:10%;
+    position:absolute;
+    bottom:-50px;
+  }
+  .AboutUsTextHolder{
+    padding-top:50px;
+  }
+
+  .AboutUsText{
+    font-size:20px;
+  }
+}
+
+@media (min-width: 900px){
+  height: 1250px;
    .ImageHolder{
     height:50vh;
     width:100%;
