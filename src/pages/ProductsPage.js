@@ -1,28 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Navbar } from "../components";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import JewelImage from "../assets/imag-2.jpeg";
+import { Swiper, SwiperSlide } from "swiper/react";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Filters, ProductList, Sort, PageHero } from "../components";
+import { useNavigate } from 'react-router-dom';
+
 const ProductsPage = () => {
+  const navigate = useNavigate();
+
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <Wrapper>
         <main className="OlderVersion">
 
 
-          <div className="TopAuctionBanner">
-            <div className="AuctionHolder">
-              <p className="AuctionTitle">Join the Auction Action Now!</p>
-              <Button variant="outlined" className="MoreTitle2" >
-                Place a bid
-              </Button>
 
-            </div>
-          </div>
+          <Swiper
+            loop={true}
+            spaceBetween={10}
+            navigation={true}
+            thumbs={{ swiper: thumbsSwiper }}
+            navigation={{
+              nextEl: '', // Custom class for "Next" button
+              prevEl: '', // Custom class for "Previous" button
+            }}
+            modules={[FreeMode, Navigation, Thumbs]}
+            autoplay={{ delay: 3000 }}
+            className="mySwiper2"
+          >
+            <SwiperSlide>
+              <div className="TopAuctionBanner">
+                <div className="AuctionHolder">
+                  <p className="AuctionTitle">Join the Auction Action Now!</p>
+                  <Button onClick={() => navigate('/AuctionPage')} variant="contained" className="ButtonCarouselAuction" >
+                    Auction Products
+                  </Button>
+
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="TopAuctionBanner">
+                <div className="AuctionHolder">
+                  <p className="AuctionTitle">Join the Auction Action Now2!</p>
+                  <Button onClick={() => navigate('/AuctionPage')} variant="contained" color="primary" className="ButtonCarouselAuction" >
+                    Auction Products
+                  </Button>
+                </div>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+
 
           <Wrapper className="page">
             {/* <PageHero title='products' /> */}
@@ -48,7 +89,7 @@ const ProductsPage = () => {
               <div className="TopAuctionBanner">
                 <div className="AuctionHolder">
                   <p className="AuctionTitle">Clearence Sale Upto 20% OFF!</p>
-                  <Button variant="outlined" className="MoreTitle2" >
+                  <Button variant="contained" color="primary"  className="ButtonClearenceSale" >
                     Check Out Now
                   </Button>
                   <div className="LightLeffect" />
@@ -58,11 +99,11 @@ const ProductsPage = () => {
             </Grid>
 
             <Grid item lg={2}>
-
               <div style={{ marginTop: '50px' }}>
                 <Filters />
               </div>
             </Grid>
+
             <Grid item lg={7}>
               <Grid container gap={1} className="CenteringDiv">
                 <Grid item lg={12}>
@@ -77,27 +118,19 @@ const ProductsPage = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item lg={2}>
+
+
+
+            <Grid item lg={2} >
 
               <div className="AuctioBanner">
-                {/* <img src={"https://images.unsplash.com/photo-1503480207415-fdddcc21d5fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"} className="BannerImage" /> */}
-
                 <p className="AuctionTitle">Join the Auction Action Now!</p>
-
                 <div className="ImageHolder">
                   <img src={JewelImage} className="Image1" />
-                  <img src={JewelImage} className="Image2" />
                 </div>
-                <div className="ImageHolder">
-                  <img src={JewelImage} className="Image1" />
-                  <img src={JewelImage} className="Image2" />
-                </div>
-
-                <Button variant="outlined" className="MoreTitle2" >
-                  LOGIN TO BID
+                <Button onClick={() => navigate('/AuctionPage')} variant="contained" color="primary" className="MoreTitle2" >
+                  Auction Products
                 </Button>
-
-
               </div>
 
             </Grid>
@@ -133,7 +166,7 @@ font-family: "Century Gothic", sans-serif;
   justify-content:center;
  }
   .AuctioBanner{
-    height:100vh;
+    height:150vh;
     width:100%;
     border-radius:10px;
     background-color:rgb(0,0,0,1);
@@ -145,16 +178,28 @@ font-family: "Century Gothic", sans-serif;
     align-items:center;
   }
   .MoreTitle2{
-    height:50px;
-    width:75%;
-    border:none;
-    outline:none;
-    color:white;
-    font-weight:1000;
-    background-color:#A6705D;
-    &:hover{
-    background-color: black;
+    font-family: "Century Gothic", sans-serif;
+    width: 100%;
+    background-color: #a6705d;
+    &:hover {
+      background-color: black;
+    }
   }
+
+  .ButtonCarouselAuction{
+    font-family: "Century Gothic", sans-serif;
+    width: 100%;
+    background-color: #a6705d;
+  }
+
+
+  .ButtonClearenceSale{
+    font-family: "Century Gothic", sans-serif;
+    width: 50%;
+    background-color: #a6705d;
+    &:hover {
+      background-color: black;
+    }
   }
 
   .LightLeffect{
@@ -196,7 +241,7 @@ font-family: "Century Gothic", sans-serif;
     z-index:10;
   }
   .Image1{
-    width:50%;
+    width:100%;
     background:none;
 
   }

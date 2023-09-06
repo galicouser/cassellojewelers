@@ -81,55 +81,55 @@ const AuctionPage = () => {
     <div style={{ backgroundColor: "#eeeeee" }}>
       <Navbar />
       <Wrapper>
-        <div className="informationHolderMobile"> 
-            
-            <div className="Upper">
+        <div className="informationHolderMobile">
+
+          <div className="Upper">
             <div className="Information">
-                <p className="InfoNumber">650,000</p>
-                <p className="InfoTitle">Bids</p>
+              <p className="InfoNumber">650,000</p>
+              <p className="InfoTitle">Bids</p>
             </div>
 
             <div className="Information">
-                <p className="InfoNumber">259,947</p>
-                <p className="InfoTitle">Members</p>
+              <p className="InfoNumber">259,947</p>
+              <p className="InfoTitle">Members</p>
             </div>
-            </div>
+          </div>
 
-            <div className="Lower">
+          <div className="Lower">
             <div className="Information">
-                <p className="InfoNumber">746</p>
-                <p className="InfoTitle">Open Auction</p>
+              <p className="InfoNumber">746</p>
+              <p className="InfoTitle">Open Auction</p>
             </div>
             <div className="Information">
-                <p className="InfoNumber">97,016</p>
-                <p className="InfoTitle">Sold Product</p>
+              <p className="InfoNumber">97,016</p>
+              <p className="InfoTitle">Sold Product</p>
             </div>
-            </div>
+          </div>
         </div>
 
 
-          <div className="informationHolderDesktop">
+        <div className="informationHolderDesktop">
 
           <div className="Information">
-                <p className="InfoNumber">650,000</p>
-                <p className="InfoTitle">Bids</p>
-            </div>
-
-          <div className="Information">
-                <p className="InfoNumber">259,947</p>
-                <p className="InfoTitle">Members</p>
-            </div>
-            
-          <div className="Information">
-                <p className="InfoNumber">746</p>
-                <p className="InfoTitle">Open Auction</p>
-            </div>
-
-          <div className="Information">
-                <p className="InfoNumber">97,016</p>
-                <p className="InfoTitle">Sold Product</p>
-            </div>
+            <p className="InfoNumber">650,000</p>
+            <p className="InfoTitle">Bids</p>
           </div>
+
+          <div className="Information">
+            <p className="InfoNumber">259,947</p>
+            <p className="InfoTitle">Members</p>
+          </div>
+
+          <div className="Information">
+            <p className="InfoNumber">746</p>
+            <p className="InfoTitle">Open Auction</p>
+          </div>
+
+          <div className="Information">
+            <p className="InfoNumber">97,016</p>
+            <p className="InfoTitle">Sold Product</p>
+          </div>
+        </div>
 
 
         <AuctionTitle>Exclusively Available on Auction</AuctionTitle>
@@ -160,7 +160,7 @@ const AuctionPage = () => {
         <div style={{ padding: "2rem" }}>
           <AuctionProductList />
         </div>
-        <p className="UpComingText">Up Coming Bids</p>
+        {/* <p className="UpComingText">Up Coming Bids</p>
         <div>
           <Swiper
             // slidesPerView={1}
@@ -173,18 +173,21 @@ const AuctionPage = () => {
             className="mySwiper"
             breakpoints={{
               767: {
-                slidesPerView: 2,
+                slidesPerView: 1,
               },
-              1024: {
+              1200: {
+                slidesPerView: 2, // Breakpoint for tablet-sized screens (1024px wide)
+              },
+              1400: {
                 slidesPerView: 3, // Breakpoint for tablet-sized screens (1024px wide)
               },
-              
-              
+
+
             }}
           >
             {UpComingAuction.map((item, index) => (
               <SwiperSlide key={index} className="MySlide">
-                
+
 
                 <img src={item.image} className="SlideImage" />
                 <div className="InfoHolder">
@@ -192,28 +195,28 @@ const AuctionPage = () => {
                   <p className="SlideSubTitle">{item.description}</p>
                 </div>
                 <div className="BottomDivision">
-                <div className="CenteringDiv">
-                  <hr className="Divider" />
-                </div>
-
-                  
-                <p className="StartingTitle">Starting On</p>
-                <div className="StartingHolder">
-                  <div className="TimeHolder">
-                    <CalendarTodayIcon className="Icon" />
-
-                    <p className="DateTimeText">{item.startingDate}</p>
+                  <div className="CenteringDiv">
+                    <hr className="Divider" />
                   </div>
-                  <div className="TimeHolder">
-                    <AccessTimeIcon className="Icon" />
-                    <p className="DateTimeText">{item.startingTime}</p>
-                  </div>
+
+
+                  <p className="StartingTitle">Starting On</p>
+                  <div className="StartingHolder">
+                    <div className="TimeHolder">
+                      <CalendarTodayIcon className="Icon" />
+
+                      <p className="DateTimeText">{item.startingDate}</p>
+                    </div>
+                    <div className="TimeHolder">
+                      <AccessTimeIcon className="Icon" />
+                      <p className="DateTimeText">{item.startingTime}</p>
+                    </div>
                   </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </div> */}
       </Wrapper>
     </div>
   );

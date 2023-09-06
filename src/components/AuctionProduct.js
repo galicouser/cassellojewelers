@@ -39,39 +39,43 @@ const AuctionProductList = ({ image, name, price, id }) => {
           <img src={image} alt={name} className="image" />
         </div>
         <footer>
-          <div className="GroupHolder">
+          {/* <div className="GroupHolder">
             <GroupsIcon className="GroupIcon" />
             <div className="RatingCount">{Rating}/10</div>
+          </div> */}
+
+          <div className="title-holder">
+            <p className="ProductDiscription">{ProductDiscription}</p>
           </div>
-          <p className="ProductDiscription">{ProductDiscription}</p>
 
           <div className="CenteringDiv">
-            <div className="LowerHolder">
-              <div className="CostnTime">
-                <p className="CostText">
+            <div className="CostnTime">
+              {/* <p className="CostText">
                   Cost <span style={{ fontWeight: "bold" }}>$ 100</span>
-                </p>
-                <p className="TimeLeft">{formatTime(remainingTime)}</p>
-              </div>
-              <div>
-                <Link to="/SingleAuctionProductPage">
-                <Button variant="outlined" className="BitButton">
-                  Place a bid
+                </p> */}
+              <p className="TimeLeft">{formatTime(remainingTime)}</p>
+            </div>
+            <div>
+              <Link to="/SingleAuctionProductPage">
+                <Button variant="contained" color="primary" className="BitButton">
+                  View Product
                 </Button>
-                </Link>
-              </div>
+              </Link>
             </div>
           </div>
+
+
         </footer>
       </Link>
-    
+
     </Wrapper>
   );
 };
 const Wrapper = styled.article`
-  height: 100%;
+  height: 500px;
   border-radius: 10px;
   background-color: black;
+  font-family: "Century Gothic", sans-serif;
 
   &:hover {
     -webkit-box-shadow: 10px 10px 23px -5px rgba(0, 0, 0, 0.65);
@@ -83,33 +87,24 @@ const Wrapper = styled.article`
     width: 100%;
     height: 100%;
   }
-  .LowerHolder {
-    display: flex;
-    padding-top: 5%;
-    justify-content: space-between;
-    width: 90%;
-  }
   .BitButton {
-    background-color: #260104;
-    width: 250px;
-    height: 50px;
-    color: white;
-    margin-top: 1.5%;
-    border: 5px solid rgb(255, 255, 255, 0.75);
-    font-weight: bold;
+    width: 100%;
+    margin-left: 5%;
+    background-color: #a6705d;
+    &:hover {
+      background-color: black;
+    }
   }
-  .BitButton:hover {
-    background-color: white;
-    outline: none;
-    border: 5px solid rgb(0, 0, 0, 0.85);
-    color: black;
-  }
-  .CostnTime {
-  }
+
   .CenteringDiv {
     display: flex;
     justify-content: center;
+    width: 100%;
   }
+  
+  .CostnTime {
+  }
+  
   .CostText {
     font-size: 18px;
     font-weight: 100;
@@ -141,46 +136,32 @@ const Wrapper = styled.article`
     padding-left: 12px;
     color: white;
   }
+
+  .title-holder{
+    width: 100%;
+    height: 30%;
+    text-align: center;
+  }
   .ProductDiscription {
-    padding-left: 5%;
-    font-size: 25px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 200;
     color: rgb(255, 255, 255, 0.95);
-    width: 75%;
+    width: 100%;
   }
 
   .container {
+    height: 70%;
     position: relative;
     background: var(--clr-black);
-    border-radius: var(--radius);
+    border-radius: 20px;
   }
   .image {
     width: 100%;
-    height: 220px;
-    display: block;
+    height: 100%;
     object-fit: cover;
-    border-radius: var(--radius);
+    border-radius: 20px;
     transition: var(--transition);
     background-color: none;
-  }
-  .link {
-    /* top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--clr-primary-5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    transition: var(--transition);
-    opacity: 0;
-    cursor: pointer;
-    svg {
-      font-size: 1.25rem;
-      color: var(--clr-white);
-    } */
   }
   a {
     display: block;
@@ -217,10 +198,26 @@ const Wrapper = styled.article`
   }
 
   @media (max-width: 767px) {
-    height: 100%;
+    height: 500px;
     .BitButton{
-      width:120px;
+      width:100%;
     }
+
+    .CenteringDiv{
+      display: grid;
+    }
+
+    .container {
+      height: 55%;
+      position: relative;
+      background: var(--clr-black);
+      border-radius: var(--radius);
+    }
+
+    .CostnTime {
+      text-align: center;
+  }
+  
   }
 
   @media (min-width: 800px) and (max-width: 950px) {
