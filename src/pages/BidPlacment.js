@@ -35,7 +35,7 @@ const BidPlacement =()=>{
         <Navbar/>
         <p className="MainTitleLine">Place a Bid !</p>
         <Grid container gap={2} className="MainGrid">
-        <Grid item lg={10.1} xs={12}>
+        {/* <Grid item lg={10.1} xs={12}>
           <div className="ImageHolder">
           <Swiper
         spaceBetween={30}
@@ -57,7 +57,7 @@ const BidPlacement =()=>{
               })}
       </Swiper>
           </div>
-        </Grid>
+        </Grid> */}
         <Grid item lg={4}>
           <div className="DescriptionHolder">
             <p className="TitleText">Eve's Nacklace</p>
@@ -119,10 +119,15 @@ position:relative;
 
     height:50px;
     width:200px;
-    border:3px solid #002333;
-    color:#002333;
-    font-weight:700;
-    letter-spacing:2px;
+    
+
+    background-color: #a6705d;
+    &:hover {
+      background-color: black;
+      border:none;
+      outline:none;
+    }
+    color:white;
 }
 
 .ButtonHolder{
@@ -191,10 +196,11 @@ position:relative;
 }
 
 .MainTitleLine{
-    font-size:75px;
-    padding-left:1%;
-    letter-spacing:5px;
-    font-weight:100;
+
+    padding-left:8%;
+    font-weight:1000;
+    font-size: 50px;
+    color: #222831;
 }
 .MainGrid{
     width:100%;
@@ -259,6 +265,10 @@ position:relative;
         font-size:50px;
     }
 
+}
+
+@media (min-width: 800px) and (max-width: 950px) {
+  margin-top:80px;
 }
 
 `

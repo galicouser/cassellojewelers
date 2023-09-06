@@ -53,9 +53,22 @@ const SingleAuctionProductPage = () => {
   return (
     <Wrapper>
       <Navbar />
-      <Grid container gap={2} className="CenteringDiv">
+
+
+      <div className="ButtonHolderOuter">
+      <div className="ButtonHolder">
+      <Link to="/AuctionPage">
+          <Button variant="text">
+            <p className="ButtonText">Back to Auctions</p>
+          </Button>
+        </Link>
+        </div>
+        </div>
+      <Grid container gap={12} className="CenteringDiv">
+        
         <Grid item lg={4} xs={12}>
           <div className="SwiperHolder">
+            
             <Swiper
               navigation={true}
               modules={[Navigation]}
@@ -135,21 +148,40 @@ const Wrapper = styled.main`
     width:85%;
   }
 
+  .ButtonText {
+    font-size: 18px;
+    font-weight: 100;
+    text-align: center;
+    padding-top:10%;
+    
+  }
+  .ButtonHolder{
+    width:100%;
+    width:72.5%;
+  }
+  .ButtonHolderOuter{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    margin-top:2.5%;
+  }
+
     .BidButton{
       height:55px;
       width:200px;
       margin-top:5%;
       outline:none;
-      border:5px solid white;
       color:#10454F;
-      font-weight:1000;
+      background-color: #a6705d;
+      &:hover {
+        background-color: black;
+        border:none;
+        outline:none;
+      }
+      color:white;
     }
-    .BidButton:hover{
-
-      border:1px solid black;
-      color:black;
-      background-color:white;
-    }
+    
 
 
   .TimeLeft{
@@ -241,6 +273,7 @@ const Wrapper = styled.main`
   }
 
   @media (max-width: 767px) {
+    margin-top:80px;
     .InfoHolder{
       height:100%;
       padding:5%;
@@ -252,6 +285,12 @@ const Wrapper = styled.main`
       display:flex;
       justify-content:space-between;
       width:90%;
+    }
+  }
+  @media (min-width: 800px) and (max-width: 950px) {
+    margin-top:80px;
+    .InfoHolder{
+      padding:5%;
     }
   }
 `;
