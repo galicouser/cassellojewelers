@@ -144,7 +144,7 @@ const LoginPage = () => {
               </p>
             </div>
 
-            <Link to="/UserHomePage">
+            <Link to= {!ToggleBoolean ? "/UserHomePage" : "/AdminHomePage"}>
             <Button variant="outlined" className="LoginButton">
               Proceed
             </Button>

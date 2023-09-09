@@ -5,7 +5,8 @@ import AuctionPage from './pages/AuctionPage';
 import SingleAuctionProductPage from './pages/SingleAuctionProductPage';
 import BidPlacement from './pages/BidPlacment';
 import LoginPage from './pages/LoginPage';
-import UserHomePage from './pages/UserHomePage';
+import UserHomePage from './pages/UserPages/UserHomePage';
+import AdminHomePage from './pages/AdminPages/AdminHomepage';
 import {
   Home,
   SingleProduct,
@@ -39,6 +40,7 @@ function App() {
             <Route path='/' exact element={<Home />} />
             <Route path='AuctionPage' element={<AuctionPage />} />
             <Route path='UserHomePage' element={<UserHomePage />} />
+            <Route path='AdminHomePage' element={<AdminHomePage />} />
             <Route path='SingleAuctionProductPage' element={<SingleAuctionProductPage />} />
             <Route path='LoginPage' element={<LoginPage />} />
             <Route path='BidPlacement' element={<BidPlacement />} />

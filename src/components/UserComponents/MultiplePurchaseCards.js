@@ -1,7 +1,5 @@
-import { motion} from "framer-motion";
 import styled from "styled-components";
 import * as React from 'react';
-import { stylesd } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -148,7 +146,7 @@ font-family: "Century Gothic", sans-serif;
   
   
   @media (min-width: 800px) and (max-width: 1400px){
-    width:100%;
+    width:660;
     padding-right: 0%;
   }
 

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { Navbar } from "../components";
-import EditUserShippingAddress from "../components/EditUserShippingAddress";
+import { Navbar } from "../../components";
+import EditUserShippingAddress from "../../components/UserComponents/EditUserShippingAddress";
+import UserSideBar from "../../components/UserComponents/UserSidebar";
+import UserPurchaseHistory from "../../components/UserComponents/UserPurchaseHistory";
+import UserProfileUpdate from "../../components/UserComponents/UserProfileUpdate";
 
 
-import UserSideBar from "../components/UserSidebar";
-import UserPurchaseHistory from "../components/UserPurchaseHistory";
-import UserProfileUpdate from "../components/UserProfileUpdate";
 
 const UserHomePage = () => {
   const [CurrentScreen, setCurrentScreen] = useState(1);
