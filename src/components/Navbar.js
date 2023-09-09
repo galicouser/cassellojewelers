@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
-import logo from '../assets/logo.svg'
-import { FaBars } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { links } from '../utils/constants'
 import CartButtons from './CartButtons'
 import { useProductsContext } from '../context/products_context'
 import { useUserContext } from '../context/user_context'
-import CasselloImage from '../assets/Cassello.jpeg'
 import PersonIcon from '@mui/icons-material/Person';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
-import LoginIcon from '@mui/icons-material/Login';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { motion, AnimatePresence } from "framer-motion";
 
 
 const useColorRotation = (colors, delay) => {
@@ -34,6 +32,7 @@ const useColorRotation = (colors, delay) => {
 const Nav = () => {
   const [navbar, setNavbar] = useState(false);
   const { openSidebar } = useProductsContext();
+  const [MenuClicked, setMenuClicked] = useState(false);
   const { myUser, loginWithRedirect } = useUserContext();
 
   const handleScroll = () => {
@@ -62,6 +61,9 @@ const Nav = () => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  function MenuhandleClick (){
+    setMenuClicked(!MenuClicked);
+  }
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -153,8 +155,31 @@ const Nav = () => {
             </>
           ) : (
             <>
-              <p className='icon-menu' onClick={handleClick} >Menu</p>
-              <Menu
+              <p className='icon-menu' onClick={MenuhandleClick} >Menu</p>
+              <AnimatePresence>
+                {MenuClicked &&
+                <motion.div className='SlidingMenu'
+                initial={{ y: '-100%', opacity: 0 }}
+                animate={{ y: 0, opacity: 1, transition: { type: 'spring', stiffness: 100, damping: 20 } }}
+                exit={{ y: '-100%', opacity: 0 }}>
+               {links.map((link) => {
+                   const { id, text, url } = link
+                   return (
+                     <div key={id} className='LinkItem'
+                     >
+                       <ArrowRightIcon className='MenuArrow'/>
+                       <Link to={url}>
+                         <MenuItem onClick={handleClose}><div className='HeaderText'>{text}</div></MenuItem>
+                       </Link>
+                     </div>
+                   )
+                 })}
+               </motion.div>
+                }
+              
+              </AnimatePresence>
+              
+              {/* <Menu
                 id="fade-menu"
                 MenuListProps={{
                   'aria-labelledby': 'fade-button',
@@ -169,7 +194,7 @@ const Nav = () => {
                   return (
                     <li key={id}>
                       <Link to={url}>
-                        <MenuItem onClick={handleClose}><p className='HeaderText'>{text}</p></MenuItem>
+                        <MenuItem onClick={handleClose}><p className='HeaderText'>hey{text}</p></MenuItem>
                       </Link>
                     </li>
                   )
@@ -181,12 +206,13 @@ const Nav = () => {
                     </Link>
                   </li>
                 )}
-              </Menu>
+              </Menu> */}
               <div className='icon' onClick={loginWithRedirect}>
                 <p>
                   <p className='icon-menu'>Login</p>
                 </p>
               </div>
+             
             </>
           )}
         </div>
@@ -205,7 +231,7 @@ const NavContainer = styled.nav`
   border-bottom-right-radius: 20px; */
   transition: background-color 0.3s ease-in-out; /* Adding transition effect */
   
-  
+  position:relative;
 
   .dekstop{
     display: unset;
@@ -213,6 +239,22 @@ const NavContainer = styled.nav`
 
   .mobile{
     display:none;
+  }
+
+  .SlidingMenu{
+    position:absolute;
+    background-color:white;
+    top:77px;
+    width:93%;
+  }
+  .LinkItem{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding:2%;
+  }
+  .MenuArrow{
+    font-size:30px;
   }
 
   .nav-center{
@@ -228,7 +270,8 @@ const NavContainer = styled.nav`
   
 
   .HeaderText{
-    font-size:18px;
+    font-size:20px;
+    padding:10%;
     font-weight:100;
     color:#222831;
     &:hover {
@@ -321,6 +364,7 @@ const NavContainer = styled.nav`
 
     top:0;
     height:100px;
+    width:100%;
 
   }
   @media (min-width: 800px) and (max-width: 950px) {

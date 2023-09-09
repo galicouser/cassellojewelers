@@ -287,9 +287,11 @@ const Wrapper = styled.main`
       width:90%;
     }
   }
-  @media (min-width: 800px) and (max-width: 950px) {
+  @media (min-width: 800px) and (max-width: 1200px) {
     margin-top:80px;
+    
     .InfoHolder{
+      height:100%;
       padding:5%;
     }
   }

@@ -77,7 +77,7 @@ const BidPlacement =()=>{
                   </div>
           </div>
         </Grid>
-        <Grid item lg={6}>
+        <Grid item lg={6} sm={12}>
           <div className="PaymentHolder">
             <p className="PaymentTitle">Enter your Payment details</p>
             <p className="NoteText">Please be advised that bids lower than the current highest bid will not be considered.</p>
@@ -269,6 +269,20 @@ position:relative;
 
 @media (min-width: 800px) and (max-width: 950px) {
   margin-top:80px;
+
+  .PaymentHolder{
+    height:100%;
+    padding:5%;
+    padding-bottom:10%;
+  }
+  .DescriptionHolder{
+    background-color:white;
+    height:100%;
+    padding:12%;
+}
+
+}
+
 }
 
 `

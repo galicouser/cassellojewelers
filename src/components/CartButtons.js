@@ -1,47 +1,49 @@
-import React from 'react';
-import { FaShoppingCart, FaUserMinus, FaUserPlus } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { useProductsContext } from '../context/products_context';
-import { useCartContext } from '../context/cart_context';
-import { useUserContext } from '../context/user_context';
-import LoginIcon from '@mui/icons-material/Login';
-import LogoutIcon from '@mui/icons-material/Logout';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import React from "react";
+import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { useProductsContext } from "../context/products_context";
+import { useCartContext } from "../context/cart_context";
+import { useUserContext } from "../context/user_context";
+import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const CartButton = () => {
-  const { closeSidebar } = useProductsContext()
-  const { total_items, clearCart } = useCartContext()
-  const { loginWithRedirect, myUser, logout } = useUserContext()
+  const { closeSidebar } = useProductsContext();
+  const { total_items, clearCart } = useCartContext();
+  const { loginWithRedirect, myUser, logout } = useUserContext();
   return (
-    <Wrapper className='cart-btn-wrapper'>
-      <Link to='/cart' className='cart-btn' onClick={closeSidebar}>
-        <span className='cart-container'>
-          <p className='FunctionText'><ShoppingCartIcon className='shoppingCart'/></p>
+    <Wrapper className="cart-btn-wrapper">
+      <Link to="/cart" className="cart-btn" onClick={closeSidebar}>
+        <span className="cart-container">
+          <p className="FunctionText">
+            <ShoppingCartIcon className="shoppingCart" />
+          </p>
 
-          <span className='cart-value'>{total_items}</span>
+          <span className="cart-value">{total_items}</span>
         </span>
       </Link>
       {myUser ? (
         <button
-          type='button'
-          className='auth-btn'
+          type="button"
+          className="auth-btn"
           onClick={() => {
             // Existing code
           }}
         >
-          Logout 
+          Logout
         </button>
       ) : (
-        <div type='button' className='auth-btn' onClick={loginWithRedirect}>
-          <p className='FunctionText'>
-            Login
-          </p>
+        <Link to="/LoginPage">
+        <div type="button" className="auth-btn">
+          <p className="FunctionText">Login</p>
         </div>
+        </Link>
       )}
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.div`
   display: grid;
@@ -50,13 +52,13 @@ const Wrapper = styled.div`
   width: 150px;
   margin-right: 20px;
 
-  .shoppingCart{
-    font-size:25px;
+  .shoppingCart {
+    font-size: 25px;
   }
 
   .FunctionText {
     font-weight: 100;
-    color:#222831;
+    color: #222831;
     font-size: 17px;
     &:hover {
       color: #d8b08c;
@@ -73,10 +75,10 @@ const Wrapper = styled.div`
     color: var(--clr-grey-1);
     display: flex;
     align-items: center;
-    display:flex;
-    align-items:center;
-    align-content:center;
-    vertical-align:center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    vertical-align: center;
   }
   .cart-container {
     display: flex;
@@ -119,4 +121,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default CartButton
+export default CartButton;

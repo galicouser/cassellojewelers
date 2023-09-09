@@ -160,7 +160,7 @@ const AuctionPage = () => {
         <div style={{ padding: "2rem" }}>
           <AuctionProductList />
         </div>
-        {/* <p className="UpComingText">Up Coming Bids</p>
+        <p className="UpComingText">Up Coming Bids</p>
         <div>
           <Swiper
             // slidesPerView={1}
@@ -176,10 +176,10 @@ const AuctionPage = () => {
                 slidesPerView: 1,
               },
               1200: {
-                slidesPerView: 2, // Breakpoint for tablet-sized screens (1024px wide)
+                slidesPerView: 2, 
               },
               1400: {
-                slidesPerView: 3, // Breakpoint for tablet-sized screens (1024px wide)
+                slidesPerView: 3, 
               },
 
 
@@ -216,7 +216,7 @@ const AuctionPage = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div> */}
+        </div>
       </Wrapper>
     </div>
   );
