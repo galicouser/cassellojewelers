@@ -13,7 +13,7 @@ const CartButton = () => {
   const { closeSidebar } = useProductsContext();
   const { total_items, clearCart } = useCartContext();
   const { loginWithRedirect, myUser, logout } = useUserContext();
-  const [signedInUser, setSignedInUser] = localStorage.getItem("userName");
+  const signedInUser = localStorage.getItem("userName");
 
   return (
     <Wrapper className="cart-btn-wrapper">
