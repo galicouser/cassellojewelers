@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -13,8 +13,7 @@ const CartButton = () => {
   const { closeSidebar } = useProductsContext();
   const { total_items, clearCart } = useCartContext();
   const { loginWithRedirect, myUser, logout } = useUserContext();
-  const signedInUser = localStorage.getItem("userName");
-  console.log(signedInUser)
+  const [signedInUser, setSignedInUser] = localStorage.getItem("userName");
 
   return (
     <Wrapper className="cart-btn-wrapper">
@@ -32,7 +31,8 @@ const CartButton = () => {
           type="button"
           className="auth-btn"
           onClick={() => {
-            // Existing code
+            localStorage.setItem("userName", "");
+            //setSignedInUser("");
           }}
         >
           Logout

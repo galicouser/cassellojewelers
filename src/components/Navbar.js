@@ -36,7 +36,6 @@ const Nav = () => {
   const { myUser, loginWithRedirect } = useUserContext();
 
   const signedInUser = localStorage.getItem("userName");
-  console.log(signedInUser)
   const handleScroll = () => {
     const scrollY = window.scrollY;
     if (scrollY > 50) {
