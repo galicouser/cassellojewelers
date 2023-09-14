@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const axiosAPI = axios.create({
-    // baseURL: "https://jewelapi.onrender.com/",
-    baseURL: "http://localhost:5252",
+    baseURL: "https://jewelapi.onrender.com/",
+    // baseURL: "http://localhost:5252",
 });
 
 export const signupUser = async (email, password, username) => {
