@@ -6,9 +6,17 @@ import { Link } from 'react-router-dom'
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import { motion } from "framer-motion";
 import GoogleIcon from "@mui/icons-material/Google";
+import { loginUser, signupUser } from "../API/authAPI";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import { useUserContext } from "../context/user_context";
+//import { useDispatch } from 'react-redux';
+// import { logoutUser } from './redux/actions'; 
+
+
 const LoginPage = () => {
   const [LoginPage, setLoginPage] = useState(true);
-  const [ErrorMessage,setErrorMessage] = useState("");
+  const [ErrorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -16,8 +24,32 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
 
+  const { loginWithRedirect, logout, myUser } = useUserContext();
+  //const dispatch = useDispatch();
+
+
+  // const handleLogin = () => {
+  //   loginWithRedirect(); // Initiate Auth0 login
+  // };
+
+  // const handleLogout = () => {
+  //   logout(); 
+  //   dispatch(logoutUser()); 
+  // };
+
+
+
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
 
   function GetRegisteredClicked() {
+    console.log("Here")
     setLoginPage(!LoginPage);
   }
   const [ToggleBoolean, setToggleBoolean] = useState(false);
@@ -26,25 +58,26 @@ const LoginPage = () => {
   };
   const handleUsernameChange = (e) => {
 
-    setUsername(e.target.value);
+    const inputValue = e.target.value;
+    setUsername(inputValue);
     const isUsernameValid = /^[A-Za-z][A-Za-z0-9]{7,}$/.test(username);
-    if(!isUsernameValid){
+    if (!isUsernameValid) {
       setErrorMessage("Username must start with alphabet.Atlest 8 charachters")
-    
+
     }
-    else{
+    else {
       setErrorMessage("")
     }
-    
+
   };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if(!isEmailValid){
+    if (!isEmailValid) {
       setErrorMessage("Please Enter valid Email")
     }
-    else{
+    else {
       setErrorMessage("")
     }
   };
@@ -52,11 +85,11 @@ const LoginPage = () => {
   const handleFirstNameChange = (e) => {
     setFirstName(e.target.value);
     const isTextValid = /^[A-Za-z\s]+$/.test(firstName);
-   
-    if(!isTextValid){
+
+    if (!isTextValid) {
       setErrorMessage("Only Alphabets and spaces")
     }
-    else{
+    else {
       setErrorMessage("")
     }
   };
@@ -64,11 +97,11 @@ const LoginPage = () => {
   const handleLastNameChange = (e) => {
     setLastName(e.target.value);
     const isTextValid = /^[A-Za-z\s]+$/.test(lastName);
-   
-    if(!isTextValid){
+
+    if (!isTextValid) {
       setErrorMessage("Only Alphabets and spaces")
     }
-    else{
+    else {
       setErrorMessage("")
     }
   };
@@ -76,23 +109,23 @@ const LoginPage = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
     const isPasswordValid = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{7,}$/.test(password);
-    if(!isPasswordValid){
+    if (!isPasswordValid) {
       setErrorMessage("Password Atleast 8 charachters and must contain a alphabet, number and special charachter")
     }
-    else{
+    else {
       setErrorMessage("")
     }
-    
+
   };
 
   const handleRepeatPasswordChange = (e) => {
     setRepeatPassword(e.target.value);
     // const doPasswordsMatch = password == repeatPassword;
-    if(e.target.value === password){
-      
+    if (e.target.value === password) {
+
       setErrorMessage("")
     }
-    else{
+    else {
       setErrorMessage("Password dont match")
     }
   };
@@ -100,13 +133,25 @@ const LoginPage = () => {
 
   return (
     <Wrapper>
+
+
+
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+
+
       <Navbar />
 
       <div className="Holder">
         {LoginPage ? (
           <div className="SignInWrap">
             <p className="TitleText">Sign in</p>
-           
+
 
             {/* <div className="AdminText" onClick={handleClick}>Admin</div>
             <div className="ToggleHolder">
@@ -119,21 +164,33 @@ const LoginPage = () => {
               
             </div> */}
             <div className="toggleHolder">
-                      <div className="TextHolder">
-                        
-                        {ToggleBoolean && "Admin"}
-                        {!ToggleBoolean && "User"}
-                        </div>
-                      <div className="togglebutton" onClick={handleClick} style={{ backgroundColor: ToggleBoolean ? " #a6705d" : "rgba(166, 112, 93, 0.25)" }}>
-                          <motion.div className="toggle"
-                             initial={{ right: 0,backgroundClip:"red" }}
-              animate={ToggleBoolean ? { right: 0,backgroundClip:"red" } : { left: 0,backgroundClip:"pink"}}
-                          ></motion.div>
-                      </div>
+              <div className="TextHolder">
+
+                {ToggleBoolean && "Admin"}
+                {!ToggleBoolean && "User"}
+              </div>
+              <div className="togglebutton" onClick={handleClick} style={{ backgroundColor: ToggleBoolean ? " #a6705d" : "rgba(166, 112, 93, 0.25)" }}>
+                <motion.div className="toggle"
+                  initial={{ right: 0, backgroundClip: "red" }}
+                  animate={ToggleBoolean ? { right: 0, backgroundClip: "red" } : { left: 0, backgroundClip: "pink" }}
+                ></motion.div>
+              </div>
             </div>
 
-            <input type="text" placeholder="Username" className="InputField" />
-            <input type="text" placeholder="Password" className="InputField" />
+            <input
+              type="text"
+              placeholder="Username"
+              className="InputField"
+              value={username}
+              onChange={handleUsernameChange}
+            />
+            <input
+              type="text"
+              placeholder="Password"
+              className="InputField"
+              value={password}
+              onChange={handlePasswordChange}
+            />
             <div>
               <p className="promptText">
                 Not Registered ?
@@ -144,11 +201,21 @@ const LoginPage = () => {
               </p>
             </div>
 
-            <Link to= {!ToggleBoolean ? "/UserHomePage" : "/AdminHomePage"}>
-            <Button variant="outlined" className="LoginButton">
+            {/* <Link to={!ToggleBoolean ? "/UserHomePage" : "/AdminHomePage"}> */}
+            <Button variant="outlined" className="LoginButton" onClick={async () => {
+              setOpen(true);
+              const user = await loginUser(username, password);
+              console.log(user)
+              if (user.token) {
+                setOpen(false);
+                console.log("Here")
+                localStorage.setItem('userName', user.userName);
+                //handleLogin();
+              }
+            }}>
               Proceed
             </Button>
-            </Link>
+            {/* </Link> */}
 
           </div>
         ) : (
@@ -163,9 +230,9 @@ const LoginPage = () => {
                 value={username}
                 onChange={handleUsernameChange}
               />
-              <input type="text" placeholder="Email" className="InputField" 
-              value={email}
-              onChange={handleEmailChange}/>
+              <input type="text" placeholder="Email" className="InputField"
+                value={email}
+                onChange={handleEmailChange} />
             </div>
 
             <div className="InputHolder">
@@ -174,7 +241,7 @@ const LoginPage = () => {
                 placeholder="First Name"
                 className="InputField"
                 value={firstName}
-          onChange={handleFirstNameChange}
+                onChange={handleFirstNameChange}
               />
               <input
                 type="text"
@@ -198,7 +265,7 @@ const LoginPage = () => {
                 placeholder="Repeat Password"
                 className="InputField"
                 value={repeatPassword}
-          onChange={handleRepeatPasswordChange}
+                onChange={handleRepeatPasswordChange}
               />
             </div>
 
@@ -224,7 +291,17 @@ const LoginPage = () => {
               </p>
             </div>
 
-            <Button variant="outlined" className="LoginButton">
+            <Button variant="outlined" className="LoginButton"
+              onClick={async () => {
+                setOpen(true);
+                const user = await signupUser(email, password, username);
+                if (user.error) {
+                  alert('Sign-Up Failed: ' + user.error);
+                } else {
+                  setOpen(false);
+                }
+              }}
+            >
               Register
             </Button>
           </div>
@@ -256,7 +333,7 @@ const Wrapper = styled.div`
   .TextHolder{
     text-align:center;
 }
-  }
+  
   .toggleHolder{
     display:flex;
     flex-direction:column;

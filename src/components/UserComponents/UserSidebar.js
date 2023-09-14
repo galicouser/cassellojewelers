@@ -98,7 +98,7 @@ const UserSideBar = ({ updateParentValue }) => {
             marginBottom:"10%",opacity: "0.2" }}
           />
  
-          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center" }} onClick={WatchHistoryPressed}>Watch Purchase History</h3>
+          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center" }} onClick={WatchHistoryPressed}>Purchase History</h3>
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100 }} onClick={UpdateProfilePressed}>Update Profile</h3>
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100 }} onClick={ShippingAddressPressed}>Shipping Address</h3>
 
@@ -143,7 +143,7 @@ const UserSideBar = ({ updateParentValue }) => {
 
         <div className="OptionHolder">
           <div className="Option" onClick={WatchHistoryPressed}>
-            <p className="OptionText">Watch Purchase History</p>
+            <p className="OptionText">Purchase History</p>
           </div>
 
 

@@ -13,6 +13,9 @@ const CartButton = () => {
   const { closeSidebar } = useProductsContext();
   const { total_items, clearCart } = useCartContext();
   const { loginWithRedirect, myUser, logout } = useUserContext();
+  const signedInUser = localStorage.getItem("userName");
+  console.log(signedInUser)
+
   return (
     <Wrapper className="cart-btn-wrapper">
       <Link to="/cart" className="cart-btn" onClick={closeSidebar}>
@@ -24,7 +27,7 @@ const CartButton = () => {
           <span className="cart-value">{total_items}</span>
         </span>
       </Link>
-      {myUser ? (
+      {signedInUser ? (
         <button
           type="button"
           className="auth-btn"

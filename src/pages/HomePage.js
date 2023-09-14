@@ -158,14 +158,21 @@ const HomePage = () => {
           {showSplash && loader == false && (
             <motion.div
               className="splashscreeninner"
-              initial={{ x: -500, opacity: 0.5 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 500, opacity: 0 }}
-              transition={{ duration: 0.5 }}
+             
             >
               <div className="splashInner">
-                <h1>Cassello </h1>
-                <h1 style={{ color: "#A67563" }}>Jewellers</h1>
+                <motion.h1
+                 initial={{ x: -500, opacity: 0,scale:3 }}
+                 animate={{ x: 0, opacity: 1,scale:1 }}
+                 exit={{ x: 500, opacity: 0 }}
+                 transition={{ type:"spring",duration: 1 }}
+                >Cassello </motion.h1>
+                <motion.h1 style={{ color: "#A67563" }}
+                 initial={{ x: 500, opacity: 0 ,scale:3}}
+                 animate={{ x: 0, opacity: 1 ,scale:1}}
+                 exit={{ x: 500, opacity: 0 }}
+                 transition={{type:"spring", duration: 1 }}
+                >Jewellers</motion.h1>
               </div>
             </motion.div>
           )}

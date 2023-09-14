@@ -35,6 +35,8 @@ const Nav = () => {
   const [MenuClicked, setMenuClicked] = useState(false);
   const { myUser, loginWithRedirect } = useUserContext();
 
+  const signedInUser = localStorage.getItem("userName");
+  console.log(signedInUser)
   const handleScroll = () => {
     const scrollY = window.scrollY;
     if (scrollY > 50) {
@@ -86,11 +88,11 @@ const Nav = () => {
                 </li>
               )
             })}
-            {myUser && (
+            {/* {signedInUser && (
               <li>
                 <Link to='/checkout'>checkout</Link>
               </li>
-            )}
+            )} */}
           </ul>
 
           <div className='nav-header'>
@@ -115,7 +117,7 @@ const Nav = () => {
         </div>
 
         <div className='icons-holder'>
-          {myUser ? (
+          {signedInUser ? (
             <>
               <PersonIcon className='icon' />
               <Link to='/cart' className='cart-btn'>
@@ -144,7 +146,7 @@ const Nav = () => {
                     </li>
                   )
                 })}
-                {myUser && (
+                {signedInUser && (
                   <li>
                     <Link to='/checkout'>
                       <MenuItem onClick={handleClose}><p className='HeaderText'>Checkout</p></MenuItem>
