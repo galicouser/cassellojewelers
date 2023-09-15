@@ -86,7 +86,7 @@ font-family: "Century Gothic", sans-serif;
   justify-content:space-evenly;
   align-content: center;
   padding-right: 5%;
-  width:1000px;
+  width:100%;
   padding-bottom:5%;
 
   .Image{
@@ -104,6 +104,7 @@ font-family: "Century Gothic", sans-serif;
     align-content: center;
     align-items: center;
     width: 100%;
+    padding-right: 2.5%;
   }
   
   

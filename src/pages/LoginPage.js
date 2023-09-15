@@ -158,105 +158,39 @@ const LoginPage = () => {
 
   return (
     <>
-    <Navbar />
-    <Wrapper>
+      <Navbar />
+      <Wrapper>
 
 
 
-      <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={open}
-        onClick={handleClose}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
+        <Backdrop
+          sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={open}
+          onClick={handleClose}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
 
 
-      <div className="Holder">
-        {LoginPage ? (
-          <div className="SignInWrap">
-            <p className="TitleText">Sign in</p>
+        <div className="Holder">
+          {LoginPage ? (
+            <div className="SignInWrap">
+              <p className="TitleText">Sign in</p>
 
+              <div className="toggleHolder">
+                <div className="TextHolder">
 
-            {/* <div className="AdminText" onClick={handleClick}>Admin</div>
-            <div className="ToggleHolder">
-              <motion.div 
-            //  initial={{ right: 0 }}
-            //  animate={ToggleBoolean ? { right: 0 } : { left: 0}}
-               >
-
-              </motion.div>
-              
-            </div> */}
-            <div className="toggleHolder">
-              <div className="TextHolder">
-
-                {ToggleBoolean && "Admin"}
-                {!ToggleBoolean && "User"}
+                  {ToggleBoolean && "Admin"}
+                  {!ToggleBoolean && "User"}
+                </div>
+                <div className="togglebutton" onClick={handleClick} style={{ backgroundColor: ToggleBoolean ? " #a6705d" : "rgba(166, 112, 93, 0.25)" }}>
+                  <motion.div className="toggle"
+                    initial={{ right: 0, backgroundClip: "red" }}
+                    animate={ToggleBoolean ? { right: 0, backgroundClip: "red" } : { left: 0, backgroundClip: "pink" }}
+                  ></motion.div>
+                </div>
               </div>
-              <div className="togglebutton" onClick={handleClick} style={{ backgroundColor: ToggleBoolean ? " #a6705d" : "rgba(166, 112, 93, 0.25)" }}>
-                <motion.div className="toggle"
-                  initial={{ right: 0, backgroundClip: "red" }}
-                  animate={ToggleBoolean ? { right: 0, backgroundClip: "red" } : { left: 0, backgroundClip: "pink" }}
-                ></motion.div>
-              </div>
-            </div>
 
-            <input
-              type="text"
-              placeholder="Username"
-              className="InputField"
-              value={username}
-              onChange={handleUsernameChange}
-            />
-            <div className="PasswordHolder">
-              <input
-                type={!PasswordVisibility ? 'text' : 'password'}
-                placeholder="Password"
-                className="InputField3"
-                value={password}
-                onChange={handlePasswordChange}
-              />
-
-              {PasswordVisibility ?
-                <VisibilityOffIcon className="EyeIcon" onClick={EyeClicked} />
-                :
-                <RemoveRedEyeIcon className="EyeIcon" onClick={EyeClicked} />}
-            </div>
-            <div>
-              <p className="promptText">
-                Not Registered ?
-                <span className="promptSpan" onClick={GetRegisteredClicked}>
-                  {" "}
-                  Get Registered
-                </span>
-              </p>
-            </div>
-
-            {/* <Link to={!ToggleBoolean ? "/UserHomePage" : "/AdminHomePage"}> */}
-            <Button variant="outlined" className="LoginButton" onClick={async () => {
-              setOpen(true);
-              const user = await loginUser(username, password);
-              console.log(user)
-              if (user.token) {
-                setOpen(false);
-                console.log("Here")
-                localStorage.setItem('userName', user.userName);
-                localStorage.setItem('userVerification', user.verified);
-                //handleLogin();
-                navigate('/UserHomePage');
-              }
-            }}>
-              Proceed
-            </Button>
-            {/* </Link> */}
-
-          </div>
-        ) : (
-          <div className="SignUpWrap">
-            <p className="TitleText">Sign Up</p>
-            <p className="ErrorMessage">{ErrorMessage}</p>
-            <div className="InputHolder">
               <input
                 type="text"
                 placeholder="Username"
@@ -264,97 +198,166 @@ const LoginPage = () => {
                 value={username}
                 onChange={handleUsernameChange}
               />
-              <input type="text" placeholder="Email" className="InputField"
-                value={email}
-                onChange={handleEmailChange} />
-            </div>
-
-            <div className="InputHolder">
-              <input
-                type="text"
-                placeholder="First Name"
-                className="InputField"
-                value={firstName}
-                onChange={handleFirstNameChange}
-              />
-              <input
-                type="text"
-                placeholder="Last Name"
-                className="InputField"
-                value={lastName}
-                onChange={handleLastNameChange}
-              />
-            </div>
-
-            <div className="InputHolder">
               <div className="PasswordHolder">
                 <input
-                  type={!SignUpPasswordVisibility ? 'text' : 'password'}
+                  type={!PasswordVisibility ? 'text' : 'password'}
                   placeholder="Password"
                   className="InputField3"
                   value={password}
                   onChange={handlePasswordChange}
                 />
-                {SignUpPasswordVisibility ?
-                  <VisibilityOffIcon className="EyeIcon" onClick={SignUpEyeClicked} />
+
+                {PasswordVisibility ?
+                  <VisibilityOffIcon className="EyeIcon" onClick={EyeClicked} />
                   :
-                  <RemoveRedEyeIcon className="EyeIcon" onClick={SignUpEyeClicked} />}
+                  <RemoveRedEyeIcon className="EyeIcon" onClick={EyeClicked} />}
               </div>
-              <div className="PasswordHolder">
-                <input
-                  type={!SignUpRepeatPasswordVisibility ? 'text' : 'password'}
-                  placeholder="Repeat Password"
-                  className="InputField3"
-                  value={repeatPassword}
-                  onChange={handleRepeatPasswordChange}
-                />
-                {SignUpRepeatPasswordVisibility ?
-                  <VisibilityOffIcon className="EyeIcon" onClick={RepeatEyeClicked} />
-                  :
-                  <RemoveRedEyeIcon className="EyeIcon" onClick={RepeatEyeClicked} />}
-              </div>
-            </div>
-
-            <div className="AlternativeOption">
-              <div className="OptionHolder">
-                <FacebookOutlinedIcon className="OptionIcon" />
-                <div className="OptionText">Continue with facebook</div>
+              <div>
+                <p className="promptText">
+                  Not Registered ?
+                  <span className="promptSpan" onClick={GetRegisteredClicked}>
+                    {" "}
+                    Get Registered
+                  </span>
+                </p>
               </div>
 
-              <div className="OptionHolder2">
-                <GoogleIcon className="OptionIcon2" />
-                <div className="OptionText2">Continue with google</div>
-              </div>
-            </div>
-
-            <div>
-              <p className="promptText">
-                Already Registered ?
-                <span className="promptSpan" onClick={GetRegisteredClicked}>
-                  {" "}
-                  Login In
-                </span>
-              </p>
-            </div>
-
-            <Button variant="outlined" className="LoginButton"
-              onClick={async () => {
+              {/* <Link to={!ToggleBoolean ? "/UserHomePage" : "/AdminHomePage"}> */}
+              <Button variant="outlined" className="LoginButton" onClick={async () => {
                 setOpen(true);
-                const user = await signupUser(email, password, username);
-                if (user.error) {
-                  alert('Sign-Up Failed: ' + user.error);
-                } else {
-                  setOpen(false);
-                  setLoginPage(true);
+
+                if (!ToggleBoolean) {
+                  const user = await loginUser(username, password);
+                  console.log(user)
+                  if (user.token) {
+                    setOpen(false);
+                    console.log("Here")
+                    localStorage.setItem('userName', user.userName);
+                    localStorage.setItem('userVerification', user.verified);
+                    //handleLogin();
+                    navigate('/');
+                  }
                 }
-              }}
-            >
-              Register
-            </Button>
-          </div>
-        )}
-      </div>
-    </Wrapper>
+
+                if (ToggleBoolean && username == 'admin') {
+                  const user = await loginUser(username, password);
+                  console.log(user)
+                  if (user.token) {
+                    setOpen(false);
+                    localStorage.setItem('userName', user.userName);
+                    localStorage.setItem('userVerification', user.verified);
+                    navigate('/AdminHomePage');
+                  }
+                }
+              }}>
+                Proceed
+              </Button>
+              {/* </Link> */}
+
+            </div>
+          ) : (
+            <div className="SignUpWrap">
+              <p className="TitleText">Sign Up</p>
+              <p className="ErrorMessage">{ErrorMessage}</p>
+              <div className="InputHolder">
+                <input
+                  type="text"
+                  placeholder="Username"
+                  className="InputField"
+                  value={username}
+                  onChange={handleUsernameChange}
+                />
+                <input type="text" placeholder="Email" className="InputField"
+                  value={email}
+                  onChange={handleEmailChange} />
+              </div>
+
+              <div className="InputHolder">
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  className="InputField"
+                  value={firstName}
+                  onChange={handleFirstNameChange}
+                />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  className="InputField"
+                  value={lastName}
+                  onChange={handleLastNameChange}
+                />
+              </div>
+
+              <div className="InputHolder">
+                <div className="PasswordHolder">
+                  <input
+                    type={!SignUpPasswordVisibility ? 'text' : 'password'}
+                    placeholder="Password"
+                    className="InputField3"
+                    value={password}
+                    onChange={handlePasswordChange}
+                  />
+                  {SignUpPasswordVisibility ?
+                    <VisibilityOffIcon className="EyeIcon" onClick={SignUpEyeClicked} />
+                    :
+                    <RemoveRedEyeIcon className="EyeIcon" onClick={SignUpEyeClicked} />}
+                </div>
+                <div className="PasswordHolder">
+                  <input
+                    type={!SignUpRepeatPasswordVisibility ? 'text' : 'password'}
+                    placeholder="Repeat Password"
+                    className="InputField3"
+                    value={repeatPassword}
+                    onChange={handleRepeatPasswordChange}
+                  />
+                  {SignUpRepeatPasswordVisibility ?
+                    <VisibilityOffIcon className="EyeIcon" onClick={RepeatEyeClicked} />
+                    :
+                    <RemoveRedEyeIcon className="EyeIcon" onClick={RepeatEyeClicked} />}
+                </div>
+              </div>
+
+              <div className="AlternativeOption">
+                <div className="OptionHolder">
+                  <FacebookOutlinedIcon className="OptionIcon" />
+                  <div className="OptionText">Continue with facebook</div>
+                </div>
+
+                <div className="OptionHolder2">
+                  <GoogleIcon className="OptionIcon2" />
+                  <div className="OptionText2">Continue with google</div>
+                </div>
+              </div>
+
+              <div>
+                <p className="promptText">
+                  Already Registered ?
+                  <span className="promptSpan" onClick={GetRegisteredClicked}>
+                    {" "}
+                    Login In
+                  </span>
+                </p>
+              </div>
+
+              <Button variant="outlined" className="LoginButton"
+                onClick={async () => {
+                  setOpen(true);
+                  const user = await signupUser(email, password, username);
+                  if (user.error) {
+                    alert('Sign-Up Failed: ' + user.error);
+                  } else {
+                    setOpen(false);
+                    setLoginPage(true);
+                  }
+                }}
+              >
+                Register
+              </Button>
+            </div>
+          )}
+        </div>
+      </Wrapper>
     </>
   );
 };
@@ -401,6 +404,7 @@ const Wrapper = styled.div`
     display:flex;
     flex-direction:column;
   }
+  
   .togglebutton{
     background-color:black;
     width:50px;
@@ -409,8 +413,13 @@ const Wrapper = styled.div`
     padding:1%;
     margin-left:2%;
     position:relative;
+    cursor: pointer;
+    -webkit-box-shadow: 10px 10px 23px -5px rgba(0,0,0,0.65);
+    -moz-box-shadow: 10px 10px 23px -5px rgba(0,0,0,0.65);
+    box-shadow: 10px 10px 23px -5px rgba(0,0,0,0.65);
   }
-   .toggle{
+   
+  .toggle{
     background-color:white;
     height:21px;
     width:20px;
@@ -418,11 +427,13 @@ const Wrapper = styled.div`
     position:absolute;
     top:px;
    }
+
   .ImageHolder {
     width: 40%;
     height: 100%;
     background-color: black;
   }
+  
   .SignInWrap {
     width: 40%;
     display: flex;
@@ -435,11 +446,13 @@ const Wrapper = styled.div`
       0 2px 4px -1px rgba(0, 0, 0, 0.06);
     padding: 2.5%;
   }
+  
   .InputHolder {
     width: 75%;
     display: flex;
     justify-content: space-between;
   }
+  
   .SignUpWrap {
     width: 65%;
     display: flex;

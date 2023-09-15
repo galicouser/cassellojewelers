@@ -270,6 +270,7 @@ const NavContainer = styled.nav`
 
   .nav-links {
     width:250px;
+    
   }
   
 

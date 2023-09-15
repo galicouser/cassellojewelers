@@ -40,7 +40,9 @@ const AdminHomePage = () => {
 
         <div className="FlexRowDiv">
           <AdminSideBar updateParentValue={handleValueUpdate} />
-          {ScreenDisplay()}
+         <div className="ScreenHolder">  
+         {ScreenDisplay()}
+         </div>
           <div className="LightEffect"></div>
         </div>
     
@@ -65,6 +67,9 @@ const Wrapper = styled.section`
     top: 75%;
   }
 
+  .ScreenHolder{
+    width:80%;
+  }
   .FlexRowDiv {
     display: flex;
     flex-direction: row;
@@ -80,6 +85,9 @@ const Wrapper = styled.section`
     }
     .LightEffect {
       display: none;
+    }
+    .ScreenHolder{
+      width:100%;
     }
   }
   @media (min-width: 800px) and (max-width: 950px){

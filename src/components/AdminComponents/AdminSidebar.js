@@ -5,12 +5,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Button from "@mui/material/Button";
 import Box from '@mui/material/Box';
 import Drawer from "@mui/material/Drawer";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const AdminSideBar = ({ updateParentValue }) => {
   
 
 
-  const [UserName,setUserName] = useState("DemoUser")
+  const [UserName,setUserName] = useState("Admin")
   const [AddProductVal, setAddProductVal] = useState(true);
   const [AddAuctionProductVal, setAddAuctionProductVal] = useState(false);
   const [RevnewPageVal, setRevnewPageVal] = useState(false);
@@ -205,7 +206,7 @@ const AdminSideBar = ({ updateParentValue }) => {
         ))}
       </div>
       <div className="MenuIconHolder">
-      <MenuIcon className="MenuIcon"  onClick={toggleDrawer("left", true)}/>
+      <MoreHorizIcon className="MenuIcon"  onClick={toggleDrawer("left", true)}/>
       </div>
 
      
@@ -219,7 +220,7 @@ const Wrapper = styled.section`
   flex-direction: column;
   align-items: Center;
   align-content: center;
-  border-right: 1px solid white;
+  border-right: 1px solid rgb(0,0,0,0.1);
   width: 300px;
   .UserImage {
     height: 150px;

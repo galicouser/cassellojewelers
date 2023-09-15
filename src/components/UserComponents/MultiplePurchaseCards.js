@@ -71,21 +71,7 @@ const MultiplePurchaseCard = () => {
   ];
   return (
     <Wrapper>
-      {/* {CardItems.map((index) => (
-        <motion.div
-          className=""
-          initial={{ opacity: 0, translateX: 20 }}
-          animate={{ opacity: 1, translateX: 0 }}
-          transition={{
-            type: "spring",
-            stiffness: 120,
-            damping: 30,
-            delay: index * 0.2,
-          }}
-        >
-          <PurchaseCard />
-        </motion.div>
-      ))} */}
+     
        <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
@@ -124,7 +110,7 @@ font-family: "Century Gothic", sans-serif;
   justify-content:space-evenly;
   align-content: center;
   padding-right: 5%;
-  width:1000px;
+  width:100%;
   padding-bottom:5%;
 
   .Image{
@@ -142,6 +128,7 @@ font-family: "Century Gothic", sans-serif;
     align-content: center;
     align-items: center;
     width: 100%;
+    padding-right: 2.5%;
   }
   
   

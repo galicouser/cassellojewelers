@@ -54,7 +54,8 @@ const UserHomePage = () => {
           (
             <div className="FlexRowDiv">
               <UserSideBar updateParentValue={handleValueUpdate} />
-              {ScreenDisplay()}
+             
+             <div className="ScreenHolder">{ScreenDisplay()}</div> 
               <div className="LightEffect"></div>
             </div>
           ) : (
@@ -91,6 +92,9 @@ const Wrapper = styled.section`
     position: absolute;
     right: 0px;
     top: 75%;
+  }
+  .ScreenHolder{
+    width:75%;
   }
   .Button{
     height: 50px;
@@ -130,6 +134,9 @@ const Wrapper = styled.section`
     .FlexRowDiv {
       display: flex;
       flex-direction: column;
+    }
+    .ScreenHolder{
+      width:100%;
     }
     .LightEffect {
       display: none;

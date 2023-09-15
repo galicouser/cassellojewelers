@@ -63,7 +63,12 @@ const CartButton = () => {
             <p
               className="MenuItem"
               onClick={() => {
-                navigate("/UserHomePage");
+                if (signedInUser == 'admin') {
+                  navigate("/AdminHomePage");
+                }
+                else {
+                  navigate("/UserHomePage");
+                }
               }}
             >My Account</p>
             <p
@@ -89,7 +94,7 @@ const Wrapper = styled.div`
  display:flex;
  justify-content:space-evenly;
  align-items:center;
- width:300px;
+ width:165px;
  position:relative;
  .UserImage{
    height:40px;
