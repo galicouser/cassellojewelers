@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { Navbar } from "../components";
 import styled from "styled-components";
-import { Link } from 'react-router-dom'
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import { motion } from "framer-motion";
 import GoogleIcon from "@mui/icons-material/Google";
@@ -10,11 +9,19 @@ import { loginUser, signupUser } from "../API/authAPI";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useUserContext } from "../context/user_context";
+import { useNavigate } from 'react-router-dom';
+
 //import { useDispatch } from 'react-redux';
 // import { logoutUser } from './redux/actions'; 
 
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+
 
 const LoginPage = () => {
+
+  const navigate = useNavigate();
+
   const [LoginPage, setLoginPage] = useState(true);
   const [ErrorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState('');
@@ -25,6 +32,21 @@ const LoginPage = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
 
   const { loginWithRedirect, logout, myUser } = useUserContext();
+  const [PasswordVisibility, setPasswordVisibility] = useState(true);
+
+  const [SignUpPasswordVisibility, setSignUpPasswordVisibility] = useState(true);
+  const [SignUpRepeatPasswordVisibility, setSignUpRepeatPasswordVisibility] = useState(true);
+
+
+
+  function RepeatEyeClicked() {
+    setSignUpRepeatPasswordVisibility(!SignUpRepeatPasswordVisibility);
+  }
+  function SignUpEyeClicked() {
+    setSignUpPasswordVisibility(!SignUpPasswordVisibility);
+
+  }
+
   //const dispatch = useDispatch();
 
 
@@ -47,6 +69,9 @@ const LoginPage = () => {
     setOpen(true);
   };
 
+  function EyeClicked() {
+    setPasswordVisibility(!PasswordVisibility);
+  }
 
   function GetRegisteredClicked() {
     console.log("Here")
@@ -132,6 +157,8 @@ const LoginPage = () => {
 
 
   return (
+    <>
+    <Navbar />
     <Wrapper>
 
 
@@ -144,8 +171,6 @@ const LoginPage = () => {
         <CircularProgress color="inherit" />
       </Backdrop>
 
-
-      <Navbar />
 
       <div className="Holder">
         {LoginPage ? (
@@ -184,13 +209,20 @@ const LoginPage = () => {
               value={username}
               onChange={handleUsernameChange}
             />
-            <input
-              type="text"
-              placeholder="Password"
-              className="InputField"
-              value={password}
-              onChange={handlePasswordChange}
-            />
+            <div className="PasswordHolder">
+              <input
+                type={!PasswordVisibility ? 'text' : 'password'}
+                placeholder="Password"
+                className="InputField3"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+
+              {PasswordVisibility ?
+                <VisibilityOffIcon className="EyeIcon" onClick={EyeClicked} />
+                :
+                <RemoveRedEyeIcon className="EyeIcon" onClick={EyeClicked} />}
+            </div>
             <div>
               <p className="promptText">
                 Not Registered ?
@@ -210,7 +242,9 @@ const LoginPage = () => {
                 setOpen(false);
                 console.log("Here")
                 localStorage.setItem('userName', user.userName);
+                localStorage.setItem('userVerification', user.verified);
                 //handleLogin();
+                navigate('/UserHomePage');
               }
             }}>
               Proceed
@@ -253,20 +287,32 @@ const LoginPage = () => {
             </div>
 
             <div className="InputHolder">
-              <input
-                type="text"
-                placeholder="Password"
-                className="InputField"
-                value={password}
-                onChange={handlePasswordChange}
-              />
-              <input
-                type="text"
-                placeholder="Repeat Password"
-                className="InputField"
-                value={repeatPassword}
-                onChange={handleRepeatPasswordChange}
-              />
+              <div className="PasswordHolder">
+                <input
+                  type={!SignUpPasswordVisibility ? 'text' : 'password'}
+                  placeholder="Password"
+                  className="InputField3"
+                  value={password}
+                  onChange={handlePasswordChange}
+                />
+                {SignUpPasswordVisibility ?
+                  <VisibilityOffIcon className="EyeIcon" onClick={SignUpEyeClicked} />
+                  :
+                  <RemoveRedEyeIcon className="EyeIcon" onClick={SignUpEyeClicked} />}
+              </div>
+              <div className="PasswordHolder">
+                <input
+                  type={!SignUpRepeatPasswordVisibility ? 'text' : 'password'}
+                  placeholder="Repeat Password"
+                  className="InputField3"
+                  value={repeatPassword}
+                  onChange={handleRepeatPasswordChange}
+                />
+                {SignUpRepeatPasswordVisibility ?
+                  <VisibilityOffIcon className="EyeIcon" onClick={RepeatEyeClicked} />
+                  :
+                  <RemoveRedEyeIcon className="EyeIcon" onClick={RepeatEyeClicked} />}
+              </div>
             </div>
 
             <div className="AlternativeOption">
@@ -299,6 +345,7 @@ const LoginPage = () => {
                   alert('Sign-Up Failed: ' + user.error);
                 } else {
                   setOpen(false);
+                  setLoginPage(true);
                 }
               }}
             >
@@ -308,6 +355,7 @@ const LoginPage = () => {
         )}
       </div>
     </Wrapper>
+    </>
   );
 };
 
@@ -316,6 +364,21 @@ const Wrapper = styled.div`
   background: #eeeeee;
   font-family: "Century Gothic", sans-serif;
   padding-bottom: 10%;
+
+  .PasswordHolder{
+    position:relative;
+    width: 45%;
+    height: 55px;
+    display:flex;
+    justify-content:center;
+    margin-top:5%;
+  }
+  .EyeIcon{
+    position:absolute;
+    right:3%;
+    top:25%;
+    font-size:30px;
+  }
 
   .Holder {
     height: 100%;
@@ -405,6 +468,16 @@ const Wrapper = styled.div`
     font-size: 15px;
     margin-top: 5%;
   }
+  .InputField3 {
+    height: 55px;
+    width: 100%;
+    border-radius: 5px;
+    padding-left: 2%;
+    outline: none;
+    border: none;
+    background-color: rgb(0, 0, 0, 0.1);
+    font-size: 15px;
+  }
   .LoginButton {
     height: 50px;
     width: 200px;
@@ -492,6 +565,10 @@ const Wrapper = styled.div`
       width: 90%;
       padding: 5%;
     }
+    .PasswordHolder{
+      width: 100%;
+     
+    }
     .InputHolder {
       width: 85%;
       flex-direction: column;
@@ -499,6 +576,10 @@ const Wrapper = styled.div`
       justify-content: center;
     }
     .InputField {
+      width: 100%;
+      padding-left: 2.5%;
+    }
+    .InputField3 {
       width: 100%;
       padding-left: 2.5%;
     }

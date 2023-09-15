@@ -2,12 +2,12 @@ import axios from "axios";
 
 
 const axiosAPI = axios.create({
-    baseURL: "http://localhost:5252",
+    baseURL: "https://jeweler-auth.onrender.com",
 });
 
 export const getProducts = async () => {
     try {
-        const baseUrl = "api/data/";
+        const baseUrl = "/api/data/";
 
         const url = `${baseUrl}`;
 

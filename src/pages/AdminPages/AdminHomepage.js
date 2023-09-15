@@ -6,6 +6,7 @@ import AdminSideBar from "../../components/AdminComponents/AdminSidebar";
 import AdminBuyingHistory from "../../components/AdminComponents/AdminBuyHistory";
 import AddProduct from "../../components/AdminComponents/AddProduct";
 import AddAuctionProduct from "../../components/AdminComponents/AddAuctionProduct";
+import Nav from "../../components/Navbar";
 
 
 
@@ -32,8 +33,9 @@ const AdminHomePage = () => {
 
 
   return (
+    <>
+    <Navbar/>
     <Wrapper>
-      <Navbar />
     
 
         <div className="FlexRowDiv">
@@ -43,6 +45,7 @@ const AdminHomePage = () => {
         </div>
     
     </Wrapper>
+    </>
   );
 };
 const Wrapper = styled.section`

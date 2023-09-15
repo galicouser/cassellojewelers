@@ -5,16 +5,31 @@ import EditUserShippingAddress from "../../components/UserComponents/EditUserShi
 import UserSideBar from "../../components/UserComponents/UserSidebar";
 import UserPurchaseHistory from "../../components/UserComponents/UserPurchaseHistory";
 import UserProfileUpdate from "../../components/UserComponents/UserProfileUpdate";
-
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom'
 
 
 const UserHomePage = () => {
   const [CurrentScreen, setCurrentScreen] = useState(1);
-  
+  const [isVerfied, setIsVerfied] = useState(false);
+  const signedInUser = localStorage.getItem("userName");
+  const signedInUserVerification = localStorage.getItem("userVerification");
+
+
   const handleValueUpdate = (newValue) => {
     setCurrentScreen(newValue);
   };
-  
+
+  useEffect(() => {
+    if (signedInUserVerification == 'false') {
+      setIsVerfied(false);
+    }
+    else {
+      setIsVerfied(true);
+    }
+  }, []);
+
+
 
   function ScreenDisplay() {
     if (CurrentScreen === 1) {
@@ -26,21 +41,39 @@ const UserHomePage = () => {
     if (CurrentScreen === 3) {
       return <EditUserShippingAddress />;
     }
-    
+
   }
 
 
   return (
-    <Wrapper>
-      <Navbar />
+    <>
+    <Navbar />
+      <Wrapper>
 
-        <div className="FlexRowDiv">
-          <UserSideBar updateParentValue={handleValueUpdate} />
-          {ScreenDisplay()}
-          <div className="LightEffect"></div>
-        </div>
-    
-    </Wrapper>
+        {isVerfied ?
+          (
+            <div className="FlexRowDiv">
+              <UserSideBar updateParentValue={handleValueUpdate} />
+              {ScreenDisplay()}
+              <div className="LightEffect"></div>
+            </div>
+          ) : (
+            <>
+              <div className="VerficationHolder">
+                <p className="ErrorMessage">
+                  Please Check Your Email For Verification Mail!
+                </p>
+                <Link to="/">
+                  <Button variant="contained" className="Button">Home</Button>
+                </Link>
+              </div>
+            </>
+          )
+        }
+
+
+      </Wrapper>
+    </>
   );
 };
 const Wrapper = styled.section`
@@ -59,6 +92,31 @@ const Wrapper = styled.section`
     right: 0px;
     top: 75%;
   }
+  .Button{
+    height: 50px;
+    width: 200px;
+    margin-top: 2.5%;
+    background-color: #a6705d;
+    &:hover {
+      background-color: black;
+      border: none;
+      outline: none;
+    }
+    color: white;
+  }
+  .VerficationHolder{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .ErrorMessage{
+    font-size:3rem;
+    margin-top:10%;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+  }
 
   .FlexRowDiv {
     display: flex;
@@ -75,6 +133,13 @@ const Wrapper = styled.section`
     }
     .LightEffect {
       display: none;
+    }
+    .ErrorMessage{
+      font-size:2rem;
+      margin-top:10%;
+      width: 100%;
+      text-align: center;
+      padding: 2rem;
     }
   }
   @media (min-width: 800px) and (max-width: 950px){
