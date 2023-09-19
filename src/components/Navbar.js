@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 
 const useColorRotation = (colors, delay) => {
@@ -34,6 +35,11 @@ const Nav = () => {
   const { openSidebar } = useProductsContext();
   const [MenuClicked, setMenuClicked] = useState(false);
   const { myUser, loginWithRedirect } = useUserContext();
+  const navigate = useNavigate();
+
+  const [UserOptionClicked, setUserOptionClicked] = useState(false);
+
+  const [MenuOptionClicked, setMenuOptionClicked] = useState(false);
 
   const signedInUser = localStorage.getItem("userName");
   const handleScroll = () => {
@@ -44,6 +50,14 @@ const Nav = () => {
       setNavbar(false);
     }
   };
+  function UserClicked() {
+    setUserOptionClicked(!UserOptionClicked);
+    setMenuOptionClicked(false);
+  }
+  function MenusClicked() {
+    setMenuOptionClicked(!MenuOptionClicked);
+    setUserOptionClicked(false)
+  }
 
 
   useEffect(() => {
@@ -62,12 +76,13 @@ const Nav = () => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  function MenuhandleClick (){
+  function MenuhandleClick() {
     setMenuClicked(!MenuClicked);
   }
   const handleClose = () => {
     setAnchorEl(null);
   };
+
 
   return (
     <NavContainer navbar={navbar}>
@@ -114,16 +129,77 @@ const Nav = () => {
             <p className='LogoName'>Cassello </p>
           </Link>
         </div>
+        <AnimatePresence>
+          {
+            UserOptionClicked &&
+
+            <motion.div
+              className="MenuHolder"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}>
+              <p
+                className="MenuItem"
+                onClick={() => {
+                  if (signedInUser == 'admin') {
+                    navigate("/AdminHomePage");
+                  }
+                  else {
+                    navigate("/UserHomePage");
+                  }
+                }}
+              >My Account</p>
+              <p
+                className="MenuItem"
+                onClick={() => {
+                  localStorage.setItem("userName", "");
+                  setUserOptionClicked(false);
+                  navigate("/");
+                }}
+              >Log Out</p>
+            </motion.div>
+
+          }
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {
+            MenuOptionClicked &&
+
+            <motion.div
+              className="MenuHolder"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}>
+              <p
+                className="MenuItem"
+
+              >Home</p>
+              <p
+                className="MenuItem"
+              >About</p>
+
+              <p
+                className="MenuItem"
+              >Products</p>
+            </motion.div>
+
+          }
+        </AnimatePresence>
+
+
 
         <div className='icons-holder'>
           {signedInUser ? (
             <>
-              <PersonIcon className='icon' />
+              <PersonIcon className='icon' onClick={UserClicked} />
               <Link to='/cart' className='cart-btn'>
-                <ShoppingCartIcon  className='icon' />
+                <ShoppingCartIcon className='icon' />
               </Link>
 
-              <MenuIcon className='icon'  onClick={handleClick} />
+              <MenuIcon className='icon' onClick={MenusClicked} />
               <Menu
                 id="fade-menu"
                 MenuListProps={{
@@ -159,27 +235,27 @@ const Nav = () => {
               <p className='icon-menu' onClick={MenuhandleClick} >Menu</p>
               <AnimatePresence>
                 {MenuClicked &&
-                <motion.div className='SlidingMenu'
-                initial={{ y: '-100%', opacity: 0 }}
-                animate={{ y: 0, opacity: 1, transition: { type: 'spring', stiffness: 100, damping: 20 } }}
-                exit={{ y: '-100%', opacity: 0 }}>
-               {links.map((link) => {
-                   const { id, text, url } = link
-                   return (
-                     <div key={id} className='LinkItem'
-                     >
-                       <ArrowRightIcon className='MenuArrow'/>
-                       <Link to={url}>
-                         <MenuItem onClick={handleClose}><div className='HeaderText'>{text}</div></MenuItem>
-                       </Link>
-                     </div>
-                   )
-                 })}
-               </motion.div>
+                  <motion.div className='SlidingMenu'
+                    initial={{ y: '-100%', opacity: 0 }}
+                    animate={{ y: 0, opacity: 1, transition: { type: 'spring', stiffness: 100, damping: 20 } }}
+                    exit={{ y: '-100%', opacity: 0 }}>
+                    {links.map((link) => {
+                      const { id, text, url } = link
+                      return (
+                        <div key={id} className='LinkItem'
+                        >
+                          <ArrowRightIcon className='MenuArrow' />
+                          <Link to={url}>
+                            <MenuItem onClick={handleClose}><div className='HeaderText'>{text}</div></MenuItem>
+                          </Link>
+                        </div>
+                      )
+                    })}
+                  </motion.div>
                 }
-              
+
               </AnimatePresence>
-              
+
               {/* <Menu
                 id="fade-menu"
                 MenuListProps={{
@@ -211,12 +287,12 @@ const Nav = () => {
 
               <div className='icon'>
                 <Link to="/LoginPage">
-                <p>
-                  <p className='icon-menu'>Login</p>
-                </p>
+                  <p>
+                    <p className='icon-menu'>Login</p>
+                  </p>
                 </Link>
               </div>
-             
+
             </>
           )}
         </div>
@@ -240,6 +316,29 @@ const NavContainer = styled.nav`
   .dekstop{
     display: unset;
   }
+  .MenuHolder{
+    // height:200px;
+    width:170px;
+    background-color:white;
+    position:absolute;
+    top:78px;
+    right:10px;
+    border-radius:10px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:6%;
+    -webkit-box-shadow: 10px 10px 23px -5px rgba(0,0,0,0.65);
+    -moz-box-shadow: 10px 10px 23px -5px rgba(0,0,0,0.65);
+    box-shadow: 10px 10px 23px -5px rgba(0,0,0,0.65);
+   }
+   .MenuItem{
+    font-size:22px;
+    text-decoration:underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color: #D8B08C;
+    text-align:center;
+   }
 
   .mobile{
     display:none;

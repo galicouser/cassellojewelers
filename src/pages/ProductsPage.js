@@ -31,7 +31,6 @@ const ProductsPage = () => {
           <Swiper
             loop={true}
             spaceBetween={10}
-            navigation={true}
             thumbs={{ swiper: thumbsSwiper }}
             navigation={{
               nextEl: '', // Custom class for "Next" button

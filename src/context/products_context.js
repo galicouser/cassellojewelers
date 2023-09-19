@@ -13,6 +13,7 @@ import {
   GET_SINGLE_PRODUCT_ERROR,
 } from '../actions'
 import { getProducts } from '../utils/API'
+import { getProductsMongo } from '../API/productAPI'
 
 const initialState = {
   isSidebarOpen: false,
@@ -31,7 +32,7 @@ const ProductsContext = React.createContext()
 // Rename this function to avoid naming conflict
 async function fetchProductsData() {
   try {
-    const response = await getProducts();
+    const response = await getProductsMongo();
     const products = response.data;
     console.log(products)
     return products;

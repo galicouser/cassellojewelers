@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const axiosAPI = axios.create({
-    baseURL: "https://jeweler-auth.onrender.com",
+    baseURL: "https://jewelapi.onrender.com/",
 });
 
 export const getProducts = async () => {

@@ -5,22 +5,16 @@ import styled from "styled-components";
 import Error from "./Error";
 import Loading from "./Loading";
 import Product from "./Product";
-
 import Button from "@mui/material/Button";
-
 import Grid from "@mui/material/Grid";
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-
-
-// import required modules
 import { Autoplay, FreeMode, Pagination } from 'swiper/modules';
 
 const FeaturedProducts = () => {
+
   const {
     products_loading: loading,
     products_error: error,
@@ -30,41 +24,20 @@ const FeaturedProducts = () => {
   if (loading) {
     return <Loading />;
   }
+
   if (error) {
     return <Error />;
   }
+
   return (
+
     <Wrapper className="section">
       <div className="title">
         <h2 className="TitleText">Our best sellers</h2>
       </div>
-      {/* <div className="section-center featured">
-        <Grid container gap={0.5} className="centeringDiv">
-          
-          <Grid item lg={3.5}>
-            <div >
-                <Product key={featured[0].id} {...featured[0]} />
-            
-            </div>
-          </Grid>
-          <Grid item lg={3.5}>
-            <div >
-                <Product key={featured[1].id} {...featured[1]} />
-              
-            </div>
-          </Grid>
-          <Grid item lg={3.5}>
-            <div>
-                <Product key={featured[2].id} {...featured[2]} />
-            
-            </div>
-          </Grid>
-        
-        </Grid>
-      </div> */}
       <Swiper
-        slidesPerView={2} // Adjust the number of items displayed per view
-        spaceBetween={30} // Adjust the space between items
+        slidesPerView={2}
+        spaceBetween={30}
         freeMode={true}
         pagination={{
           clickable: true,
@@ -74,8 +47,8 @@ const FeaturedProducts = () => {
         className="mySwiper"
         breakpoints={{
           1200: {
-            slidesPerView: 5, // Adjust the number of items displayed per view for larger screens
-            spaceBetween: 20, // Adjust the space between items for larger screens
+            slidesPerView: 5,
+            spaceBetween: 20,
           },
         }}
       >
