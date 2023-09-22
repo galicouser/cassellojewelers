@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import Box from '@mui/material/Box';
 import Drawer from "@mui/material/Drawer";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { IconButton } from "@mui/material";
 
 const UserSideBar = ({ updateParentValue }) => {
   
@@ -15,6 +16,7 @@ const UserSideBar = ({ updateParentValue }) => {
   const [WatchHistory, setWatchHistory] = useState(true);
   const [ShippingAddress, setShippingAddress] = useState(false);
   const [UpdateProfile, setUpdateProfile] = useState(false);
+  const signedInUser = localStorage.getItem("userName");
 
 
 
@@ -99,9 +101,9 @@ const UserSideBar = ({ updateParentValue }) => {
             marginBottom:"10%",opacity: "0.2" }}
           />
  
-          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center" }} onClick={WatchHistoryPressed}>Purchase History</h3>
-          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100 }} onClick={UpdateProfilePressed}>Update Profile</h3>
-          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100 }} onClick={ShippingAddressPressed}>Shipping Address</h3>
+          <IconButton style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center" }} onClick={WatchHistoryPressed}>Purchase History</IconButton>
+          <IconButton style={{ color: "white",marginBottom:"10%",fontWeight:100 }} onClick={UpdateProfilePressed}>Update Profile</IconButton>
+          <IconButton style={{ color: "white",marginBottom:"10%",fontWeight:100 }} onClick={ShippingAddressPressed}>Shipping Address</IconButton>
 
           
         </div>
@@ -139,21 +141,23 @@ const UserSideBar = ({ updateParentValue }) => {
   return (
     <Wrapper>
       <div className="SideBarMainDiv">
-        <p className="UserNameText">{UserName}</p>
+        <p className="UserNameText">{signedInUser}</p>
         <hr className="Divider" />
 
+        
         <div className="OptionHolder">
+          
           <div className="Option" onClick={WatchHistoryPressed}>
-            <p className="OptionText">Purchase History</p>
+            <Button className="OptionText">Purchase History</Button>
           </div>
 
 
           <div className="Option" onClick={UpdateProfilePressed}>
-            <p className="OptionText">Update Profile</p>
+            <Button className="OptionText">Update Profile</Button>
           </div>
 
           <div className="Option" onClick={ShippingAddressPressed}>
-            <p className="OptionText">Shipping Address</p>
+            <Button className="OptionText">Shipping Address</Button>
           </div>
          
 
@@ -222,7 +226,7 @@ const Wrapper = styled.section`
   .OptionText {
     color: #1c1f25;
     text-align: center;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 100;
   }
   .MenuIconHolder{
@@ -230,7 +234,8 @@ const Wrapper = styled.section`
   }
   .Option {
     width: 100%;
-    margin-top: 50px;
+    margin-top: 40px;
+    text-align: center;
   }
   .Option:hover {
     cursor: pointer;

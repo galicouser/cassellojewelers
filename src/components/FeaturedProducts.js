@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useProductsContext } from "../context/products_context";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -6,7 +6,6 @@ import Error from "./Error";
 import Loading from "./Loading";
 import Product from "./Product";
 import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -14,29 +13,40 @@ import 'swiper/css/pagination';
 import { Autoplay, FreeMode, Pagination } from 'swiper/modules';
 
 const FeaturedProducts = () => {
+  const { products } = useProductsContext();
+  const [randomProducts, setRandomProducts] = useState([]);
 
-  const {
-    products_loading: loading,
-    products_error: error,
-    featured_products: featured,
-  } = useProductsContext();
+  const slidesToShow = window.innerWidth <= 1200
+    ? (window.innerWidth <= 600 ? 2 : 3)
+    : 5;
 
-  if (loading) {
-    return <Loading />;
-  }
+  useEffect(() => {
+    // Shuffle the products array to get a random order
+    const shuffledProducts = shuffleArray(products);
 
-  if (error) {
-    return <Error />;
-  }
+    // Take the first 5 products from the shuffled array
+    const randomFiveProducts = shuffledProducts.slice(0, 5);
+
+    setRandomProducts(randomFiveProducts);
+  }, [products]);
+
+  // Function to shuffle an array
+  const shuffleArray = (array) => {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray;
+  };
 
   return (
-
     <Wrapper className="section">
       <div className="title">
         <h2 className="TitleText">Our best sellers</h2>
       </div>
       <Swiper
-        slidesPerView={2}
+        slidesPerView={slidesToShow}
         spaceBetween={30}
         freeMode={true}
         pagination={{
@@ -47,20 +57,21 @@ const FeaturedProducts = () => {
         className="mySwiper"
         breakpoints={{
           1200: {
-            slidesPerView: 5,
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          600: {
+            slidesPerView: 2,
             spaceBetween: 20,
           },
         }}
       >
-        {featured.map((text, index) => (
+        {randomProducts.map((product, index) => (
           <SwiperSlide key={index} className="CustomSlide">
-            <Product key={text.id} {...text} />
+            <Product key={product.id} {...product} />
           </SwiperSlide>
         ))}
       </Swiper>
-
-
-
       <Link to="/products">
         <div className="centeringDiv">
           <Button variant="outlined" className="MoreTitle">
@@ -71,6 +82,7 @@ const FeaturedProducts = () => {
     </Wrapper>
   );
 };
+
 
 const Wrapper = styled.section`
   background: "#eeeeee";
