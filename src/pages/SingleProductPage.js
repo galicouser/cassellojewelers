@@ -31,6 +31,7 @@ const SingleProductPage = () => {
 
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
+    console.log(url + id)
     // eslint-disable-next-line
   }, [id]);
   useEffect(() => {
@@ -59,6 +60,7 @@ const SingleProductPage = () => {
     company,
     images,
   } = product;
+
   return (
     <Wrapper>
       <Navbar />
@@ -69,7 +71,7 @@ const SingleProductPage = () => {
           </Button>
         </Link>
         <div className="product-center">
-          <ProductImages images={images} />
+          <ProductImages images={product.image} />
           <section className="content">
             <p className="NameTag">{name}</p>
             {/* <Stars stars={stars} reviews={reviews} /> */}
@@ -83,10 +85,6 @@ const SingleProductPage = () => {
               <span>SKU :</span>
               {sku}
             </p>
-            {/* <p className="info">
-              <span>Brand :</span>
-              {company}
-            </p> */}
             <hr />
             {stock > 0 && <AddToCart product={product} />}
           </section>

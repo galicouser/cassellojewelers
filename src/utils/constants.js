@@ -45,7 +45,11 @@ export const services = [
 // export const products_url = 'https://course-api.com/react-store-products'
 //export const products_url = 'https://jewelapi.onrender.com/api/data'
 
-export const single_product_url = `https://jeweler-auth.onrender.com/api/single-data?id=`
+// export const single_product_url = `https://jeweler-auth.onrender.com/api/single-data?id=`
+export const single_product_url = `https://jeweler-auth.onrender.com/products/get-product-id/?id=`
+
+
+
 // 20230708132855
 // https://course-api.com/react-store-products
 

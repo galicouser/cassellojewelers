@@ -15,3 +15,12 @@ export const getProductsMongo = async () => {
     }
 };
 
+
+export const getProductById = async (id) => {
+    try {
+        return await axiosAPI.get('/products/get-product-id/?id='+id);
+    } catch (err) {
+        console.log("Error Getting GeoLocation AR", err);
+    }
+};
+

@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-const ProductImages = ({ images = [[]] }) => {
+const ProductImages = ({ images }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <Wrapper>
@@ -17,7 +17,6 @@ const ProductImages = ({ images = [[]] }) => {
         <Swiper
           loop={true}
           spaceBetween={10}
-          navigation={true}
           thumbs={{ swiper: thumbsSwiper }}
           navigation={{
             nextEl: '.custom-swiper-button-next', // Custom class for "Next" button
@@ -27,9 +26,9 @@ const ProductImages = ({ images = [[]] }) => {
           className="mySwiper2"
         >
           <SwiperSlide>
-            <img src="https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325644/cassello%20jewelers/Cassello%20Jeweler/5E1C32A8-E954-44C9-8102-21324AF0BD3B_rflv9n.jpg" />
+            <img src={images} />
           </SwiperSlide>
-          <SwiperSlide>
+          {/* <SwiperSlide>
             <img src="https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325645/cassello%20jewelers/Cassello%20Jeweler/DD936C8A-14E8-4AD4-B248-CE4D57F49A66_yrqwu0.jpg" />
           </SwiperSlide>
           <SwiperSlide>
@@ -37,7 +36,7 @@ const ProductImages = ({ images = [[]] }) => {
           </SwiperSlide>
           <SwiperSlide>
             <img src="https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325644/cassello%20jewelers/Cassello%20Jeweler/85921E0E-0DBA-4B23-B479-92CF18BA5E2D_a3zkgq.jpg" />
-          </SwiperSlide>
+          </SwiperSlide> */}
 
 
 
