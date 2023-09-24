@@ -10,6 +10,7 @@ import "swiper/css/thumbs";
 
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 const ProductImages = ({ images }) => {
+  console.log(images)
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <Wrapper>
@@ -25,20 +26,12 @@ const ProductImages = ({ images }) => {
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper2"
         >
-          <SwiperSlide>
-            <img src={images} />
-          </SwiperSlide>
-          {/* <SwiperSlide>
-            <img src="https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325645/cassello%20jewelers/Cassello%20Jeweler/DD936C8A-14E8-4AD4-B248-CE4D57F49A66_yrqwu0.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325644/cassello%20jewelers/Cassello%20Jeweler/ADC00B5E-D80E-443A-90A9-DB1ECD757928_daabpc.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://res.cloudinary.com/dwyqdiqds/image/upload/v1693325644/cassello%20jewelers/Cassello%20Jeweler/85921E0E-0DBA-4B23-B479-92CF18BA5E2D_a3zkgq.jpg" />
-          </SwiperSlide> */}
 
-
+          {images.map((imageUrl, index) => (
+            <SwiperSlide key={index}>
+              <img src={imageUrl} alt={`Product Image ${index}`} />
+            </SwiperSlide>
+          ))}
 
           <div className="custom-swiper-button-prev">Previous</div>
           <div className="custom-swiper-button-next">Next</div>

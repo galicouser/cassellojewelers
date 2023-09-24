@@ -1,90 +1,183 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
+import ClearIcon from "@mui/icons-material/Clear";
+import { addProduct } from "../../API/productAPI";
 
 const AddProduct = () => {
-  const [Image1, setImage1] = useState('');
-  const [Image2, setImage2] = useState('');
-  const [Image3, setImage3] = useState('');
-  const [Image4, setImage4] = useState('');
-  const ProductImages =[]
+  const [images, setImages] = useState([""]);
+  const [colors, setColors] = useState([""]);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [company, setCompany] = useState("");
+  const [shipping, setShipping] = useState("");
+  const [description, setDescription] = useState("");
 
-  const handleImage1Change = (event) => {
-    setImage1(event.target.value);
+
+  const handleImageChange = (event, index) => {
+    const newImages = [...images];
+    newImages[index] = event.target.value;
+    setImages(newImages);
+  };
+  const handleAddImage = () => {
+    setImages([...images, ""]);
   };
 
-  const handleImage2Change = (event) => {
-    setImage2(event.target.value);
+  const handleRemoveImage = (index) => {
+    const newImages = [...images];
+    newImages.splice(index, 1);
+    setImages(newImages);
   };
 
-  const handleImage3Change = (event) => {
-    setImage3(event.target.value);
+
+  const handleColorChange = (event, index) => {
+    const newColors = [...colors];
+    newColors[index] = event.target.value;
+    setColors(newColors);
   };
 
-  const handleImage4Change = (event) => {
-    setImage4(event.target.value);
+  const handleAddColor = () => {
+    setColors([...colors, ""]);
   };
-  function UploadProductClicked (){
 
-    if(Image1 != '') {
-      ProductImages.push(Image1);
-    }
-    if(Image2 != '') {
-      ProductImages.push(Image2);
-    }
-    if(Image3 != '') {
-      ProductImages.push(Image3);
-    }
-    if(Image4 != '') {
-      ProductImages.push(Image4);
-    }
+
+  const handleRemoveColor = (index) => {
+    const newColors = [...colors];
+    newColors.splice(index, 1);
+    setColors(newColors);
+  };
+
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
+  };
+
+  async function UploadProductClicked() {
+
+    const filteredImages = images.filter((image) => image.trim() !== "");
+    console.log(filteredImages)
+    const data = await addProduct(name, price, category, company, description, true, colors, filteredImages);
+    console.log(data);
   }
   return (
     <Wrapper>
       <p className="TitleText">Add Product</p>
 
 
-        <p className="SubTitleText">Upload Images Links</p>
+      <p className="SubTitleText">Add Images Links</p>
       <div className="MainHolder">
         <div className="ImageUploadHolder">
-        
-          <input
-        type="text"
-        className="NameInput2"
-        value={Image1}
-        onChange={handleImage1Change}
-      />
-      <input
-        type="text"
-        className="NameInput2"
-        value={Image2}
-        onChange={handleImage2Change}
-      />
-      <input
-        type="text"
-        className="NameInput2"
-        value={Image3}
-        onChange={handleImage3Change}
-      />
-      <input
-        type="text"
-        className="NameInput2"
-        value={Image4}
-        onChange={handleImage4Change}
-      />
+          {images.map((image, index) => (
+            <div key={index} className="ImageInputWrapper">
+              <div className="ImageInput">
+                <input
+                  type="text"
+                  className="NameInput2"
+                  value={image}
+                  onChange={(event) => handleImageChange(event, index)}
+                />
+                <button
+                  className="RemoveImageButton"
+                  onClick={() => handleRemoveImage(index)}
+                >
+                  X
+                </button>
+              </div>
+            </div>
+          ))}
+          <Button
+            variant="contained"
+            className="ColoredButton"
+            onClick={handleAddImage}
+          >
+            Add Image
+          </Button>
         </div>
+
+
+        {/* Adding Color */}
+
+        <p className="SubTitleText">Add Colors</p>
+
+        <div>
+
+          {colors.map((color, index) => (
+            <div key={index} className="ColorInputWrapper">
+              <input
+                type="color"
+                className="ColorInput"
+                value={color}
+                onChange={(event) => handleColorChange(event, index)}
+              />
+              <button
+                className="RemoveColorButton"
+                onClick={() => handleRemoveColor(index)}
+              >
+                X
+              </button>
+            </div>
+          ))}
+          <Button
+            variant="contained"
+            className="ColoredButton"
+            onClick={handleAddColor}
+          >
+            Add Color
+          </Button>
+        </div>
+
+        {/*  */}
+
+
+        {/* Product Category */}
+        <p className="SubTitleText">Product Category</p>
+        <div className="DropdownContainer">
+          <div className="Dropdown">
+            <select
+              className="CategorySelect"
+              value={category}
+              onChange={handleCategoryChange}
+            >
+              <option value="">Select a category</option>
+              <option value="Necklaces">Necklaces</option>
+              <option value="Earrings">Earrings</option>
+              <option value="Bracelets">Bracelets</option>
+              <option value="Rings">Rings</option>
+              {/* Add more category options as needed */}
+            </select>
+          </div>
+        </div>
+
+
+
+
         <p className="SubTitleText">Product Name</p>
-        <input  type="text" className="NameInput"/>
+        <input type="text" className="NameInput" onChange={(event) => {
+          setName(event.target.value);
+        }} />
+
+        <p className="SubTitleText">Company</p>
+        <input type="text" className="NameInput" onChange={(event) => {
+          setCompany(event.target.value);
+        }} />
+
         <p className="SubTitleText">Product Cost</p>
-        <input  type="text" className="NameInput"/>
+        <input type="text" className="NameInput" onChange={(event) => {
+          setPrice(event.target.value);
+        }} />
+
         <p className="SubTitleText">Add Description</p>
-        <input  type="text" className="DescriptionText"/>
+        <textarea type="text" className="DescriptionText" onChange={(event) => {
+          setDescription(event.target.value);
+        }} />
 
         <Button
           varient="contained"
           className="ColoredButton" onClick={UploadProductClicked}>
-            Upload Product
-          </Button>
+          Upload Product
+        </Button>
       </div>
     </Wrapper>
   );
@@ -117,6 +210,8 @@ const Wrapper = styled.section`
     border:none;
     border-radius:10px;
     background-color:rgb(0,0,0,0.10);
+    padding: 2%;
+    font-size: 20px;
   }
   .NameInput{
     width:25%;
@@ -127,6 +222,7 @@ const Wrapper = styled.section`
     outline:none;
     border:none;
     border-radius:10px;
+    padding-left: 2%;
     background-color:rgb(0,0,0,0.10);
   }
   .NameInput2{
@@ -134,12 +230,52 @@ const Wrapper = styled.section`
     height:50px;
     margin-top:2.5%;
     margin-left:7%;
+    padding-left: 2%;
     margin-bottom:1.5%;
     outline:none;
     border:none;
     border-radius:10px;
     background-color:rgb(0,0,0,0.10);
   }
+
+  .ImageInputWrapper{
+    
+  }
+
+  .RemoveImageButton {
+    background-color: transparent;
+    border: none;
+    color: #a6705d;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+
+
+  .ColorInput{
+    margin-top:2.5%;
+    margin-left:7%;
+    margin-bottom:1.5%;
+    border-radius:3px;
+  }
+
+  .ColorInputWrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 2.5%;
+    margin-left: 7%;
+    margin-bottom: 1.5%;
+  }
+
+  .RemoveColorButton {
+    background-color: transparent;
+    border: none;
+    color: #a6705d;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+
   .MainHolder{
     width:100%;
     height:100%;
@@ -174,20 +310,70 @@ const Wrapper = styled.section`
     margin-left:7%;
     margin-bottom:2.5%;
     outline:none;
-    color:#10454F;
+    color:white;
     background-color: #a6705d;
     &:hover {
       background-color: black;
       border:none;
       outline:none;
+      color: #a6705d;
     }
-    color:white;
     
   }
 
-  .ColoredButton:hover {
-    color:black;
+  .DropdownContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
+  .Dropdown {
+    position: relative;
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+  }
+
+  .CategorySelect {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #a6705d; // Retro border color
+    background-color: transparent;
+    color: #1c1f25; // Retro text color
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    font-size: 18px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  .CategorySelect:focus {
+    border-color: #000; // Retro border color when focused
+  }
+
+  .CategorySelect option {
+    background-color: #f9f9f9; // Retro option background color
+    color: #1c1f25; // Retro option text color
+  }
+
+  // Add animation here
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .CategorySelect {
+    animation: fadeIn 0.5s ease; // Animation on select open
+  }
+
    
   @media (max-width: 767px) {
     width:100%;

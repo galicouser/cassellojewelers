@@ -18,9 +18,28 @@ export const getProductsMongo = async () => {
 
 export const getProductById = async (id) => {
     try {
-        return await axiosAPI.get('/products/get-product-id/?id='+id);
+        return await axiosAPI.get('/products/get-product-id/?id=' + id);
     } catch (err) {
         console.log("Error Getting GeoLocation AR", err);
+    }
+};
+
+export const addProduct = async (name, price, category, company, description, shipping, colors, images) => {
+    try {
+        const response = await axiosAPI.post("/products/add-product", {
+            "name": name,
+            "price": price,
+            "category": category,
+            "company": company,
+            "description": description,
+            "shipping": shipping,
+            "colors": colors,
+            "images": images
+        });
+        return response;
+    } catch (err) {
+        console.log("Error signing up", err);
+        return { error: "An error occurred while signing up." };
     }
 };
 

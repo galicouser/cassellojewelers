@@ -47,6 +47,7 @@ export const services = [
 
 // export const single_product_url = `https://jeweler-auth.onrender.com/api/single-data?id=`
 export const single_product_url = `https://jeweler-auth.onrender.com/products/get-product-id/?id=`
+// export const single_product_url = `http://localhost:5252/products/get-product-id/?id=`
 
 
 

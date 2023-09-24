@@ -180,7 +180,7 @@ const AdminSideBar = ({ updateParentValue }) => {
           </div>
 
           <div className="Option" onClick={RevnewPageClicked}>
-            <p className="OptionText">Revnew</p>
+            <p className="OptionText">Revenew</p>
           </div>
 
           <div className="Option" onClick={AnalyticsClicked}>
