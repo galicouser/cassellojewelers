@@ -31,8 +31,7 @@ const SingleProductPage = () => {
 
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
-    console.log(url + id)
-    // eslint-disable-next-line
+    console.log(url + id);
   }, [id]);
   useEffect(() => {
     if (error) {
@@ -40,7 +39,6 @@ const SingleProductPage = () => {
         navigate("/");
       }, 3000);
     }
-    // eslint-disable-next-line
   }, [error]);
   if (loading) {
     return <Loading />;
@@ -60,7 +58,7 @@ const SingleProductPage = () => {
     company,
     images,
   } = product;
-
+  console.log(product);
   return (
     <Wrapper>
       <Navbar />

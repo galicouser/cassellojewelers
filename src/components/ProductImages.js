@@ -1,46 +1,46 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import axios from 'axios'; // Import axios or your preferred HTTP client
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
-
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 const ProductImages = ({ images }) => {
-  console.log(images)
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
   return (
     <Wrapper>
-      <div className='container'>
-        <Swiper
-          loop={true}
-          spaceBetween={10}
-          thumbs={{ swiper: thumbsSwiper }}
-          navigation={{
-            nextEl: '.custom-swiper-button-next', // Custom class for "Next" button
-            prevEl: '.custom-swiper-button-prev', // Custom class for "Previous" button
-          }}
-          modules={[FreeMode, Navigation, Thumbs]}
-          className="mySwiper2"
-        >
-
-          {/* {images.map((imageUrl, index) => (
-            <SwiperSlide key={index}>
-              <img src={imageUrl} alt={`Product Image ${index}`} />
-            </SwiperSlide>
-          ))} */}
-
-          <div className="custom-swiper-button-prev">Previous</div>
-          <div className="custom-swiper-button-next">Next</div>
-        </Swiper>
-
+      <div className="container">
+        {images ? (
+          <Swiper
+            loop={true}
+            spaceBetween={10}
+            thumbs={{ swiper: thumbsSwiper }}
+            navigation={{
+              nextEl: '.custom-swiper-button-next', // Custom class for "Next" button
+              prevEl: '.custom-swiper-button-prev', // Custom class for "Previous" button
+            }}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className="mySwiper2"
+          >
+            {images.map((imageUrl, index) => (
+              <SwiperSlide key={index}>
+                <img src={imageUrl} alt={`Product Image ${index}`} />
+              </SwiperSlide>
+            ))}
+            <div className="custom-swiper-button-prev">Previous</div>
+            <div className="custom-swiper-button-next">Next</div>
+          </Swiper>
+        ) : (
+          <p>Loading images...</p>
+        )}
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
 
