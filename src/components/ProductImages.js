@@ -27,11 +27,11 @@ const ProductImages = ({ images }) => {
           className="mySwiper2"
         >
 
-          {images.map((imageUrl, index) => (
+          {/* {images.map((imageUrl, index) => (
             <SwiperSlide key={index}>
               <img src={imageUrl} alt={`Product Image ${index}`} />
             </SwiperSlide>
-          ))}
+          ))} */}
 
           <div className="custom-swiper-button-prev">Previous</div>
           <div className="custom-swiper-button-next">Next</div>
