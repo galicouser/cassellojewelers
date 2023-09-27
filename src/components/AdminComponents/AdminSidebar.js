@@ -123,7 +123,7 @@ const AdminSideBar = ({ updateParentValue }) => {
  
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center" }} onClick={AddProductClicked}>Add Product</h3>
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={AddAuctionProduct}>Add Auction Product</h3>
-          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={BuyingHistory}>Buying History</h3>
+          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={BuyingHistory}>Edit Product</h3>
 
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={RevnewPageClicked}>Revenew</h3>
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={AnalyticsClicked}>Analytics</h3>
@@ -176,7 +176,7 @@ const AdminSideBar = ({ updateParentValue }) => {
 
 
           <div className="Option" onClick={BuyingHistory}>
-            <p className="OptionText">Buying History</p>
+            <p className="OptionText">Edit Product</p>
           </div>
 
           <div className="Option" onClick={RevnewPageClicked}>

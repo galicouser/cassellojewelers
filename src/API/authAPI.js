@@ -21,6 +21,24 @@ export const signupUser = async (email, password, username) => {
     }
 };
 
+export const editShiping = async (userName, address, city, province, country, postCode) => {
+
+    try {
+        const response = await axiosAPI.post("/auth/edit-shipping", {
+            userName: userName,
+            address: address,
+            city: city,
+            province: province,
+            country: country,
+            postCode: postCode
+        });
+        return response.data;
+    } catch (err) {
+        console.log("Error signing up", err);
+        return { error: "An error occurred while signing up." };
+    }
+};
+
 export const loginUser = async (username, password) => {
     console.log(username)
     const response = await axiosAPI.post("/auth/login-user", {
@@ -28,15 +46,6 @@ export const loginUser = async (username, password) => {
         password: password,
     });
     return response.data;
-    // try {
-    //   return await axiosAPI.post("/auth/login-user", {
-    //     userName: username,
-    //     password: password,
-    //   });
-    // } catch (err) {
-    //   console.log("Error logging in :", err);
-    //   return err;
-    // }
 };
 
 

@@ -3,36 +3,79 @@ import styled from 'styled-components'
 import { useCartContext } from '../context/cart_context'
 import { useUserContext } from '../context/user_context'
 import { formatPrice } from '../utils/helpers'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { checkout } from '../API/checkoutAPI'
 const CartTotals = () => {
   const { total_amount, shipping_fee } = useCartContext()
   const { myUser, loginWithRedirect } = useUserContext()
+  const signedInUser = localStorage.getItem("userName");
+  const navigate = useNavigate();
 
   return (
     <Wrapper>
-      <div>
-        <article>
-          <h5>
-            subtotal :<span>{formatPrice(total_amount)}</span>
-          </h5>
-          <p>
-            shipping fee :<span>{formatPrice(shipping_fee)}</span>
-          </p>
-          <hr />
-          <h4>
-            order total :<span>{formatPrice(total_amount + shipping_fee)}</span>
-          </h4>
-        </article>
-        {myUser ? (
-          <Link to='/checkout' className='btn'>
-            proceed to checkout
-          </Link>
-        ) : (
-          <button onClick={loginWithRedirect} className='btn'>
-            login
-          </button>
-        )}
-      </div>
+
+
+      {signedInUser &&
+        <div>
+          <article>
+            <h5>
+              subtotal :<span>{formatPrice(total_amount)}</span>
+            </h5>
+            <p>
+              shipping fee :<span>{formatPrice(shipping_fee)}</span>
+            </p>
+            <hr />
+            <h4>
+              order total :<span>{formatPrice(total_amount + shipping_fee)}</span>
+            </h4>
+          </article>
+          {myUser ? (
+            <Link to='/checkout' className='btn'>
+              proceed to checkout
+            </Link>
+          ) : (
+            <button onClick={async () => {
+              const body = await checkout("Dawar");
+              window.location.href = body;
+            }} className='btn'>
+              Checkout
+            </button>
+          )}
+        </div>
+      }
+
+
+      {!signedInUser &&
+        <div>
+          <article>
+            <h5>
+              subtotal :<span>{formatPrice(total_amount)}</span>
+            </h5>
+            <p>
+              shipping fee :<span>{formatPrice(shipping_fee)}</span>
+            </p>
+            <hr />
+            <h4>
+              order total :<span>{formatPrice(total_amount + shipping_fee)}</span>
+            </h4>
+          </article>
+          {myUser ? (
+            <Link to='/checkout' className='btn'>
+              proceed to checkout
+            </Link>
+          ) : (
+            <button onClick={() => {
+              navigate("/LoginPage")
+            }} className='btn'>
+              login
+            </button>
+          )}
+        </div>
+      }
+
+
+
     </Wrapper>
   )
 }

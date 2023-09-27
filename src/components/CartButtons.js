@@ -28,8 +28,10 @@ const CartButton = () => {
       {!signedInUser ? (
         <>
           <div className="CartHolder">
-            <ShoppingCartIcon className="shoppingCart" />
-            <span className="cartValue">{total_items}</span>
+            <Link to='/cart' className='cart-btn'>
+              <ShoppingCartIcon className="shoppingCart" />
+              <span className="cartValue">{total_items}</span>
+            </Link>
 
           </div>
           <Link to="/LoginPage">
@@ -41,8 +43,10 @@ const CartButton = () => {
       ) : (
         <>
           <div className="CartHolder2">
-            <ShoppingCartIcon className="shoppingCart" />
-            <span className="cartValue">{total_items}</span>
+            <Link to='/cart' className='cart-btn'>
+              <ShoppingCartIcon className="shoppingCart" />
+              <span className="cartValue">{total_items}</span>
+            </Link>
           </div>
           <div className="UserDisplay" onClick={UserClicked}>
             <PersonIcon className="UserImage" />
@@ -152,6 +156,7 @@ const Wrapper = styled.div`
 }
   .shoppingCart{
     color: #D8B08C;
+    margin-right: 20%;
   }
   .FunctionText2{
     font-size:22.5px;

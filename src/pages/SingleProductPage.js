@@ -58,7 +58,6 @@ const SingleProductPage = () => {
     company,
     images,
   } = product;
-  console.log(product);
   return (
     <Wrapper>
       <Navbar />
@@ -75,16 +74,16 @@ const SingleProductPage = () => {
             {/* <Stars stars={stars} reviews={reviews} /> */}
             <h5 className="price">{formatPrice(85000)}</h5>
             <p className="desc">{description}</p>
-            <p className="info">
+            {/* <p className="info">
               <span>Available : </span>
               {stock > 0 ? "In stock" : "out of stock"}
-            </p>
+            </p> */}
             <p className="info">
               <span>SKU :</span>
               {sku}
             </p>
             <hr />
-            {stock > 0 && <AddToCart product={product} />}
+            <AddToCart product={product} />
           </section>
         </div>
       </div>

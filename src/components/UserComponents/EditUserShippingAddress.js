@@ -2,38 +2,38 @@ import styled from "styled-components";
 import { useState, useRef, useEffect } from "react";
 import Button from "@mui/material/Button";
 
-const EditUserShippingAddress = () =>{
+const EditUserShippingAddress = () => {
 
-    return (
-        <Wrapper>
-        <p className="Title">Update Shipping Address</p>
-            <div className="OuterHolder">
-       <div className="InputFieldsHolder">
-                <input type="text" placeholder="Address" className="inputField" />
-                <input type="text" placeholder="Address (Optional)" className="inputField" />
-        
-                <div className="SmallFieldHolder">
-                <input type="text" placeholder="City" className="SmallInputField" />
-                <input type="text" placeholder="Province" className="SmallInputField2" />
-                    
-                </div>
-                
-                <div className="SmallFieldHolder">
-                <input type="text" placeholder="Country" className="SmallInputField" />
-                <input type="text" placeholder="Postal Code" className="SmallInputField2" />
-                    
-                </div>
-       
-                <div className="ButtonHolder">
-        <Button variant="outlined" className="ProceedButton">Update</Button>
+  return (
+    <Wrapper>
+      <p className="Title">Update Shipping Address</p>
+      <div className="OuterHolder">
+        <div className="InputFieldsHolder">
+          <input type="text" placeholder="Address" className="inputField" />
+          <input type="text" placeholder="Address (Optional)" className="inputField" />
+
+          <div className="SmallFieldHolder">
+            <input type="text" placeholder="City" className="SmallInputField" />
+            <input type="text" placeholder="Province" className="SmallInputField2" />
+
+          </div>
+
+          <div className="SmallFieldHolder">
+            <input type="text" placeholder="Country" className="SmallInputField" />
+            <input type="text" placeholder="Postal Code" className="SmallInputField2" />
+
+          </div>
+
+          <div className="ButtonHolder">
+            <Button variant="outlined" className="ProceedButton">Update</Button>
+          </div>
         </div>
-        </div>
-        </div>
-      
-      
-      
-      </Wrapper>
-    )
+      </div>
+
+
+
+    </Wrapper>
+  )
 }
 const Wrapper = styled.main`
 font-family: "Century Gothic", sans-serif;

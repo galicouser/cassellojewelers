@@ -216,6 +216,13 @@ const LoginPage = () => {
                     console.log("Here")
                     localStorage.setItem('userName', user.userName);
                     localStorage.setItem('userVerification', user.verified);
+
+                    localStorage.setItem('userAddress', user.address);
+                    localStorage.setItem('userCity', user.city);
+                    localStorage.setItem('userProvince', user.province);
+                    localStorage.setItem('userCountry', user.country);
+                    localStorage.setItem('userPostCode', user.postCode);
+
                     navigate('/');
                   }
                 }

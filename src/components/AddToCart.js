@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { FaCheck } from 'react-icons/fa'
@@ -8,15 +8,16 @@ import Button from "@mui/material/Button";
 const AddToCart = ({ product }) => {
   // add to cart
   const { addToCart } = useCartContext()
-  const { id, stock, colors } = product
-  const [mainColor, setMainColor] = useState(colors[0])
+  const { id, stock, colors } = product;
+  const [mainColor, setMainColor] = useState(colors)
+
   const [amount, setAmount] = useState(1)
 
   const increase = () => {
     setAmount((oldAmount) => {
       let tempAmount = oldAmount + 1
-      if (tempAmount > stock) {
-        tempAmount = stock
+      if (tempAmount > 200) {
+        tempAmount = 200
       }
       return tempAmount
     })
@@ -41,11 +42,11 @@ const AddToCart = ({ product }) => {
                 key={index}
                 style={{ background: color }}
                 className={`${
-                  mainColor === color ? 'color-btn active' : 'color-btn'
+                  mainColor[0] === color ? 'color-btn active' : 'color-btn'
                 }`}
                 onClick={() => setMainColor(color)}
               >
-                {mainColor === color ? <FaCheck /> : null}
+                {mainColor[0] === color ? <FaCheck /> : null}
               </button>
             )
           })}
@@ -59,14 +60,15 @@ const AddToCart = ({ product }) => {
         />
 
         <Link to='/cart'
-        onClick={() => addToCart(id, mainColor, amount, product)}>
+          onClick={() => addToCart(id, mainColor[0], amount, product)}>
           <Button variant="outlined" className='Button'>
-         Add To Cart
+            Add To Cart
           </Button>
         </Link>
 
 
       </div>
+
     </Wrapper>
   )
 }
