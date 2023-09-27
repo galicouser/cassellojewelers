@@ -43,3 +43,23 @@ export const addProduct = async (name, price, category, company, description, sh
     }
 };
 
+
+export const editProduct = async (id, name, price, description, colors, images, category, company) => {
+    try {
+        const response = await axiosAPI.post("/products/edit-product", {
+            "id": id,
+            "name": name,
+            "price": price,
+            "description": description,
+            "colors": colors,
+            "images": images,
+            "category": category,
+            "company": company,
+        });
+        return response;
+    } catch (err) {
+        console.log("Error signing up", err);
+        return { error: "An error occurred while signing up." };
+    }
+};
+

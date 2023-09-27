@@ -4,7 +4,7 @@ const AdminBuyingHistory = () => {
 
     return (
         <Wrapper>
-            <p className="TitleText">Buying History</p>
+            <p className="TitleText">Edit Products</p>
             <div className="CardsDisplay">
                 <BuyHistoryTable />
             </div>
