@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { checkout } from '../API/checkoutAPI'
 const CartTotals = () => {
-  const { total_amount, shipping_fee } = useCartContext()
+  const { total_amount, shipping_fee, total_items, cart } = useCartContext()
   const { myUser, loginWithRedirect } = useUserContext()
   const signedInUser = localStorage.getItem("userName");
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const CartTotals = () => {
             </Link>
           ) : (
             <button onClick={async () => {
-              const body = await checkout("Dawar");
+              const body = await checkout("Test", cart);
               window.location.href = body;
             }} className='btn'>
               Checkout

@@ -5,7 +5,16 @@ const axiosAPI = axios.create({
     // baseURL: "http://localhost:5252",
 });
 
-export const checkout = async (name) => {
+export const checkout = async (name, products) => {
+    const cartItems = products.map((product) => ({
+        name: product.name,
+        desc: `Brand: ${product.name}`,
+        id: product.id,
+        price: product.price,
+        cartQuantity: product.amount,
+    }));
+    console.log(products)
+
     const requestData = {
         order_id: "1",
         customer_name: name,
@@ -34,22 +43,7 @@ export const checkout = async (name) => {
                 state: "PA",
             },
         },
-        cartItems: [
-            {
-                name: "OMEGA La Magique Scarface Edition",
-                desc: "Brand: Omega",
-                id: "BENR91",
-                price: "14000",
-                cartQuantity: "1",
-            },
-            {
-                name: "OMEGA La Magique Golden",
-                desc: "Brand: Omega",
-                id: "BENR90",
-                price: "13709",
-                cartQuantity: "1",
-            },
-        ],
+        cartItems: cartItems, // Assign the populated 'cartItems' array here
     };
 
     try {
