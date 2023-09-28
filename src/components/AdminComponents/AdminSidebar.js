@@ -8,7 +8,7 @@ import Drawer from "@mui/material/Drawer";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const AdminSideBar = ({ updateParentValue }) => {
-  
+
 
 
   const [UserName,setUserName] = useState("Admin")
@@ -117,17 +117,17 @@ const AdminSideBar = ({ updateParentValue }) => {
           </p>
           <hr
             className="line"
-            style={{ width: "50%", fontSize: "10px", 
+            style={{ width: "50%", fontSize: "10px",
             marginBottom:"10%",opacity: "0.2" }}
           />
- 
+
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center" }} onClick={AddProductClicked}>Add Product</h3>
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={AddAuctionProduct}>Add Auction Product</h3>
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={BuyingHistory}>Edit Product</h3>
 
-          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={RevnewPageClicked}>Revenew</h3>
+          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={RevnewPageClicked}>Revenue</h3>
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={AnalyticsClicked}>Analytics</h3>
-          
+
         </div>
       </Box>
     </div>
@@ -152,7 +152,7 @@ const AdminSideBar = ({ updateParentValue }) => {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
-  
+
 
 
   const [ShowMenuData, setMenuData] = useState(false);
@@ -180,15 +180,15 @@ const AdminSideBar = ({ updateParentValue }) => {
           </div>
 
           <div className="Option" onClick={RevnewPageClicked}>
-            <p className="OptionText">Revenew</p>
+            <p className="OptionText">Revenue</p>
           </div>
 
           <div className="Option" onClick={AnalyticsClicked}>
             <p className="OptionText">Analytics</p>
           </div>
-         
 
-         
+
+
         </div>
       </div>
       <div style={{ display: "none" }}>
@@ -209,7 +209,7 @@ const AdminSideBar = ({ updateParentValue }) => {
       <MoreHorizIcon className="MenuIcon"  onClick={toggleDrawer("left", true)}/>
       </div>
 
-     
+
     </Wrapper>
   );
 };
@@ -260,7 +260,7 @@ const Wrapper = styled.section`
     cursor: pointer;
   }
   .MenuDisplay{
-    display:none;    
+    display:none;
   }
   .SideBarMainDiv{
     display:flex;
@@ -286,7 +286,7 @@ const Wrapper = styled.section`
       top:90px;
       font-size:50px;
     }
-    
+
     .MenuDisplay {
       position: absolute;
       width: 100%;
@@ -298,7 +298,7 @@ const Wrapper = styled.section`
       background-color:#a6705d;
       z-index:15;
       padding:2%;
-      
+
     }
     .ButtonText{
       font-size:20px;
@@ -312,7 +312,7 @@ const Wrapper = styled.section`
     width:45%;
     padding-right: 0%;
     margin-top:15%;
-   
+
   }
 `;
 export default AdminSideBar;
