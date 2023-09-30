@@ -512,27 +512,12 @@ const Wrapper = styled.section`
       display: unset;
     }
   }
-  @media (min-width: 767x) and (max-width: 950px) {
-    .swiper-container {
-      display: unset;
+  @media (min-width: 767px) and (max-width: 1500px) {
+    .ButtonHolder{
+      width:50%;
+      justify-content: space-evenly;
     }
-    .desktop-version {
-      display: none;
-    }
-    margin-top: 10%;
-    .overlay-text2 {
-      font-size: 150%;
-      width: 85%;
-      height: 40%;
-      top: 60%;
-      font-weight: 700;
-    }
-    .overlay-text {
-      font-size: 150%;
-      width: 85%;
-      top: 15%;
-      text-align: center;
-    }
+   
     
   }
 `;

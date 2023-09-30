@@ -282,9 +282,8 @@ const Wrapper = styled.section`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   align-content: center;
-  padding-right: 5%;
   width: 100%;
   padding-bottom: 5%;
 
@@ -302,16 +301,11 @@ const Wrapper = styled.section`
     align-content: center;
     align-items: center;
     width: 100%;
-    padding-right: 2.5%;
   }
 
-  @media (min-width: 800px) and (max-width: 1400px) {
-    width: 660;
-    padding-right: 0%;
+  @media (min-width: 768px) and (max-width: 1000px) {
+    width: 500px;
   }
-
-
-
 `;
 
 

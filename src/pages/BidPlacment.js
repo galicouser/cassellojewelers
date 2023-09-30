@@ -213,7 +213,7 @@ position:relative;
 }
 .DescriptionHolder{
     background-color:white;
-    height:85vh;
+    height:100%;
     padding:12%;
 }
 .BrandInfoHolder{
@@ -242,7 +242,7 @@ position:relative;
 }
 .PaymentHolder{
     background-color:white;
-    height:85vh;
+    height:100%;
     padding:2%;
 }
 @media (max-width: 767px) {
@@ -282,8 +282,5 @@ position:relative;
 }
 
 }
-
-}
-
 `
 export default BidPlacement;

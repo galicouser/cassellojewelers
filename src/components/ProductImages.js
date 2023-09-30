@@ -27,7 +27,7 @@ const ProductImages = ({ images }) => {
             className="mySwiper2"
           >
             {images.map((imageUrl, index) => (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={index} className='SwiperSlide'>
                 <img src={imageUrl} alt={`Product Image ${index}`} />
               </SwiperSlide>
             ))}
@@ -98,6 +98,11 @@ width:500px;
     flex-direction:column;
     align-items:center;
   }
+
+  .SwiperSlide{
+    width:500px;
+    height:500px;
+  }
  
   
   
@@ -144,8 +149,10 @@ width:500px;
       }
     }
   }
-  @media (min-width: 800px) and (max-width: 950px) {
-    width:750px;
+  @media (min-width: 767px) and (max-width: 800px) {
+    width:700px;
+    .SwiperSlide{
+    }
   }
 `
 

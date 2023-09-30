@@ -61,7 +61,7 @@ font-family: "Century Gothic", sans-serif;
   position: relative;
   padding-left:5%;
   padding-right:5%;
-  height: 450px;
+  height: 100%x;
 }
 .AboutUsText{
   font-size:18px;
@@ -141,7 +141,7 @@ margin-bottom: 500px; */
 }
 
 @media (min-width: 430px) and (max-width: 525px) {
-  height: 1500px;
+  height: 100%;
 /* padding-top:80px;
 margin-bottom: 500px; */
   .TitleText{
@@ -162,7 +162,7 @@ margin-bottom: 500px; */
     margin-bottom: 50px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 1100px;
+    height: 100%;
   }
   .ImageHolder{
     height:40vh;
@@ -172,7 +172,7 @@ margin-bottom: 500px; */
     position: relative;
     padding-left:0%;
     padding-right:0%;
-    height: 1100px;
+    height: 100%;
     text-align:center;
   }
 
@@ -180,7 +180,7 @@ margin-bottom: 500px; */
 
 
 @media (min-width: 525px) and (max-width: 600px) {
-  height: 1300px;
+  height: 100%;
 /* padding-top:80px;
 margin-bottom: 500px; */
   .TitleText{
@@ -201,7 +201,7 @@ margin-bottom: 500px; */
     margin-bottom: 50px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 900px;
+    height: 100%;
   }
   .ImageHolder{
     height:40vh;
@@ -218,7 +218,7 @@ margin-bottom: 500px; */
 }
 
 @media (min-width: 600px) and (max-width: 767px) {
-  height: 1200px;
+  height: 100%;
 /* padding-top:80px;
 margin-bottom: 500px; */
   .TitleText{
@@ -239,7 +239,7 @@ margin-bottom: 500px; */
     margin-bottom: 50px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 780px;
+    height: 100%;
   }
   .ImageHolder{
     height:40vh;
@@ -257,7 +257,7 @@ margin-bottom: 500px; */
 
 
 @media (min-width: 767px) and (max-width: 900px) {
-  height: 1500px;
+  height: 100%;
    .ImageHolder{
     height:50vh;
     width:100%;
@@ -279,7 +279,7 @@ margin-bottom: 500px; */
 }
 
 @media (min-width: 900px){
-  height: 1250px;
+  height: 100%;
    .ImageHolder{
     height:50vh;
     width:100%;
