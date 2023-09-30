@@ -12,11 +12,11 @@ import Nav from "../../components/Navbar";
 
 const AdminHomePage = () => {
   const [CurrentScreen, setCurrentScreen] = useState(1);
-  
+
   const handleValueUpdate = (newValue) => {
     setCurrentScreen(newValue);
   };
-  
+
 
   function ScreenDisplay() {
     if (CurrentScreen === 1) {
@@ -28,25 +28,25 @@ const AdminHomePage = () => {
     if (CurrentScreen === 3) {
       return <AdminBuyingHistory />;
     }
-    
+
   }
 
 
   return (
     <>
-    <Navbar/>
-    <Wrapper>
-    
+      <Navbar />
+      <Wrapper>
+
 
         <div className="FlexRowDiv">
           <AdminSideBar updateParentValue={handleValueUpdate} />
-         <div className="ScreenHolder">  
-         {ScreenDisplay()}
-         </div>
+          <div className="ScreenHolder">
+            {ScreenDisplay()}
+          </div>
           <div className="LightEffect"></div>
         </div>
-    
-    </Wrapper>
+
+      </Wrapper>
     </>
   );
 };

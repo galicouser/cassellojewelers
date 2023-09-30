@@ -144,41 +144,43 @@ const BuyHistoryTable = () => {
   return (
     <>
 
-      {!flag &&
+      {!flag && (
         <Wrapper>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 300 }} aria-label="customized table">
               <TableHead>
                 <TableRow>
                   <StyledTableCell>Product Image</StyledTableCell>
-                  <StyledTableCell align="right">Name</StyledTableCell>
-                  <StyledTableCell align="right">Price</StyledTableCell>
-                  <StyledTableCell align="right">ID</StyledTableCell>
+                  <StyledTableCell align="left">Name</StyledTableCell>
+                  <StyledTableCell align="left">Price</StyledTableCell>
+                  <StyledTableCell align="left">ID</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {products.map((product) => (
                   <StyledTableRow
                     key={product.id}
-                    onClick={() => handleRowClick(product)}>
-                    <StyledTableCell component="th" scope="row">
+                    onClick={() => handleRowClick(product)}
+                  >
+                    <StyledTableCell component="th" scope="row" style={{ cursor: 'pointer' }}>
                       <img
                         src={product.image[0]}
                         alt={product.name}
                         className="Image"
                       />
                     </StyledTableCell>
-                    <StyledTableCell align="right">{product.name}</StyledTableCell>
-                    <StyledTableCell align="right">{`$${(
+                    <StyledTableCell style={{ cursor: 'pointer' }} align="left">{product.name}</StyledTableCell> {/* Add align="right" */}
+                    <StyledTableCell style={{ cursor: 'pointer' }} align="left">{`$${(
                       product.price / 100
-                    ).toFixed(2)}`}</StyledTableCell>
-                    <StyledTableCell align="right">{product.id}</StyledTableCell>
+                    ).toFixed(2)}`}</StyledTableCell> {/* Add align="right" */}
+                    <StyledTableCell style={{ cursor: 'pointer' }} align="left">{product.id}</StyledTableCell> {/* Add align="right" */}
                   </StyledTableRow>
                 ))}
               </TableBody>
             </Table>
           </TableContainer>
-        </Wrapper>}
+        </Wrapper>
+      )}
 
       {flag &&
 
@@ -190,6 +192,7 @@ const BuyHistoryTable = () => {
           >
             <CircularProgress color="inherit" />
           </Backdrop>
+
           <p className="SubTitleText">Add Images Links</p>
           <div className="MainHolder">
             <div className="ImageUploadHolder">
@@ -310,6 +313,19 @@ const BuyHistoryTable = () => {
               className="ColoredButton" onClick={DeleteProductClicked}>
               Delete Product
             </Button>
+
+
+
+            <Button
+              variant="contained"
+              className="ColoredButton"
+              onClick={() => {
+                setFlag(false);
+              }}
+            >
+              Go Back
+            </Button>
+            
           </div>
         </Wrapper2>
       }

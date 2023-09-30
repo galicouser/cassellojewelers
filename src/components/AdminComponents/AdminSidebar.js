@@ -127,6 +127,8 @@ const AdminSideBar = ({ updateParentValue }) => {
 
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={RevnewPageClicked}>Revenue</h3>
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={AnalyticsClicked}>Analytics</h3>
+          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={AnalyticsClicked}>Support</h3>
+          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={AnalyticsClicked}>Resources</h3>
 
         </div>
       </Box>
@@ -187,6 +189,13 @@ const AdminSideBar = ({ updateParentValue }) => {
             <p className="OptionText">Analytics</p>
           </div>
 
+          <div className="Option" onClick={AnalyticsClicked}>
+            <p className="OptionText">Support</p>
+          </div>
+
+          <div className="Option" onClick={AnalyticsClicked}>
+            <p className="OptionText">Resources</p>
+          </div>
 
 
         </div>
