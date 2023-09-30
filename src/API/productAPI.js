@@ -63,3 +63,16 @@ export const editProduct = async (id, name, price, description, colors, images, 
     }
 };
 
+
+export const deleteProduct = async (id) => {
+    try {
+        const response = await axiosAPI.post("/products/delete-product", {
+            "id": id
+        });
+        return response;
+    } catch (err) {
+        console.log("Error signing up", err);
+        return { error: "An error occurred while signing up." };
+    }
+};
+

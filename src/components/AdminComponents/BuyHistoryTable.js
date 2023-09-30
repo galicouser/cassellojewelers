@@ -8,8 +8,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import { useProductsContext } from '../../context/products_context';
-import { editProduct } from '../../API/productAPI';
+import { deleteProduct, editProduct } from '../../API/productAPI';
 
 const BuyHistoryTable = () => {
 
@@ -27,6 +29,13 @@ const BuyHistoryTable = () => {
   const [flag, setFlag] = useState(false);
   const [editProd, setEditProd] = useState(null);
 
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
 
 
@@ -97,10 +106,10 @@ const BuyHistoryTable = () => {
   };
 
   async function UploadProductClicked() {
-
+    setOpen(true);
     const filteredImages = images.filter((image) => image.trim() !== "");
     console.log(filteredImages)
-    const data = await editProduct(editProd.id ,name, price, description, colors, images, category, company);
+    const data = await editProduct(editProd.id, name, price, description, colors, images, category, company);
     console.log(data);
     setFlag(false);
     setEditProd(null);
@@ -110,7 +119,27 @@ const BuyHistoryTable = () => {
     setPrice("");
     setCategory("");
     setDescription("");
+    setOpen(false);
   }
+
+
+  async function DeleteProductClicked() {
+    setOpen(true);
+    const filteredImages = images.filter((image) => image.trim() !== "");
+    console.log(filteredImages)
+    const data = await deleteProduct(editProd.id);
+    console.log(data);
+    setFlag(false);
+    setEditProd(null);
+    setImages("");
+    setColors("");
+    setName("");
+    setPrice("");
+    setCategory("");
+    setDescription("");
+    setOpen(false);
+  }
+
 
   return (
     <>
@@ -154,6 +183,13 @@ const BuyHistoryTable = () => {
       {flag &&
 
         <Wrapper2>
+          <Backdrop
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={open}
+            onClick={handleClose}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
           <p className="SubTitleText">Add Images Links</p>
           <div className="MainHolder">
             <div className="ImageUploadHolder">
@@ -242,11 +278,11 @@ const BuyHistoryTable = () => {
 
 
             <p className="SubTitleText">Product Name</p>
-            <input type="text" className="NameInput" 
-            value={name}
-            onChange={(event) => {
-              setName(event.target.value);
-            }} />
+            <input type="text" className="NameInput"
+              value={name}
+              onChange={(event) => {
+                setName(event.target.value);
+              }} />
 
             <p className="SubTitleText">Company</p>
             <input type="text" className="NameInput" value={company} onChange={(event) => {
@@ -267,6 +303,12 @@ const BuyHistoryTable = () => {
               varient="contained"
               className="ColoredButton" onClick={UploadProductClicked}>
               Edit Product
+            </Button>
+
+            <Button
+              varient="contained"
+              className="ColoredButton" onClick={DeleteProductClicked}>
+              Delete Product
             </Button>
           </div>
         </Wrapper2>

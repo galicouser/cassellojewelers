@@ -5,6 +5,8 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import ClearIcon from "@mui/icons-material/Clear";
 import { addProduct } from "../../API/productAPI";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const AddProduct = () => {
   const [images, setImages] = useState([""]);
@@ -15,6 +17,16 @@ const AddProduct = () => {
   const [company, setCompany] = useState("");
   const [shipping, setShipping] = useState("");
   const [description, setDescription] = useState("");
+
+
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
 
 
   const handleImageChange = (event, index) => {
@@ -55,14 +67,26 @@ const AddProduct = () => {
   };
 
   async function UploadProductClicked() {
-
+    setOpen(true);
     const filteredImages = images.filter((image) => image.trim() !== "");
     console.log(filteredImages)
     const data = await addProduct(name, price, category, company, description, true, colors, filteredImages);
     console.log(data);
+
+
+    setOpen(false);
   }
   return (
     <Wrapper>
+
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+
       <p className="TitleText">Add Product</p>
 
 
