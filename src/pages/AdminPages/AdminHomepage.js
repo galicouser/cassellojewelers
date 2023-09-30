@@ -7,6 +7,8 @@ import AdminBuyingHistory from "../../components/AdminComponents/AdminBuyHistory
 import AddProduct from "../../components/AdminComponents/AddProduct";
 import AddAuctionProduct from "../../components/AdminComponents/AddAuctionProduct";
 import Nav from "../../components/Navbar";
+import Support from "../../components/AdminComponents/Support";
+import Resources from "../../components/AdminComponents/Resources";
 
 
 
@@ -27,6 +29,15 @@ const AdminHomePage = () => {
     }
     if (CurrentScreen === 3) {
       return <AdminBuyingHistory />;
+    }
+
+    if (CurrentScreen === 6) {
+      return <Support />;
+    }
+
+
+    if (CurrentScreen === 7) {
+      return <Resources />;
     }
 
   }

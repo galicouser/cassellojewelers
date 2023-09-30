@@ -63,6 +63,26 @@ const AdminSideBar = ({ updateParentValue }) => {
     // setMenuData(!ShowMenuData);
   }
 
+  function SupportClicked() {
+    updateParentValue(6);
+    setAddProductVal(false);
+    setAddAuctionProductVal(true);
+    setRevnewPageVal(false);
+    setAnalyticsVal(false);
+    setBuyingHistoryVal(false)
+    setMenuData(!ShowMenuData);
+  }
+
+  function ResourcesClicked() {
+    updateParentValue(7);
+    setAddProductVal(false);
+    setAddAuctionProductVal(true);
+    setRevnewPageVal(false);
+    setAnalyticsVal(false);
+    setBuyingHistoryVal(false)
+    setMenuData(!ShowMenuData);
+  }
+
 
   //
   const [state, setState] = React.useState({
@@ -127,8 +147,8 @@ const AdminSideBar = ({ updateParentValue }) => {
 
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={RevnewPageClicked}>Revenue</h3>
           <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={AnalyticsClicked}>Analytics</h3>
-          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={AnalyticsClicked}>Support</h3>
-          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={AnalyticsClicked}>Resources</h3>
+          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={SupportClicked}>Support</h3>
+          <h3 style={{ color: "white",marginBottom:"10%",fontWeight:100,textAlign:"center"  }} onClick={ResourcesClicked}>Resources</h3>
 
         </div>
       </Box>
@@ -189,11 +209,11 @@ const AdminSideBar = ({ updateParentValue }) => {
             <p className="OptionText">Analytics</p>
           </div>
 
-          <div className="Option" onClick={AnalyticsClicked}>
+          <div className="Option" onClick={SupportClicked}>
             <p className="OptionText">Support</p>
           </div>
 
-          <div className="Option" onClick={AnalyticsClicked}>
+          <div className="Option" onClick={ResourcesClicked}>
             <p className="OptionText">Resources</p>
           </div>
 
