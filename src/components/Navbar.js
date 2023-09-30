@@ -168,17 +168,18 @@ const Nav = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}>
-              <p
-                className="MenuItem"
 
-              >Home</p>
-              <p
-                className="MenuItem"
-              >About</p>
+                 <Link to='/'>
+                <p className="MenuItem">Home</p>
+                  </Link>
+             <Link to='/about'>
+              <p className="MenuItem">About</p>
+                </Link>
 
-              <p
-                className="MenuItem"
-              >Products</p>
+                <Link to='/products'>
+               <p className="MenuItem"
+                  >Products</p>
+                  </Link>
             </motion.div>
 
           }
@@ -305,7 +306,7 @@ const NavContainer = styled.nav`
   /* border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px; */
   transition: background-color 0.3s ease-in-out; /* Adding transition effect */
-  
+
   position:relative;
 
   .dekstop{
@@ -364,13 +365,13 @@ const NavContainer = styled.nav`
 
   .nav-links {
     width:250px;
-    
+
   }
-  
+
 
   .HeaderText{
     font-size:20px;
-    
+
     font-weight:100;
     color:#222831;
     &:hover {
@@ -401,18 +402,18 @@ const NavContainer = styled.nav`
     color:#222831;
   }
 
-  
+
   .nav-toggle {
     background: transparent;
     border: transparent;
     color: #74b49b;
-    
+
     cursor: pointer;
     svg {
       font-size: 2rem;
     }
   }
-  
+
   .cart-btn-wrapper {
     display: none;
   }
@@ -420,7 +421,7 @@ const NavContainer = styled.nav`
 
 
   @media (min-width: 992px) {
-  
+
     .dekstop {
       display: unset;
     }
@@ -446,7 +447,7 @@ const NavContainer = styled.nav`
         font-size: 1rem;
         text-transform: capitalize;
         padding: 0.5rem;
-       
+
       }
     }
     .cart-btn-wrapper {
@@ -458,8 +459,8 @@ const NavContainer = styled.nav`
     position:fixed;
     z-index:100;
     background-color:rgb(0,0,0,0.95);
-    background-color: ${({ navbar }) => (navbar ? 'rgb(0,0,0,0.95)' : 'white')};  
-   
+    background-color: ${({ navbar }) => (navbar ? 'rgb(0,0,0,0.95)' : 'white')};
+
 
     top:0;
     height:100px;
@@ -473,8 +474,8 @@ const NavContainer = styled.nav`
     top:0;
 
   }
-  
-  
+
+
   @media (max-width: 992px) {
     height: 80px;
     .dekstop{
@@ -501,7 +502,7 @@ const NavContainer = styled.nav`
       vertical-align: middle;
       font-size: 30px;
       margin-left: 15px;
-      color: ${({ navbar }) => (navbar ? 'white' : '#222831')};  
+      color: ${({ navbar }) => (navbar ? 'white' : '#222831')};
     }
     .icon-menu{
       justify-content: end;
@@ -509,7 +510,7 @@ const NavContainer = styled.nav`
       font-size: 20px;
       margin-left: 15px;
       font-weight:100;
-      color: ${({ navbar }) => (navbar ? 'grey' : '#222831')};  
+      color: ${({ navbar }) => (navbar ? 'grey' : '#222831')};
     }
     .cart-btn {
       color: var(--clr-grey-1);
@@ -522,12 +523,12 @@ const NavContainer = styled.nav`
       width:100%;
       font-size:35px;
       font-weight:500;
-      
-      color: ${({ navbar }) => (navbar ? 'grey' : '#222831')};  
+
+      color: ${({ navbar }) => (navbar ? 'grey' : '#222831')};
 
     }
   }
-  
+
 `
 
 export default Nav
