@@ -13,7 +13,7 @@ import {
   GET_SINGLE_PRODUCT_ERROR,
 } from '../actions'
 import { getProducts } from '../utils/API'
-import { getProductsMongo } from '../API/productAPI'
+import { getProductsMongo } from '../API/productAPI';
 
 const initialState = {
   isSidebarOpen: false,
@@ -72,6 +72,17 @@ export const ProductsProvider = ({ children }) => {
     }
   }
 
+  const reloadProducts = async () => {
+    dispatch({ type: GET_PRODUCTS_BEGIN });
+    try {
+      const products = await fetchProductsData();
+      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products });
+    } catch (error) {
+      dispatch({ type: GET_PRODUCTS_ERROR });
+    }
+  };
+
+
   useEffect(() => {
     fetchProducts()
   }, [])
@@ -83,6 +94,7 @@ export const ProductsProvider = ({ children }) => {
         openSidebar,
         closeSidebar,
         fetchSingleProduct,
+        reloadProducts,
       }}
     >
       {children}

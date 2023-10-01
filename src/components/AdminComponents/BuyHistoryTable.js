@@ -25,7 +25,7 @@ const BuyHistoryTable = () => {
   const [description, setDescription] = useState("");
 
 
-  const { products } = useProductsContext();
+  const { products, reloadProducts } = useProductsContext();
   const [flag, setFlag] = useState(false);
   const [editProd, setEditProd] = useState(null);
 
@@ -120,6 +120,7 @@ const BuyHistoryTable = () => {
     setCategory("");
     setDescription("");
     setOpen(false);
+    reloadProducts();
   }
 
 
@@ -138,6 +139,7 @@ const BuyHistoryTable = () => {
     setCategory("");
     setDescription("");
     setOpen(false);
+    reloadProducts();
   }
 
 

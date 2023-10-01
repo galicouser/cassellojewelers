@@ -9,8 +9,6 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const AdminSideBar = ({ updateParentValue }) => {
 
-
-
   const [UserName,setUserName] = useState("Admin")
   const [AddProductVal, setAddProductVal] = useState(true);
   const [AddAuctionProductVal, setAddAuctionProductVal] = useState(false);

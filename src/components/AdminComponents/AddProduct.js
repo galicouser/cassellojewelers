@@ -7,6 +7,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { addProduct } from "../../API/productAPI";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useProductsContext } from '../../context/products_context';
 
 const AddProduct = () => {
   const [images, setImages] = useState([""]);
@@ -17,7 +18,7 @@ const AddProduct = () => {
   const [company, setCompany] = useState("");
   const [shipping, setShipping] = useState("");
   const [description, setDescription] = useState("");
-
+  const { products, reloadProducts } = useProductsContext();
 
   const [open, setOpen] = useState(false);
   const handleClose = () => {
@@ -75,6 +76,7 @@ const AddProduct = () => {
 
 
     setOpen(false);
+    reloadProducts();
   }
   return (
     <Wrapper>
