@@ -213,8 +213,12 @@ const LoginPage = () => {
                   console.log(user)
                   if (user.token) {
                     setOpen(false);
-                    console.log("Here")
+                    console.log(user)
                     localStorage.setItem('userName', user.userName);
+                    localStorage.setItem('email', user.email);
+                    // localStorage.setItem('firstName', user.userName);
+                    // localStorage.setItem('lastName', user.userName);
+                    // localStorage.setItem('password', user.userName);
                     localStorage.setItem('userVerification', user.verified);
 
                     localStorage.setItem('userAddress', user.address);

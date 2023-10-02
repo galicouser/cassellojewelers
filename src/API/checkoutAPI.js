@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const axiosAPI = axios.create({
-    baseURL: "https://jeweler-auth.onrender.com/",
-    // baseURL: "http://localhost:5252",
+    // baseURL: "https://jeweler-auth.onrender.com/",
+    baseURL: "http://localhost:5252",
 });
 
-export const checkout = async (name, products) => {
+export const checkout = async (user, products) => {
     const cartItems = products.map((product) => ({
         name: product.name,
         desc: `Brand: ${product.name}`,
@@ -13,12 +13,12 @@ export const checkout = async (name, products) => {
         price: product.price,
         cartQuantity: product.amount,
     }));
-    console.log(products)
+    console.log(user.email)
 
     const requestData = {
         order_id: "1",
-        customer_name: name,
-        customer_phone: "(732) 487-8977",
+        customer_name: user.name,
+        customer_phone: user.phone,
         customer_email: "fahad@richmondtt.com",
         description: "Casetabs Organization",
         shipping: {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useCartContext } from '../context/cart_context'
 import { useUserContext } from '../context/user_context'
@@ -11,6 +11,15 @@ const CartTotals = () => {
   const { myUser, loginWithRedirect } = useUserContext()
   const signedInUser = localStorage.getItem("userName");
   const navigate = useNavigate();
+
+
+  const [address, setAddress] = useState(localStorage.getItem('userAddress'));
+  const [state, setState] = useState(localStorage.getItem('userProvince'));
+  const [postCode, setPostCode] = useState(localStorage.getItem('userPostCode'));
+  const [country, setCountry] = useState(localStorage.getItem('userCountry'));
+  const [city, setCity] = useState(localStorage.getItem('userCity'));
+  const [emailUser, setEmail] = useState(localStorage.getItem('email'));
+  console.log(emailUser)
 
   return (
     <Wrapper>
@@ -36,8 +45,23 @@ const CartTotals = () => {
             </Link>
           ) : (
             <button onClick={async () => {
-              const body = await checkout("Test", cart);
-              window.location.href = body;
+
+              const user = {
+                name: signedInUser,
+                phone: "(732) 487-8977",
+                email: emailUser,
+                address: address,
+                postal_code: postCode,
+                state: state,
+                city: city,
+                country: country,
+                shipping_name: signedInUser,
+                shipping_phone: "(732) 487-8977",
+              };
+
+              const body = await checkout(user, cart);
+              console.log(body)
+              //window.location.href = body;
             }} className='btn'>
               Checkout
             </button>
