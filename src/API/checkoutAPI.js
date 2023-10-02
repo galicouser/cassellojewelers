@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const axiosAPI = axios.create({
-    // baseURL: "https://jeweler-auth.onrender.com/",
-    baseURL: "http://localhost:5252",
+    baseURL: "https://jeweler-auth.onrender.com/",
+    // baseURL: "http://localhost:5252",
 });
 
 export const checkout = async (user, products) => {

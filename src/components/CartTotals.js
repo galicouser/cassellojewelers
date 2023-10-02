@@ -61,7 +61,7 @@ const CartTotals = () => {
 
               const body = await checkout(user, cart);
               console.log(body)
-              //window.location.href = body;
+              window.location.href = body;
             }} className='btn'>
               Checkout
             </button>

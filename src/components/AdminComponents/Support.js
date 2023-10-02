@@ -141,6 +141,14 @@ const Wrapper = styled.section`
     width: 28%;
     background-color: rgb(255, 255, 255, 0.2);
     padding: 1%;
+    background-color: #1c1f25;
+    border-radius: 10px;
+    &:hover{
+    -webkit-box-shadow: 10px 10px 23px -5px rgba(0,0,0,0.65);
+    -moz-box-shadow: 10px 10px 23px -5px rgba(0,0,0,0.65);
+    box-shadow: 10px 10px 23px -5px rgba(0,0,0,0.65);
+    transition: 0.5s ease-in box-shadow;
+  }
   }
   .TutorialThumbnail:hover {
     cursor: pointer;
@@ -153,11 +161,11 @@ const Wrapper = styled.section`
   }
   .Title {
     text-align: center;
-  font-size: 25px;
-  font-weight: 100;
-  color: black;
-  white-space: pre-line;
-  height: 50px;
+    font-size: 25px;
+    font-weight: 100;
+    color: white;
+    white-space: pre-line;
+    height: 50px;
   }
 
   @media (max-width: 767px) {
@@ -167,6 +175,7 @@ const Wrapper = styled.section`
     }
     .TutorialThumbnail {
       width: 85%;
+      margin-top: 5%;
     }
     .EditProductHolder{
       margin-bottom: 5%;
