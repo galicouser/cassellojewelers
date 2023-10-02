@@ -7,7 +7,6 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { addProduct } from "../../API/productAPI";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useProductsContext } from '../../context/products_context';
 
 const AddProduct = () => {
   const [images, setImages] = useState([""]);
@@ -18,7 +17,7 @@ const AddProduct = () => {
   const [company, setCompany] = useState("");
   const [shipping, setShipping] = useState("");
   const [description, setDescription] = useState("");
-  const { products, reloadProducts } = useProductsContext();
+
 
   const [open, setOpen] = useState(false);
   const handleClose = () => {
@@ -76,7 +75,6 @@ const AddProduct = () => {
 
 
     setOpen(false);
-    reloadProducts();
   }
   return (
     <Wrapper>
@@ -103,7 +101,8 @@ const AddProduct = () => {
                   className="NameInput2"
                   value={image}
                   onChange={(event) => handleImageChange(event, index)}
-                />
+                >
+                </input>
                 <button
                   className="RemoveImageButton"
                   onClick={() => handleRemoveImage(index)}
@@ -220,6 +219,9 @@ const Wrapper = styled.section`
     color: #1c1f25;
     margin-left: 5%;
   }
+  .ImageInput{
+    position:relative;
+  }
   .SubTitleText{
     font-size: 25px;
     margin-bottom:0px;
@@ -275,6 +277,7 @@ const Wrapper = styled.section`
     font-size: 15px;
     cursor: pointer;
     margin-left: 5px;
+    right:5%;
   }
 
 
@@ -407,7 +410,7 @@ const Wrapper = styled.section`
         width:90%;  
       }
       .NameInput2{
-        width:95%;
+        width:80%;
        
       }
       .ImageUpload{

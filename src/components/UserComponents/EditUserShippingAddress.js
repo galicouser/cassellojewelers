@@ -3,26 +3,85 @@ import { useState, useRef, useEffect } from "react";
 import Button from "@mui/material/Button";
 
 const EditUserShippingAddress = () => {
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [repeatNewPassword, setRepeatNewPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case 'currentPassword':
+        // You can add validation for the current password here if needed
+        break;
+      case 'newPassword':
+        // Validate the new password (at least 8 characters with alphanumeric and special characters)
+        if (value.length < 8 || !/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/.test(value)) {
+          setError('Password must be at least 8 characters with alpha-numeric and special characters.');
+        } else {
+          setError('');
+        }
+        break;
+      case 'repeatNewPassword':
+        // Validate the repeat new password (should match new password)
+        if (value !== newPassword) {
+          setError('Passwords do not match.');
+        } else {
+          setError('');
+        }
+        break;
+      default:
+        break;
+    }
+
+    // Update the corresponding state
+    switch (name) {
+      case 'currentPassword':
+        setCurrentPassword(value);
+        break;
+      case 'newPassword':
+        setNewPassword(value);
+        break;
+      case 'repeatNewPassword':
+        setRepeatNewPassword(value);
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <Wrapper>
-      <p className="Title">Update Shipping Address</p>
+      <p className="Title">Update Password</p>
       <div className="OuterHolder">
         <div className="InputFieldsHolder">
-          <input type="text" placeholder="Address" className="inputField" />
-          <input type="text" placeholder="Address (Optional)" className="inputField" />
-
-          <div className="SmallFieldHolder">
-            <input type="text" placeholder="City" className="SmallInputField" />
-            <input type="text" placeholder="Province" className="SmallInputField2" />
-
-          </div>
-
-          <div className="SmallFieldHolder">
-            <input type="text" placeholder="Country" className="SmallInputField" />
-            <input type="text" placeholder="Postal Code" className="SmallInputField2" />
-
-          </div>
+        <input
+        type="text"
+        name="currentPassword"
+        placeholder="Current Password"
+        className="inputField"
+        value={currentPassword}
+        onChange={handleInputChange}
+      />
+      <input
+        type="text"
+        name="newPassword"
+        placeholder="New Password"
+        className="inputField"
+        value={newPassword}
+        onChange={handleInputChange}
+      />
+      <input
+        type="text"
+        name="repeatNewPassword"
+        placeholder="Repeat New Password"
+        className="inputField"
+        value={repeatNewPassword}
+        onChange={handleInputChange}
+      />
+      {error && <div className="error-message">{error}</div>}
+      
 
           <div className="ButtonHolder">
             <Button variant="outlined" className="ProceedButton">Update</Button>

@@ -64,6 +64,34 @@ const FeaturedProducts = () => {
             slidesPerView: 2,
             spaceBetween: 20,
           },
+          500: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          400: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          375: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          350: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          300: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          275: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          250: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
         }}
       >
         {randomProducts.map((product, index) => (

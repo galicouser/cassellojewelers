@@ -30,12 +30,9 @@ const AdminHomePage = () => {
     if (CurrentScreen === 3) {
       return <AdminBuyingHistory />;
     }
-
     if (CurrentScreen === 6) {
       return <Support />;
     }
-
-
     if (CurrentScreen === 7) {
       return <Resources />;
     }

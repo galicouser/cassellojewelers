@@ -1,148 +1,56 @@
 import styled from "styled-components";
 import { useState, useRef, useEffect } from "react";
-import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
 
 const UserProfileUpdate = () => {
-  const [UserProfile, setUserProfile] = useState(
-    "https://cdn.pixabay.com/photo/2022/04/13/12/14/man-7130170_1280.jpg"
-  );
 
-  const [FirstName,setFirstName] = useState("")
-  
-  const [LastName,setLastName] = useState("")
-  
-  const [DateOfBirth,setDateOfBirth] = useState("")
-
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
-
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
-
-  const handleDateOfBirthChange = (event) => {
-    setDateOfBirth(event.target.value);
-  };
-
-  const fileInputRef = useRef(null);
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setUserProfile(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
   return (
     <Wrapper>
       <p className="Title">Update Profile</p>
-      
-      <Grid container gap={2} className="SubGrid">
-        <Grid item lg={3}>
-          <div>
-            <p className="PromptText">
-              First Name
-            </p>
+      <div className="OuterHolder">
+        <div className="InputFieldsHolder">
+          <input type="text" placeholder="First Name" className="inputField" />
+          <input type="text" placeholder="Last Name" className="inputField" />
+          <input type="text" placeholder="" className="inputField" />
+          <p> Update Shipping Address</p>
+          <input type="text" placeholder="Address" className="inputField" />
+          <input type="text" placeholder="Address (Optional)" className="inputField" />
+          
 
-            <input
-              className={"InputFieldGeneral"}
-              type="text"
-               value={FirstName}
-             onChange={handleFirstNameChange}
-            />
+          <div className="SmallInput">
+          <input type="text" placeholder="Province" className="inputField2" />
+          <input type="text" placeholder="Postal Code" className="inputField2" />  
           </div>
-        </Grid>
-      </Grid>
-      <Grid container gap={2} className="SubGrid">
-        <Grid item lg={3}>
-        <div>
-            <p className="PromptText">
-              Last Name
-            </p>
 
-            <input
-              className={"InputFieldGeneral"}
-              type="text"
-               value={LastName}
-               onChange={handleLastNameChange}
-            />
+          <div className="ButtonHolder">
+            <Button variant="outlined" className="ProceedButton">Update</Button>
           </div>
-        </Grid>
-      </Grid>
-      <Grid container gap={2} className="SubGrid">
-        <Grid item lg={3}>
-        <div>
-            <p className="PromptText">
-              Date of Birth
-            </p>
+        </div>
+      </div>
 
-            <input
-              className={"InputFieldGeneral"}
-              type="text"
-               value={DateOfBirth}
-               onChange={handleDateOfBirthChange}
-            />
-          </div>
-       
-        </Grid>
-        
-      </Grid>
 
-      <Grid container gap={2} className="SubGrid">
-        <Grid item lg={3}>
 
-          <Button
-          varient="contained"
-          className="ColoredButton">
-            Save Change
-          </Button>
-       
-        </Grid>
-        
-      </Grid>
     </Wrapper>
-  );
-};
-const Wrapper = styled.section`
-  margin-top: 5%;
-  font-family: "Century Gothic", sans-serif;
-  height: 100%;
-  width:75%;
+  )
+}
+const Wrapper = styled.main`
+font-family: "Century Gothic", sans-serif;
+margin-top:5%;
+width:75%;
 
-.MainGrid{
-  display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+.SmallInput{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
 }
-.SubGrid{
-  display: flex;
-  
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-}
-  .Button {
-    width: 200px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    border-radius: 5px;
-    margin-top: 10%;
-    margin-bottom: 2%;
-    color: grey;
-    font-size: 15px;
+.Title {
+    font-size: 45px;
+    font-weight: 100;
+    color: #1c1f25;
+    margin-left:5%;
+    text-align:left;
   }
-  .ColoredButton {
+.ProceedButton{
     height:55px;
     width:200px;
     margin-top:5%;
@@ -155,92 +63,79 @@ const Wrapper = styled.section`
       outline:none;
     }
     color:white;
+}
+  .InputFieldsHolder{
+    width:350px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
   }
-  .ColoredButton: hover {
-    color:black;
+  .OuterHolder{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    margin-top:5%;
   }
-  
+  .SmallFieldHolder{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+  }
 
-  .InputFieldGeneral {
-    width: 300px;
-    height: 45px;
-    margin-top: 0;
-    border-radius: 5px;
-    font-size: 18px;
+.SmallInputField{
+    height:55px;
+    width:65%;
+    border-radius:5px;
+    padding-left:2%;
     outline:none;
     border:none;
     background-color:rgb(0,0,0,0.10);
-  }
+    font-size:15px;
+    margin-top:1%;
+}
+.SmallInputField2{
+    height:55px;
+    width:32.5%;
+    border-radius:5px;
+    padding-left:2%;
+    outline:none;
+    border:none;
+    background-color:rgb(0,0,0,0.10);
+    font-size:15px;
+    margin-top:1%;
+}
+.inputField{
+    height:55px;
+    width:350px;
+    border-radius:5px;
+    padding-left:2%;
+    outline:none;
+    border:none;
+    background-color:rgb(0,0,0,0.10);
+    font-size:15px;
+    margin-top:1%;
+}
+.inputField2{
+  height:55px;
+  width:49%;
+    border-radius:5px;
+    padding-left:2%;
+    outline:none;
+    border:none;
+    background-color:rgb(0,0,0,0.10);
+    font-size:15px;
+    margin-top:1%;
+}
 
-
-  .PromptText {
-    font-size: 17px;
-    font-weight: 400;
-    color: grey;
-  }
-  .PromptTextMain{
-    font-size: 17px;
-    font-weight: 400;
-    color: grey;
-  text-align:center;  
-  }
-
-  .Icon {
-    padding-right: 5%;
-  }
-
-  .ImageHolder {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-  }
-  .UserImage {
-    height: 200px;
-    weight: 200px;
-    border-radius: 100px;
-    object-fit: cover;
-  }
-  .Title {
-    font-size: 45px;
-    font-weight: 100;
-    color: #1c1f25;
-    margin-left:5%;
-  }
-  @media (min-width: 800px) and (max-width: 950px) {
-    margin-top:15%;
-  }
-  @media (max-width: 767px) {
-    width:100%;
-    padding-left: 0%;
-    
-    padding-bottom: 10%;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-content:center;
-    align-items:center;
-    .MainGrid{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-content:center;
-    align-items:center;
-    }
-    .SubGrid{
-      display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-content:center;
-    align-items:center;
-    }
-    .Title {
-      margin-left:0px;
-    }
-  }
-
-
-
-  
-`;
+@media (max-width: 767px) {
+  width:100%;
+    padding-bottom:10%;
+    padding-top:5%;
+}
+`
 export default UserProfileUpdate;

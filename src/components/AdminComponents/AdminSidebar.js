@@ -9,6 +9,8 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const AdminSideBar = ({ updateParentValue }) => {
 
+
+
   const [UserName,setUserName] = useState("Admin")
   const [AddProductVal, setAddProductVal] = useState(true);
   const [AddAuctionProductVal, setAddAuctionProductVal] = useState(false);
@@ -188,31 +190,34 @@ const AdminSideBar = ({ updateParentValue }) => {
 
         <div className="OptionHolder">
           <div className="Option" onClick={AddProductClicked}>
-            <p className="OptionText">Add Product</p>
+            <Button className="OptionText">Add Product</Button>
+            
           </div>
           <div className="Option" onClick={AddAuctionProduct}>
-            <p className="OptionText">Add Auction Product</p>
+            
+            <Button className="OptionText">Add Auction Product</Button>
           </div>
 
 
           <div className="Option" onClick={BuyingHistory}>
-            <p className="OptionText">Edit Product</p>
+            <Button className="OptionText">Edit Product</Button>
           </div>
 
           <div className="Option" onClick={RevnewPageClicked}>
-            <p className="OptionText">Revenue</p>
+            <Button className="OptionText">Revenue</Button>
           </div>
 
           <div className="Option" onClick={AnalyticsClicked}>
-            <p className="OptionText">Analytics</p>
+            <Button className="OptionText">Analytics</Button>
           </div>
 
           <div className="Option" onClick={SupportClicked}>
-            <p className="OptionText">Support</p>
+            
+            <Button className="OptionText">Support</Button>
           </div>
 
           <div className="Option" onClick={ResourcesClicked}>
-            <p className="OptionText">Resources</p>
+            <Button className="OptionText">Resources</Button>
           </div>
 
 
@@ -273,7 +278,7 @@ const Wrapper = styled.section`
   .OptionText {
     color: #1c1f25;
     text-align: center;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 100;
   }
   .MenuIconHolder{
@@ -282,6 +287,7 @@ const Wrapper = styled.section`
   .Option {
     width: 100%;
     margin-top: 50px;
+    text-align: center;
   }
   .Option:hover {
     cursor: pointer;

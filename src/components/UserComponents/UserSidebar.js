@@ -157,7 +157,7 @@ const UserSideBar = ({ updateParentValue }) => {
           </div>
 
           <div className="Option" onClick={ShippingAddressPressed}>
-            <Button className="OptionText">Shipping Address</Button>
+            <Button className="OptionText">Change Password</Button>
           </div>
          
 
@@ -187,7 +187,7 @@ const UserSideBar = ({ updateParentValue }) => {
         onBlur={MenuIconClicked}>
           <p className="ButtonText" onClick={WatchHistoryPressed}>Watch History</p>
           <p className="ButtonText" onClick={UpdateProfilePressed}>Update Profile</p>
-          <p className="ButtonText" onClick={ShippingAddressPressed}>Shipping Address</p>
+          <p className="ButtonText" onClick={ShippingAddressPressed}>Change Password</p>
         </div>
       )}
     </Wrapper>

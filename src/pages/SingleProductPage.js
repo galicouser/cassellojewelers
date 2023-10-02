@@ -159,9 +159,14 @@ const Wrapper = styled.main`
       margin-top:45%;
     }
     .content{
-      margin-top:10%;
+      margin-top:5%;
     }
 
+  }
+  @media (max-width: 415px) {
+    .content{
+        padding-top:20%;
+    }
   }
   @media (min-width: 800px) and (max-width: 950px) {
     margin-top:10%;

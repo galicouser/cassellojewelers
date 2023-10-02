@@ -25,9 +25,6 @@ const ProductsPage = () => {
       <Navbar />
       <Wrapper>
         <main className="OlderVersion">
-
-
-
           <Swiper
             loop={true}
             spaceBetween={10}
@@ -327,7 +324,6 @@ font-family: "Century Gothic", sans-serif;
       display:unset;
     }
     .TopAuctionBanner{
-      margin-top:80px;
       height:100%;
     }
     .AuctionHolder{
@@ -342,6 +338,24 @@ font-family: "Century Gothic", sans-serif;
      }
      .MoreTitle{
       width:50%;
+     }
+     @media (max-width: 950px) and (min-width: 767px) {
+      margin-top: 80px;
+     }
+     @media (max-width: 380px) {
+      .AuctionTitle{
+        font-size: 25px;
+      }
+     }
+     @media (max-width: 1068px) and (min-width: 767px) {
+      .AuctionTitle{
+        font-size: 20px;
+      }
+     }
+     @media (max-height: 450px) and (min-height: 250px) {
+      .AuctionTitle{
+        font-size: 15px;
+      }
      }
     
 `;

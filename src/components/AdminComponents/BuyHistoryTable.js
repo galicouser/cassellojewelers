@@ -25,7 +25,7 @@ const BuyHistoryTable = () => {
   const [description, setDescription] = useState("");
 
 
-  const { products, reloadProducts } = useProductsContext();
+  const { products } = useProductsContext();
   const [flag, setFlag] = useState(false);
   const [editProd, setEditProd] = useState(null);
 
@@ -120,7 +120,6 @@ const BuyHistoryTable = () => {
     setCategory("");
     setDescription("");
     setOpen(false);
-    reloadProducts();
   }
 
 
@@ -139,7 +138,6 @@ const BuyHistoryTable = () => {
     setCategory("");
     setDescription("");
     setOpen(false);
-    reloadProducts();
   }
 
 
@@ -304,6 +302,7 @@ const BuyHistoryTable = () => {
               setDescription(event.target.value);
             }} />
 
+<div>
             <Button
               varient="contained"
               className="ColoredButton" onClick={UploadProductClicked}>
@@ -327,6 +326,7 @@ const BuyHistoryTable = () => {
             >
               Go Back
             </Button>
+            </div>
             
           </div>
         </Wrapper2>
@@ -567,7 +567,7 @@ const Wrapper2 = styled.section`
         width:90%;  
       }
       .NameInput2{
-        width:95%;
+        width:85%;
        
       }
       .ImageUpload{
