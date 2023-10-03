@@ -63,14 +63,14 @@ const Support = () => {
             className="TutorialThumbnail"
             onClick={EditAuctionProducrClicked}
           >
-            <p className="Title">How to Edit Auction</p>
+            <p className="Title">Add Product to Auction</p>
             <img
               src="https://plus.unsplash.com/premium_photo-1661320832191-8e9866f34bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
               className="Image"
             />
           </div>
           <div className="TutorialThumbnail" onClick={EditListClicked}>
-            <p className="Title">How to Edit List</p>
+            <p className="Title">Add a Product</p>
             <img
               src="https://plus.unsplash.com/premium_photo-1661320832191-8e9866f34bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
               className="Image"
@@ -81,19 +81,19 @@ const Support = () => {
         <>
         {EditProduct && 
         <div className="EditProductHolder">
-          <p className="Title">Edit Product Instructions</p>
+          <p className="Title2">Edit Product Instructions</p>
           <Button variant="contained" className="BackButton" onClick={BackButtonClicked}>Go Back</Button>
         </div>}
         
         {EditAuctionProduct && 
         <div className="EditProductHolder">
-         <p className="Title">Edit Auction Product Instructions</p>
+         <p className="Title2">Add Product to Auction</p>
          <Button variant="contained" className="BackButton" onClick={BackButtonClicked}>Go Back</Button>
          </div>}
         
         {EditList && 
         <div className="EditProductHolder">
-         <p className="Title">Edit List Instructions</p>
+         <p className="Title2">Add a new Product</p>
          <Button variant="contained" className="BackButton" onClick={BackButtonClicked}>Go Back</Button>
          
         </div>}
@@ -164,6 +164,15 @@ const Wrapper = styled.section`
     font-size: 25px;
     font-weight: 100;
     color: white;
+    white-space: pre-line;
+    height: 50px;
+  }
+
+  .Title2 {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 100;
+    color: black;
     white-space: pre-line;
     height: 50px;
   }
